@@ -1,0 +1,60 @@
+Pirma užduotis: Testavimo senarijus:
+
+Paruoškite testų scenarijus pagal reikalavimus (internetinės parduotuvės registracijos, prekių paieškos, pirkimo ir mokėjimo funkcionalumas), apibrėžkite įvesties duomenis ir tikėtinas išvestis.
+
+1. Testavimo tikslai:
+    - Patikrinti ar sistemoje teisingai veikia naudotojo prisijungimo procesas, kai įvedami duomenys.
+    - Patikrinti ar sistemoje teisingai veikia prekių paieška.
+    - Patikrinti sistemoje kaip veikia pirkimas
+    - Patikrinti sistemoje kaip veikia mokėjimo funkcionalumas. 
+
+2. Testavimo sąlygos:
+    - Vartotojas pasiekia prisijungimo puslapį
+    - Vartotojas yra užregistruotas svetainėje
+    - Sistema prijungta prie duomenų bazės
+    - Paieška pateikia prekes pagal užklausą
+    - Prekės patenka į krepšelį
+    - Pateikiamas užsakymas
+    - Pateikiami apmokėjimo metodai
+    - Įvykdomas apmokėjimas
+    - Gaunamas patvirtinimas apie užsakymo apmokėjimą, tolimesnę veiksmų eigą ir pristatymo laiką
+
+3. Įvesties duomenys:
+    - vartotojo id - vartotojas
+    - El. paštas - vartotojas@test.test
+    - Slaptažodis - Sl4PtaŽoD1s123€
+    - Pakartotinas slaptažodis - Sl4PtaŽoD1s123€
+    - Telefonas - +370 123 45678
+    - Adresas (pristatymo) - Testų g. 01-01, Testonys, Lietuva 012345
+    - Sutikimas su taisyklėmis - Taip    
+
+4. Veiksmai:
+    - Atidaryti internetinės parduotuvės pradinį paslapį.
+    - Įeiti į prisijungimo puslapį
+    - Įvesti įvesties duomenis
+    - Paspausti 'Prisijungti'
+    - Suvesti prekės užklausą į paieškos langą
+    - Pridėti prekę į krepšelį
+    - Įvykdyti apmokėjimą
+
+5. Tikėtinas rezultatas:
+    - Sistema patvirina registracija pranešimu 'Jus sėkmingai prisijungėte'
+    - Sistema nepatvirtina registracijos pranešimais 'Netinkamas įvesties formatas', 'Užpyldikite visus būtinus laukelius' arba 'Toks vartotojas jau egzituoja' 
+    - Sistema patvirtina prisijungimą pranešimu 'Sėkmingai prisijungta'
+    - Sistema nepatvirtina prisijungimo pranešimu 'Neteisingai suvesti duomenys'
+    - Nukreipiama į puslapį, kurį pasiekia tik prisijungęs vartotojas
+    - Prisijungimas įrašomas į duomenų bazę
+    - Prekės pateikiamos pagal užklausą arba informuojama apie prekių nebuvimą
+    - Apmokėjimas (ne)sėkmingas
+
+6. Tikrinami aspektai:
+    - Ar visi įvesties duomenis buvo tinkamai apdoroti (tikrinamas formatas)
+    - Ar buvote nukreiptas į prisijungusio vartotojo puslapį
+    - Ar prisijungus, pasirodė tinkasmas pranešimas 'prisijungimas sėkmingas'
+    - Ar paieška įvykdyta sėkmingai
+    - Ar krepšelis atnaujinamas sėkmingai
+    - Ar apmokėjimas atliktas sėkmingai
+
+7. Rezultatai:
+    - Jei sistema atliko visus veiksmus teisingai ir pateikė teisingą pranešimą, testas laikomas sėkmingu
+    - Jei buvo aptiktos klaidos, turi būti pateikiamas klaidų ataskaitos su atitinkamais taisymo pasiūlimais

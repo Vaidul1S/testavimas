@@ -1,0 +1,133 @@
+Testavimo senarijai 'To Do List' https://todolist.james.am/:
+
+*Kvailokas komentaras, reikėtų ištrinti (low priority klaida)
+*Lear.json faile klaida
+*Clear mygtukas neveikia, nepažimėjus
+*Clear neaišku kada suveikia
+*to do list minusinis (medium)
+*active mygtukas gramatinė klaida (ismažosios) - pastaba (low priority)
+*varnelė ant textboxo ji turi išskleisti ar (pa)atžymeti visus elementus - pastaba
+*responsive (aplikacijos prisitaikymas prie ekrano) neveikia
+*spalvų kontrastas vargina akis
+*Ar ištrinimo mygtukas galėtu turėti patvirtinimo mygtuką paspaudimui
+*'Double-click to edit a toodo' užrašas klaidinantis, neintuityvus, neaišku ką daro
+*Kursorius nepasikeičia ant kai kurių interaktyvių elemntų, kaip varnelės, kryžiukai, tekstas ar skrytuliukai
+*items list visada rodo aktyvių užduočių skaičių ir - 1, nesikeičia pagal kategorijas
+*api klaida
+*varnelė kartais paryškėja, neaišku dėl komentaras
+*toodo - grmatinė klaida
+*base.js faile klaida
+*ar neturėtų būti išsaugojimo mygtuko ar bent paiškinimo po suvesto teksto spausti 'enter'?
+
+
+------------------------------------Užduoties pridėjimui prie sąrašo------------------------------------
+
+1. Testavimo tikslai:
+    - Patikrinti ar sistemoje teisingai veikia užduoties pridėjimas prie sarašo
+
+2. Testavimo sąlygos:
+    - Vartotojas įveda užduotį
+    - Užduotis išsaugojama
+    
+3. Įvesties duomenys:
+    - Tekstas
+    
+4. Veiksmai:
+    - Įvedamas tekstas, išsaugojimui spaudžiam klavišą 'enter'
+
+5. Tikėtinas rezultatas:
+    - Įvesta užduotis išsaugojama
+    - Sąrašo skaitiklis atsinaujina
+
+6. Tikrinami aspektai:
+    - Ar užduotis išsaugota sėkmingai
+    - Ar sąrašo skaitiklis fiksuoja užduotį
+
+7. Rezultatai:
+    - Užduotis išsaugota sėkmingai
+    - Sąrašo skaitiklio rodmenys neteisingi
+
+
+------------------------------------Užduoties redagavimui------------------------------------
+
+
+1. Testavimo tikslai:
+    - Patikrinti ar sistemoje teisingai veikia užduoties redagavimas
+
+2. Testavimo sąlygos:
+    - Vartotojas redaguoja užduotį
+    
+3. Įvesties duomenys:
+    - Tekstas
+    
+4. Veiksmai:
+    - Dvigubu spragtelėjimu ant užduoties pasiekiamas redagavimas
+
+5. Tikėtinas rezultatas:
+    - Užduotis suredaguota
+
+6. Tikrinami aspektai:
+    - Ar užduotis redaguota sėkmingai
+
+7. Rezultatai:
+    - Užduotis redaguota sėkmingai
+    - 'Double-click to edit a toodo' užrašas klaidinantis, neintuityvus, neaišku ką daro iškarto
+
+------------------------------------Užduočių trynimui------------------------------------
+
+
+1. Testavimo tikslai:
+    - Patikrinti ar sistemoje teisingai veikia užduoties ištrynimas
+
+2. Testavimo sąlygos:
+    - Vartotojas trina užduotį
+    
+3. Įvesties duomenys:
+    - Pažymima arba pasirenkama užduotis trynimui
+    
+4. Veiksmai:
+    - Pažymima užduotis trynimui
+    - Patvirtinamas trinimas mygtuku 'Clear'
+    - Užduotis trinama iškart 'kryžiuku'
+
+5. Tikėtinas rezultatas:
+    - Užduotis ištrinta sėkmingai
+    - Sąrašo skaitiklis atsinaujina
+
+6. Tikrinami aspektai:
+    - Ar užduotis ištrinta sėkmingai
+    - Ar sąrašo skaitiklis atsinaujina
+
+7. Rezultatai:
+    - Užduotis ištrinta sėkmingai abiem būdais 
+    - Nedraugiškas trynimo funkcionalumas, reikia įdėti papildomų pastangų pasiekti rezultatą
+    - Sąrašo skaitiklio rodmenys neteisingi
+
+------------------------------------Responsive dizaino testavimas ????------------------------------------
+
+1. Testavimo tikslai:
+    - Patikrinti kaip sistema veikia skirtingose rezoliucijose
+
+2. Testavimo sąlygos:
+    - Vartotojas tikrina aplikaciją keletoje rezoliuciju (telefonas, plančetė)
+    
+3. Įvesties duomenys:
+    - Tekstas
+    - Mygtukų tikrinimas
+    - Užduočių žymėjimas
+    
+4. Veiksmai:
+    - Tikrinama aplikacijos prisiakymas ir funkcionalumas prie skirtingų rezoliucijų    
+
+5. Tikėtinas rezultatas:
+    - Aplikacija pritaikyta skirtingom rezoliucijom    
+
+6. Tikrinami aspektai:
+    - Ar aplikacija prisitaiko prie skirtingų rezoliucijų
+    - Ar visi elementai telpla mažesnėse rezoliucijose
+    - Ar nenukenčia funkcionalumas keičiant rezoliuciją
+
+7. Rezultatai:
+    - Aplikacija nepritaikyta skirtingom rezoliucijom     
+    - Kai kurie elementai tampa sunkiau pasiekiami, nukenčia funksionalumas
+    
