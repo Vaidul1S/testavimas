@@ -1,0 +1,3 @@
+rest api - Representational State Transfer Application Programming Interface - labiau paplites, patogesnis, paprastesnis, lankstesnis, JSON
+soap api - Simple Object Access Protocol Application Programming Interface - nepopuliarus, sudetingas, OBJEKTINIS, xml
+CRUD - create read update delete
