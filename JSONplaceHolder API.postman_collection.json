@@ -11,12 +11,67 @@
 			"item": [
 				{
 					"name": "AllPosts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Testuojam request laika\r",
+									"pm.test(\"ar request laikas tinkamas\", function() {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ar request laikas tarp 100 ir 1000\", function() {\r",
+									"    pm.expect(pm.response.responseTime).to.be.within(100,1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 2xx\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.within(200, 203);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//Tikrinam ar body yra JSON formato\r",
+									"\r",
+									"pm.test('Body JSON formato?', function() {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('Body JSON formato?', function() {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": "https://jsonplaceholder.typicode.com/posts"
 					},
 					"response": []
@@ -35,6 +90,50 @@
 				},
 				{
 					"name": "NewPost",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Testuojam request laika\r",
+									"pm.test(\"ar request laikas tinkamas\", function() {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ar request laikas tarp 100 ir 1000\", function() {\r",
+									"    pm.expect(pm.response.responseTime).to.be.within(100,1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 2xx\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.within(200, 203);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//Tikrinam ar body yra JSON formato\r",
+									"\r",
+									"pm.test('Body JSON formato?', function() {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test('Body JSON formato?', function() {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
 							"content-type": true
@@ -82,6 +181,20 @@
 				},
 				{
 					"name": "UpdatePost",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -133,6 +246,31 @@
 						"url": "https://jsonplaceholder.typicode.com/styles.css/"
 					},
 					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"// Testuojam request laika\r",
+							"pm.test(\"ar request laikas tinkamas\", function() {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						]
+					}
 				}
 			]
 		},
@@ -565,6 +703,31 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"// Testuojam request laika\r",
+					"pm.test(\"ar request laikas tinkamas\", function() {\r",
+					"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+					"});"
+				]
+			}
 		}
 	]
 }
