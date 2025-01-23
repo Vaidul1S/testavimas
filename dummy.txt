@@ -1,0 +1,12 @@
+12 paskaita. Dummyjson testavimas
+Due March 24, 2025 11:59 PM
+Instructions
+1. Sukurti Postman Collection pagal https://dummyjson.com/
+2. Pagal API dokumentaciją apsirašyti visus request.
+3. Aprašyti testus:
+      3.1 Patikrinti kiekvieno request status kodą
+      3.2 Patikrinti kiekvieno request formatą
+      3.3 Patikrinti, ar kiekvienas response JSON neturi 'error elemento'
+
+4. Parašyti testą 'https://dummyjson.com/comments' request'ui, kuris patikrina, kiek komentarų turi Post, kurio id=46
+5. Sukelti šią kolekciją ir eksportuotus testavimo rezultatus į GitHub

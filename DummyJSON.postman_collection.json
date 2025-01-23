@@ -1,0 +1,1348 @@
+{
+	"info": {
+		"_postman_id": "4f87305e-ab59-4586-a89e-b0954c88d123",
+		"name": "DummyJSON",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "41184732"
+	},
+	"item": [
+		{
+			"name": "DynamicImages",
+			"item": [
+				{
+					"name": "Generate square image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/image/150"
+					},
+					"response": []
+				},
+				{
+					"name": "Generate custom size image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/image/200x100"
+					},
+					"response": []
+				},
+				{
+					"name": "Generate image with custom text",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/image/400x200/008080/ffffff?text=Hello+Peter",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"image",
+								"400x200",
+								"008080",
+								"ffffff"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "Hello+Peter"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate image with custom colors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/image/400x200/282828"
+					},
+					"response": []
+				},
+				{
+					"name": "Generate image with different formats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/image/400x200?type=webp&text=I+am+a+webp+image",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"image",
+								"400x200"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "webp"
+								},
+								{
+									"key": "text",
+									"value": "I+am+a+webp+image"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate image with custom font family",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/image/400x200/282828?fontFamily=pacifico&text=I+am+a+pacifico+font",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"image",
+								"400x200",
+								"282828"
+							],
+							"query": [
+								{
+									"key": "fontFamily",
+									"value": "pacifico"
+								},
+								{
+									"key": "text",
+									"value": "I+am+a+pacifico+font"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate image with custom font size",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/image/400x200/008080/ffffff?text=Hello+Peter!&fontSize=16",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"image",
+								"400x200",
+								"008080",
+								"ffffff"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "Hello+Peter!"
+								},
+								{
+									"key": "fontSize",
+									"value": "16"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate identicon",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/icon/abc123/150"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login user and get tokens",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"emilys\",\r\n    \"password\": \"emilyspass\",\r\n    \"expiresInMinins\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Get current auth user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/auth/me"
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh auth session",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/auth/refresh"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/products"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/products/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Search products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/products/search?q=chair",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"products",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "chair"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Limit and skip products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/products?limit=10&skip=10&select=title,price",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "skip",
+									"value": "10"
+								},
+								{
+									"key": "select",
+									"value": "title,price"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sort products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/products?sortBy=title&order=asc",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "title"
+								},
+								{
+									"key": "order",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/products/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "Get products category list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/products/category-list"
+					},
+					"response": []
+				},
+				{
+					"name": "Get products by a category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/products/category/smartphones"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Brangus niekalas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/products/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Dar labiau pabranges niekalas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/products/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://dummyjson.com/products/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carts",
+			"item": [
+				{
+					"name": "Get all carts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/carts"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/carts/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Get carts by a user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/carts/user/5"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 15,\r\n    \"products\": [\r\n      {\r\n        \"id\": 14,\r\n        \"quantity\": 5\r\n      },\r\n      {\r\n        \"id\": 99,\r\n        \"quantity\": 12\r\n      }\r\n    ]\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/carts/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a cart",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 1,\r\n    \"products\": [\r\n      {\r\n        \"id\": 14,\r\n        \"quantity\": 5\r\n      },\r\n      {\r\n        \"id\": 99,\r\n        \"quantity\": 12\r\n      }\r\n    ]\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/carts/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://dummyjson.com/carts/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recipies",
+			"item": [
+				{
+					"name": "Get all recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/recipes"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single recipe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/recipes/5"
+					},
+					"response": []
+				},
+				{
+					"name": "Search recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/recipes/search?q=vegetarian",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"recipes",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "vegetarian"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Limit and skip recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/recipes?limit=10&skip=10&select=name,image",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"recipes"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "skip",
+									"value": "10"
+								},
+								{
+									"key": "select",
+									"value": "name,image"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sort recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/recipes?sortBy=name&order=asc",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"recipes"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "name"
+								},
+								{
+									"key": "order",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all recipes tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/recipes/tags"
+					},
+					"response": []
+				},
+				{
+					"name": "Get recipes by a tag",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/recipes/tag/Pizza"
+					},
+					"response": []
+				},
+				{
+					"name": "Get recipes by a meal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/recipes/meal-type/dinner"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Login user and get tokens",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"emilys\",\r\n    \"password\": \"emilyspass\",\r\n    \"expiresInMinins\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/users/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Get current authenticated user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/user/me"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/users/5"
+					},
+					"response": []
+				},
+				{
+					"name": "Search users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/users/search?q=James",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"users",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "James"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/users/filter?key=hair.color&value=White",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"users",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "hair.color"
+								},
+								{
+									"key": "value",
+									"value": "White"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Limit and skip users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/users?limit=5&skip=10&select=firstName,age",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "skip",
+									"value": "10"
+								},
+								{
+									"key": "select",
+									"value": "firstName,age"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sort and order users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/users?sortBy=firstName&order=asc",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "firstName"
+								},
+								{
+									"key": "order",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user's carts by user id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/users/6/carts"
+					},
+					"response": []
+				},
+				{
+					"name": "Get user's posts by user id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/users/1/posts"
+					},
+					"response": []
+				},
+				{
+					"name": "Get user's todos by user id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/users/1/todos"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n  \"firstName\": \"Ali\",\r\n  \"lastName\": \"Baba\",\r\n  \"age\": 666\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/users/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"age\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/users/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://dummyjson.com/users/5"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Get all posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/posts"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/posts/25"
+					},
+					"response": []
+				},
+				{
+					"name": "Limit and skip posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/posts?limit=10&skip=10&select=title,reactions,userId",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "skip",
+									"value": "10"
+								},
+								{
+									"key": "select",
+									"value": "title,reactions,userId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sort posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/posts?sortBy=body&order=desc",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "body"
+								},
+								{
+									"key": "order",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all posts tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/posts/tags"
+					},
+					"response": []
+				},
+				{
+					"name": "Get posts tag list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/posts/tag-list"
+					},
+					"response": []
+				},
+				{
+					"name": "Get posts by a tag",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/posts/tag/crime"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all posts by user id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/posts/user/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get post's comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/posts/3/comments"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"I am testing something.\",\r\n  \"userId\": 1,\r\n  \"body\": \"I am realy testing something.\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dummyjson.com/posts/add",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"posts",
+								"add"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "I am testing something",
+									"disabled": true
+								},
+								{
+									"key": "userId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "body",
+									"value": "I am realy testing something",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a post",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"testing\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/posts/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://dummyjson.com/posts/20"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Get all comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/comments"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single comment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/comments/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Limit and skip comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/comments?limit=10&skip=10&select=body,postId",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"comments"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "skip",
+									"value": "10"
+								},
+								{
+									"key": "select",
+									"value": "body,postId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all comments by post id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/comments/post/5"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"body\": \"This makes no sense to me!\",\r\n  \"postId\": 1,\r\n  \"userId\": 5\r\n    \r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/comments/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a comment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"body\": \"copy paste fest\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/comments/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://dummyjson.com/comments/100"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Todos",
+			"item": [
+				{
+					"name": "Get all todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/todos"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/todos/5"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a random todo",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Limit and skip todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos?limit=3&skip=10",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "3"
+								},
+								{
+									"key": "skip",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all todos by user id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/todos/user/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new todo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"todo\": \"Use DummyJSON in the testing\",\r\n  \"completed\": false,\r\n  \"userId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/todos/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a todo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"13\",\r\n  \"todo\": \"Do something boring for I don't care about it\",\r\n  \"completed\": false,\r\n  \"userId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://dummyjson.com/todos/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a todo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://dummyjson.com/todos/15"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quotes",
+			"item": [
+				{
+					"name": "Get all quotes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/quotes"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single quote",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/quotes/15"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a random quote",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://dummyjson.com/quotes/random"
+					},
+					"response": []
+				},
+				{
+					"name": "Limit and skip quotes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/quotes?limit=4&skip=9",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"quotes"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "4"
+								},
+								{
+									"key": "skip",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
