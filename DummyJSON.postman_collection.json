@@ -873,7 +873,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://dummyjson.com/posts/25"
+						"url": "https://dummyjson.com/posts/4"
 					},
 					"response": []
 				},
@@ -1064,6 +1064,36 @@
 			"item": [
 				{
 					"name": "Get all comments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//. Parašyti testą 'https://dummyjson.com/comments' request'ui, kuris patikrina, kiek komentarų turi Post, kurio id=46\r",
+									"\r",
+									"pm.test(\"Post with ID 46 has correct number of comments\", function () {    \r",
+									"    let commentsForPost46 = pm.response.json().comments.filter(comment => comment.postId === 46);\r",
+									"    console.log(commentsForPost46);\r",
+									"    pm.expect(commentsForPost46.length).to.eql(1); \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1194,7 +1224,8 @@
 					"name": "Get a random todo",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "https://dummyjson.com/todos/random"
 					},
 					"response": []
 				},
@@ -1343,6 +1374,48 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"// 3. Aprašyti testus:\r",
+					"//       3.1 Patikrinti kiekvieno request status kodą\r",
+					"//       3.2 Patikrinti kiekvieno request formatą\r",
+					"//       3.3 Patikrinti, ar kiekvienas response JSON neturi 'error elemento'\r",
+					"\r",
+					"pm.test(\"Status codes are 2**\", function () {\r",
+					"    pm.expect(pm.response.code).to.be.within(200, 203);\r",
+					"});\r",
+					"\r",
+					"pm.test('Body JSON formato?', function() {\r",
+					"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+					"});\r",
+					"\r",
+					"pm.test(\"Response does not contain error\", function () {\r",
+					"    try {\r",
+					"        pm.response.json();\r",
+					"    } catch (e) {\r",
+					"        pm.expect.fail(\"Response is not a valid JSON\");\r",
+					"    }\r",
+					"    pm.expect(pm.response.json()).to.not.have.property('error');\r",
+					"});"
+				]
+			}
 		}
 	]
 }
