@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4f87305e-ab59-4586-a89e-b0954c88d123",
+		"_postman_id": "ba852c45-3ddc-4b87-9bd3-fdadd06a9cf5",
 		"name": "DummyJSON",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "41184732"
@@ -34,13 +34,10 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}image/400x200/008080/ffffff?text=Hello+Peter",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
+								"{{base_url}}image"
 							],
 							"path": [
-								"image",
 								"400x200",
 								"008080",
 								"ffffff"
@@ -71,13 +68,10 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}image/400x200?type=webp&text=I+am+a+webp+image",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
+								"{{base_url}}image"
 							],
 							"path": [
-								"image",
 								"400x200"
 							],
 							"query": [
@@ -101,13 +95,10 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}image/400x200/282828?fontFamily=pacifico&text=I+am+a+pacifico+font",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
+								"{{base_url}}image"
 							],
 							"path": [
-								"image",
 								"400x200",
 								"282828"
 							],
@@ -132,13 +123,10 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}image/400x200/008080/ffffff?text=Hello+Peter!&fontSize=16",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
+								"{{base_url}}image"
 							],
 							"path": [
-								"image",
 								"400x200",
 								"008080",
 								"ffffff"
@@ -178,7 +166,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"emilys\",\r\n    \"password\": \"emilyspass\",\r\n    \"expiresInMinins\": 30\r\n}",
+							"raw": "{\r\n    \"username\": \"emilys\",\r\n    \"password\": \"emilyspass\",\r\n    \"expiresInMinins\": \"include\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -215,6 +203,44 @@
 						"url": "{{base_url}}auth/refresh"
 					},
 					"response": []
+				},
+				{
+					"name": "6 uzduotis",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accessToken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3Mzc3MjQxNDUsImV4cCI6MTczNzcyNzc0NX0.xiWi7RCr7E1yVp4bOhBE2yxl6gszomIZ3iY20Lu2SRc",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "refreshToken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3Mzc3MjQxNDUsImV4cCI6MTc0MDMxNjE0NX0.VIt1bGBGxy0E5S5k62dtdDSkEMVvxbq9gKwyqlY7Sv4",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}docs/auth#auth-me",
+							"host": [
+								"{{base_url}}docs"
+							],
+							"path": [
+								"auth"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"hash": "auth-me"
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -246,13 +272,10 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}products/search?q=chair",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
+								"{{base_url}}products"
 							],
 							"path": [
-								"products",
 								"search"
 							],
 							"query": [
@@ -272,13 +295,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}products?limit=10&skip=10&select=title,price",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
-							],
-							"path": [
-								"products"
+								"{{base_url}}products"
 							],
 							"query": [
 								{
@@ -305,13 +323,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}products?sortBy=title&order=asc",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
-							],
-							"path": [
-								"products"
+								"{{base_url}}products"
 							],
 							"query": [
 								{
@@ -506,13 +519,10 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}recipes/search?q=vegetarian",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
+								"{{base_url}}recipes"
 							],
 							"path": [
-								"recipes",
 								"search"
 							],
 							"query": [
@@ -532,13 +542,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}recipes?limit=10&skip=10&select=name,image",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
-							],
-							"path": [
-								"recipes"
+								"{{base_url}}recipes"
 							],
 							"query": [
 								{
@@ -565,13 +570,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}recipes?sortBy=name&order=asc",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
-							],
-							"path": [
-								"recipes"
+								"{{base_url}}recipes"
 							],
 							"query": [
 								{
@@ -671,13 +671,10 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}users/search?q=James",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
+								"{{base_url}}users"
 							],
 							"path": [
-								"users",
 								"search"
 							],
 							"query": [
@@ -697,13 +694,10 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}users/filter?key=hair.color&value=White",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
+								"{{base_url}}users"
 							],
 							"path": [
-								"users",
 								"filter"
 							],
 							"query": [
@@ -727,13 +721,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}users?limit=5&skip=10&select=firstName,age",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
-							],
-							"path": [
-								"users"
+								"{{base_url}}users"
 							],
 							"query": [
 								{
@@ -760,13 +749,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}users?sortBy=firstName&order=asc",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
-							],
-							"path": [
-								"users"
+								"{{base_url}}users"
 							],
 							"query": [
 								{
@@ -884,13 +868,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}posts?limit=10&skip=10&select=title,reactions,userId",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
-							],
-							"path": [
-								"posts"
+								"{{base_url}}posts"
 							],
 							"query": [
 								{
@@ -917,13 +896,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}posts?sortBy=body&order=desc",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
-							],
-							"path": [
-								"posts"
+								"{{base_url}}posts"
 							],
 							"query": [
 								{
@@ -1000,13 +974,10 @@
 						},
 						"url": {
 							"raw": "{{base_url}}posts/add",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
+								"{{base_url}}posts"
 							],
 							"path": [
-								"posts",
 								"add"
 							],
 							"query": [
@@ -1118,13 +1089,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}comments?limit=10&skip=10&select=body,postId",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
-							],
-							"path": [
-								"comments"
+								"{{base_url}}comments"
 							],
 							"query": [
 								{
@@ -1237,13 +1203,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}todos?limit=3&skip=10",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
-							],
-							"path": [
-								"todos"
+								"{{base_url}}todos"
 							],
 							"query": [
 								{
@@ -1352,13 +1313,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}quotes?limit=4&skip=9",
-							"protocol": "https",
 							"host": [
-								"dummyjson",
-								"com"
-							],
-							"path": [
-								"quotes"
+								"{{base_url}}quotes"
 							],
 							"query": [
 								{
