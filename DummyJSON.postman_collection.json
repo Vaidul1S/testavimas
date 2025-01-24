@@ -1073,7 +1073,7 @@
 									"\r",
 									"pm.test(\"Komentarų turi Post su ID 46\", function () {    \r",
 									"    const postId46 = pm.response.json().comments.filter(comment => comment.postId === 46);\r",
-									"    console.log(postId46.length);\r",
+									"    console.log('Iš viso komentarų su ID 46:', postId46.length);\r",
 									"    pm.expect(postId46.length).to.be.at.least(1); \r",
 									"});\r",
 									"\r",
