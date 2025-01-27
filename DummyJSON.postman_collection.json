@@ -207,7 +207,7 @@
 				{
 					"name": "6 uzduotis",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "accessToken",
