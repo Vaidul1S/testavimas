@@ -161,12 +161,42 @@
 			"item": [
 				{
 					"name": "Login user and get tokens",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.get('kolekcijos kintamasis');\r",
+									"pm.collectionVariables.set('script kolekcija', 'test');\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set('local bet laikinas', '50');\r",
+									"pm.variables.set('username', 'emilys');\r",
+									"pm.variables.set('password', 'emilyspass');"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"emilys\",\r\n    \"password\": \"emilyspass\",\r\n    \"expiresInMinins\": \"include\"\r\n}",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"expiresInMinins\": \"{{local bet laikinas}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -621,15 +651,180 @@
 			"item": [
 				{
 					"name": "Get all users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}users"
+						"url": {
+							"raw": "{{base_url}}users?limit=0&select=username,password",
+							"host": [
+								"{{base_url}}users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "0"
+								},
+								{
+									"key": "select",
+									"value": "username,password"
+								}
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get all users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}users?limit=0&select=username,password",
+									"host": [
+										"{{base_url}}users"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "0"
+										},
+										{
+											"key": "select",
+											"value": "username,password"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1738132581&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=uybxv%2FIC6cSoeqHuh2VCcI%2FxfEyB5eAgYQyj4%2BKuhT4%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1738132581&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=uybxv%2FIC6cSoeqHuh2VCcI%2FxfEyB5eAgYQyj4%2BKuhT4%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-Dns-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Cats on Keyboards"
+								},
+								{
+									"key": "Server",
+									"value": "BobTheBuilder"
+								},
+								{
+									"key": "X-Ratelimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-Ratelimit-Remaining",
+									"value": "99"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Jan 2025 06:36:21 GMT"
+								},
+								{
+									"key": "X-Ratelimit-Reset",
+									"value": "1738132592"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"2d76-jdjwSeiXkRNluRra868LV8YLEas\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"users\": [\n        {\n            \"id\": 1,\n            \"username\": \"emilys\",\n            \"password\": \"emilyspass\"\n        },\n        {\n            \"id\": 2,\n            \"username\": \"michaelw\",\n            \"password\": \"michaelwpass\"\n        },\n        {\n            \"id\": 3,\n            \"username\": \"sophiab\",\n            \"password\": \"sophiabpass\"\n        },\n        {\n            \"id\": 4,\n            \"username\": \"jamesd\",\n            \"password\": \"jamesdpass\"\n        },\n        {\n            \"id\": 5,\n            \"username\": \"emmaj\",\n            \"password\": \"emmajpass\"\n        },\n        {\n            \"id\": 6,\n            \"username\": \"oliviaw\",\n            \"password\": \"oliviawpass\"\n        },\n        {\n            \"id\": 7,\n            \"username\": \"alexanderj\",\n            \"password\": \"alexanderjpass\"\n        },\n        {\n            \"id\": 8,\n            \"username\": \"avat\",\n            \"password\": \"avatpass\"\n        },\n        {\n            \"id\": 9,\n            \"username\": \"ethanm\",\n            \"password\": \"ethanmpass\"\n        },\n        {\n            \"id\": 10,\n            \"username\": \"isabellad\",\n            \"password\": \"isabelladpass\"\n        },\n        {\n            \"id\": 11,\n            \"username\": \"liamg\",\n            \"password\": \"liamgpass\"\n        },\n        {\n            \"id\": 12,\n            \"username\": \"miar\",\n            \"password\": \"miarpass\"\n        },\n        {\n            \"id\": 13,\n            \"username\": \"noahh\",\n            \"password\": \"noahhpass\"\n        },\n        {\n            \"id\": 14,\n            \"username\": \"charlottem\",\n            \"password\": \"charlottempass\"\n        },\n        {\n            \"id\": 15,\n            \"username\": \"williamg\",\n            \"password\": \"williamgpass\"\n        },\n        {\n            \"id\": 16,\n            \"username\": \"averyp\",\n            \"password\": \"averyppass\"\n        },\n        {\n            \"id\": 17,\n            \"username\": \"evelyns\",\n            \"password\": \"evelynspass\"\n        },\n        {\n            \"id\": 18,\n            \"username\": \"logant\",\n            \"password\": \"logantpass\"\n        },\n        {\n            \"id\": 19,\n            \"username\": \"abigailr\",\n            \"password\": \"abigailrpass\"\n        },\n        {\n            \"id\": 20,\n            \"username\": \"jacksone\",\n            \"password\": \"jacksonepass\"\n        },\n        {\n            \"id\": 21,\n            \"username\": \"madisonc\",\n            \"password\": \"madisoncpass\"\n        },\n        {\n            \"id\": 22,\n            \"username\": \"elijahs\",\n            \"password\": \"elijahspass\"\n        },\n        {\n            \"id\": 23,\n            \"username\": \"chloem\",\n            \"password\": \"chloempass\"\n        },\n        {\n            \"id\": 24,\n            \"username\": \"mateon\",\n            \"password\": \"mateonpass\"\n        },\n        {\n            \"id\": 25,\n            \"username\": \"harpere\",\n            \"password\": \"harperepass\"\n        },\n        {\n            \"id\": 26,\n            \"username\": \"evelyng\",\n            \"password\": \"evelyngpass\"\n        },\n        {\n            \"id\": 27,\n            \"username\": \"danielc\",\n            \"password\": \"danielcpass\"\n        },\n        {\n            \"id\": 28,\n            \"username\": \"lilyb\",\n            \"password\": \"lilybpass\"\n        },\n        {\n            \"id\": 29,\n            \"username\": \"henryh\",\n            \"password\": \"henryhpass\"\n        },\n        {\n            \"id\": 30,\n            \"username\": \"addisonw\",\n            \"password\": \"addisonwpass\"\n        },\n        {\n            \"id\": 31,\n            \"username\": \"gabriela\",\n            \"password\": \"gabrielapass\"\n        },\n        {\n            \"id\": 32,\n            \"username\": \"natalieh\",\n            \"password\": \"nataliehpass\"\n        },\n        {\n            \"id\": 33,\n            \"username\": \"carterb\",\n            \"password\": \"carterbpass\"\n        },\n        {\n            \"id\": 34,\n            \"username\": \"sofiam\",\n            \"password\": \"sofiampass\"\n        },\n        {\n            \"id\": 35,\n            \"username\": \"jackw\",\n            \"password\": \"jackwpass\"\n        },\n        {\n            \"id\": 36,\n            \"username\": \"harpert\",\n            \"password\": \"harpertpass\"\n        },\n        {\n            \"id\": 37,\n            \"username\": \"masonp\",\n            \"password\": \"masonppass\"\n        },\n        {\n            \"id\": 38,\n            \"username\": \"ariar\",\n            \"password\": \"ariarpass\"\n        },\n        {\n            \"id\": 39,\n            \"username\": \"lucasg\",\n            \"password\": \"lucasgpass\"\n        },\n        {\n            \"id\": 40,\n            \"username\": \"ellaa\",\n            \"password\": \"ellaapass\"\n        },\n        {\n            \"id\": 41,\n            \"username\": \"evanr\",\n            \"password\": \"evanrpass\"\n        },\n        {\n            \"id\": 42,\n            \"username\": \"averyc\",\n            \"password\": \"averycpass\"\n        },\n        {\n            \"id\": 43,\n            \"username\": \"benjaminf\",\n            \"password\": \"benjaminfpass\"\n        },\n        {\n            \"id\": 44,\n            \"username\": \"scarlettw\",\n            \"password\": \"scarlettwpass\"\n        },\n        {\n            \"id\": 45,\n            \"username\": \"lincolnk\",\n            \"password\": \"lincolnkpass\"\n        },\n        {\n            \"id\": 46,\n            \"username\": \"hannahr\",\n            \"password\": \"hannahrpass\"\n        },\n        {\n            \"id\": 47,\n            \"username\": \"nicholasb\",\n            \"password\": \"nicholasbpass\"\n        },\n        {\n            \"id\": 48,\n            \"username\": \"lunar\",\n            \"password\": \"lunarpass\"\n        },\n        {\n            \"id\": 49,\n            \"username\": \"jacobc\",\n            \"password\": \"jacobcpass\"\n        },\n        {\n            \"id\": 50,\n            \"username\": \"stellah\",\n            \"password\": \"stellahpass\"\n        },\n        {\n            \"id\": 51,\n            \"username\": \"elib\",\n            \"password\": \"elibpass\"\n        },\n        {\n            \"id\": 52,\n            \"username\": \"gracep\",\n            \"password\": \"graceppass\"\n        },\n        {\n            \"id\": 53,\n            \"username\": \"lucasgx\",\n            \"password\": \"lucasgxpass\"\n        },\n        {\n            \"id\": 54,\n            \"username\": \"avah\",\n            \"password\": \"avahpass\"\n        },\n        {\n            \"id\": 55,\n            \"username\": \"owenf\",\n            \"password\": \"owenfpass\"\n        },\n        {\n            \"id\": 56,\n            \"username\": \"samanthah\",\n            \"password\": \"samanthahpass\"\n        },\n        {\n            \"id\": 57,\n            \"username\": \"nathand\",\n            \"password\": \"nathandpass\"\n        },\n        {\n            \"id\": 58,\n            \"username\": \"bellag\",\n            \"password\": \"bellagpass\"\n        },\n        {\n            \"id\": 59,\n            \"username\": \"ethanf\",\n            \"password\": \"ethanfpass\"\n        },\n        {\n            \"id\": 60,\n            \"username\": \"lillians\",\n            \"password\": \"lillianspass\"\n        },\n        {\n            \"id\": 61,\n            \"username\": \"masonpx\",\n            \"password\": \"masonpxpass\"\n        },\n        {\n            \"id\": 62,\n            \"username\": \"leahh\",\n            \"password\": \"leahhpass\"\n        },\n        {\n            \"id\": 63,\n            \"username\": \"loganl\",\n            \"password\": \"loganlpass\"\n        },\n        {\n            \"id\": 64,\n            \"username\": \"averyb\",\n            \"password\": \"averybpass\"\n        },\n        {\n            \"id\": 65,\n            \"username\": \"calebp\",\n            \"password\": \"calebppass\"\n        },\n        {\n            \"id\": 66,\n            \"username\": \"ariaf\",\n            \"password\": \"ariafpass\"\n        },\n        {\n            \"id\": 67,\n            \"username\": \"gabrielh\",\n            \"password\": \"gabrielhpass\"\n        },\n        {\n            \"id\": 68,\n            \"username\": \"laylas\",\n            \"password\": \"laylaspass\"\n        },\n        {\n            \"id\": 69,\n            \"username\": \"christopherw\",\n            \"password\": \"christopherwpass\"\n        },\n        {\n            \"id\": 70,\n            \"username\": \"zoen\",\n            \"password\": \"zoenpass\"\n        },\n        {\n            \"id\": 71,\n            \"username\": \"nolanb\",\n            \"password\": \"nolanbpass\"\n        },\n        {\n            \"id\": 72,\n            \"username\": \"victoriam\",\n            \"password\": \"victoriampass\"\n        },\n        {\n            \"id\": 73,\n            \"username\": \"maxr\",\n            \"password\": \"maxrpass\"\n        },\n        {\n            \"id\": 74,\n            \"username\": \"penelopeh\",\n            \"password\": \"penelopehpass\"\n        },\n        {\n            \"id\": 75,\n            \"username\": \"ryang\",\n            \"password\": \"ryangpass\"\n        },\n        {\n            \"id\": 76,\n            \"username\": \"madelines\",\n            \"password\": \"madelinespass\"\n        },\n        {\n            \"id\": 77,\n            \"username\": \"jonathanp\",\n            \"password\": \"jonathanppass\"\n        },\n        {\n            \"id\": 78,\n            \"username\": \"eleanort\",\n            \"password\": \"eleanortpass\"\n        },\n        {\n            \"id\": 79,\n            \"username\": \"isaacl\",\n            \"password\": \"isaaclpass\"\n        },\n        {\n            \"id\": 80,\n            \"username\": \"hazelg\",\n            \"password\": \"hazelgpass\"\n        },\n        {\n            \"id\": 81,\n            \"username\": \"austinh\",\n            \"password\": \"austinhpass\"\n        },\n        {\n            \"id\": 82,\n            \"username\": \"lillianb\",\n            \"password\": \"lillianbpass\"\n        },\n        {\n            \"id\": 83,\n            \"username\": \"dylanw\",\n            \"password\": \"dylanwpass\"\n        },\n        {\n            \"id\": 84,\n            \"username\": \"aaliyahh\",\n            \"password\": \"aaliyahhpass\"\n        },\n        {\n            \"id\": 85,\n            \"username\": \"cameronb\",\n            \"password\": \"cameronbpass\"\n        },\n        {\n            \"id\": 86,\n            \"username\": \"noram\",\n            \"password\": \"norampass\"\n        },\n        {\n            \"id\": 87,\n            \"username\": \"hunterg\",\n            \"password\": \"huntergpass\"\n        },\n        {\n            \"id\": 88,\n            \"username\": \"aubreyw\",\n            \"password\": \"aubreywpass\"\n        },\n        {\n            \"id\": 89,\n            \"username\": \"braydenf\",\n            \"password\": \"braydenfpass\"\n        },\n        {\n            \"id\": 90,\n            \"username\": \"scarlettb\",\n            \"password\": \"scarlettbpass\"\n        },\n        {\n            \"id\": 91,\n            \"username\": \"levih\",\n            \"password\": \"levihpass\"\n        },\n        {\n            \"id\": 92,\n            \"username\": \"autumng\",\n            \"password\": \"autumngpass\"\n        },\n        {\n            \"id\": 93,\n            \"username\": \"juliann\",\n            \"password\": \"juliannpass\"\n        },\n        {\n            \"id\": 94,\n            \"username\": \"rubya\",\n            \"password\": \"rubyapass\"\n        },\n        {\n            \"id\": 95,\n            \"username\": \"miless\",\n            \"password\": \"milesspass\"\n        },\n        {\n            \"id\": 96,\n            \"username\": \"auroral\",\n            \"password\": \"auroralpass\"\n        },\n        {\n            \"id\": 97,\n            \"username\": \"oscarp\",\n            \"password\": \"oscarppass\"\n        },\n        {\n            \"id\": 98,\n            \"username\": \"clarab\",\n            \"password\": \"clarabpass\"\n        },\n        {\n            \"id\": 99,\n            \"username\": \"gavins\",\n            \"password\": \"gavinspass\"\n        },\n        {\n            \"id\": 100,\n            \"username\": \"lilah\",\n            \"password\": \"lilahpass\"\n        },\n        {\n            \"id\": 101,\n            \"username\": \"alicej\",\n            \"password\": \"alicejpass\"\n        },\n        {\n            \"id\": 102,\n            \"username\": \"johnd\",\n            \"password\": \"johndpass\"\n        },\n        {\n            \"id\": 103,\n            \"username\": \"emilyt\",\n            \"password\": \"emilytpass\"\n        },\n        {\n            \"id\": 104,\n            \"username\": \"michaelj\",\n            \"password\": \"michaeljpass\"\n        },\n        {\n            \"id\": 105,\n            \"username\": \"emmac\",\n            \"password\": \"emmacpass\"\n        },\n        {\n            \"id\": 106,\n            \"username\": \"davidm\",\n            \"password\": \"davidmpass\"\n        },\n        {\n            \"id\": 107,\n            \"username\": \"oliviah\",\n            \"password\": \"oliviahpass\"\n        },\n        {\n            \"id\": 108,\n            \"username\": \"jamesg\",\n            \"password\": \"jamesgpass\"\n        },\n        {\n            \"id\": 109,\n            \"username\": \"sophiam\",\n            \"password\": \"sophiampass\"\n        },\n        {\n            \"id\": 110,\n            \"username\": \"danielt\",\n            \"password\": \"danieltpass\"\n        },\n        {\n            \"id\": 111,\n            \"username\": \"isabellaw\",\n            \"password\": \"isabellawpass\"\n        },\n        {\n            \"id\": 112,\n            \"username\": \"alexanderh\",\n            \"password\": \"alexanderhpass\"\n        },\n        {\n            \"id\": 113,\n            \"username\": \"miam\",\n            \"password\": \"miampass\"\n        },\n        {\n            \"id\": 114,\n            \"username\": \"ethant\",\n            \"password\": \"ethantpass\"\n        },\n        {\n            \"id\": 115,\n            \"username\": \"charlotteb\",\n            \"password\": \"charlottebpass\"\n        },\n        {\n            \"id\": 116,\n            \"username\": \"williaml\",\n            \"password\": \"williamlpass\"\n        },\n        {\n            \"id\": 117,\n            \"username\": \"ameliag\",\n            \"password\": \"ameliagpass\"\n        },\n        {\n            \"id\": 118,\n            \"username\": \"benjaminw\",\n            \"password\": \"benjaminwpass\"\n        },\n        {\n            \"id\": 119,\n            \"username\": \"liamr\",\n            \"password\": \"liamrpass\"\n        },\n        {\n            \"id\": 120,\n            \"username\": \"evelynf\",\n            \"password\": \"evelynfpass\"\n        },\n        {\n            \"id\": 121,\n            \"username\": \"avahx\",\n            \"password\": \"avahxpass\"\n        },\n        {\n            \"id\": 122,\n            \"username\": \"liamt\",\n            \"password\": \"liamtpass\"\n        },\n        {\n            \"id\": 123,\n            \"username\": \"harperb\",\n            \"password\": \"harperbpass\"\n        },\n        {\n            \"id\": 124,\n            \"username\": \"noahl\",\n            \"password\": \"noahlpass\"\n        },\n        {\n            \"id\": 125,\n            \"username\": \"loganlx\",\n            \"password\": \"loganlxpass\"\n        },\n        {\n            \"id\": 126,\n            \"username\": \"averya\",\n            \"password\": \"averyapass\"\n        },\n        {\n            \"id\": 127,\n            \"username\": \"masonw\",\n            \"password\": \"masonwpass\"\n        },\n        {\n            \"id\": 128,\n            \"username\": \"gracee\",\n            \"password\": \"graceepass\"\n        },\n        {\n            \"id\": 129,\n            \"username\": \"lucasa\",\n            \"password\": \"lucasapass\"\n        },\n        {\n            \"id\": 130,\n            \"username\": \"chloep\",\n            \"password\": \"chloeppass\"\n        },\n        {\n            \"id\": 131,\n            \"username\": \"jacksonm\",\n            \"password\": \"jacksonmpass\"\n        },\n        {\n            \"id\": 132,\n            \"username\": \"zoec\",\n            \"password\": \"zoecpass\"\n        },\n        {\n            \"id\": 133,\n            \"username\": \"carterr\",\n            \"password\": \"carterrpass\"\n        },\n        {\n            \"id\": 134,\n            \"username\": \"noramx\",\n            \"password\": \"noramxpass\"\n        },\n        {\n            \"id\": 135,\n            \"username\": \"elijahc\",\n            \"password\": \"elijahcpass\"\n        },\n        {\n            \"id\": 136,\n            \"username\": \"madisonk\",\n            \"password\": \"madisonkpass\"\n        },\n        {\n            \"id\": 137,\n            \"username\": \"gabrielb\",\n            \"password\": \"gabrielbpass\"\n        },\n        {\n            \"id\": 138,\n            \"username\": \"lilyl\",\n            \"password\": \"lilylpass\"\n        },\n        {\n            \"id\": 139,\n            \"username\": \"elijahh\",\n            \"password\": \"elijahhpass\"\n        },\n        {\n            \"id\": 140,\n            \"username\": \"hannahg\",\n            \"password\": \"hannahgpass\"\n        },\n        {\n            \"id\": 141,\n            \"username\": \"owens\",\n            \"password\": \"owenspass\"\n        },\n        {\n            \"id\": 142,\n            \"username\": \"ariam\",\n            \"password\": \"ariampass\"\n        },\n        {\n            \"id\": 143,\n            \"username\": \"graysonc\",\n            \"password\": \"graysoncpass\"\n        },\n        {\n            \"id\": 144,\n            \"username\": \"ellar\",\n            \"password\": \"ellarpass\"\n        },\n        {\n            \"id\": 145,\n            \"username\": \"lukec\",\n            \"password\": \"lukecpass\"\n        },\n        {\n            \"id\": 146,\n            \"username\": \"leahp\",\n            \"password\": \"leahppass\"\n        },\n        {\n            \"id\": 147,\n            \"username\": \"henryt\",\n            \"password\": \"henrytpass\"\n        },\n        {\n            \"id\": 148,\n            \"username\": \"aurorag\",\n            \"password\": \"auroragpass\"\n        },\n        {\n            \"id\": 149,\n            \"username\": \"wyattp\",\n            \"password\": \"wyattppass\"\n        },\n        {\n            \"id\": 150,\n            \"username\": \"stellas\",\n            \"password\": \"stellaspass\"\n        },\n        {\n            \"id\": 151,\n            \"username\": \"nathanr\",\n            \"password\": \"nathanrpass\"\n        },\n        {\n            \"id\": 152,\n            \"username\": \"paisleyf\",\n            \"password\": \"paisleyfpass\"\n        },\n        {\n            \"id\": 153,\n            \"username\": \"christianp\",\n            \"password\": \"christianppass\"\n        },\n        {\n            \"id\": 154,\n            \"username\": \"bellaa\",\n            \"password\": \"bellaapass\"\n        },\n        {\n            \"id\": 155,\n            \"username\": \"nicholase\",\n            \"password\": \"nicholasepass\"\n        },\n        {\n            \"id\": 156,\n            \"username\": \"milam\",\n            \"password\": \"milampass\"\n        },\n        {\n            \"id\": 157,\n            \"username\": \"aaronc\",\n            \"password\": \"aaroncpass\"\n        },\n        {\n            \"id\": 158,\n            \"username\": \"aubreyb\",\n            \"password\": \"aubreybpass\"\n        },\n        {\n            \"id\": 159,\n            \"username\": \"eliw\",\n            \"password\": \"eliwpass\"\n        },\n        {\n            \"id\": 160,\n            \"username\": \"claires\",\n            \"password\": \"clairespass\"\n        },\n        {\n            \"id\": 161,\n            \"username\": \"jamesgx\",\n            \"password\": \"jamesgxpass\"\n        },\n        {\n            \"id\": 162,\n            \"username\": \"mateob\",\n            \"password\": \"mateobpass\"\n        },\n        {\n            \"id\": 163,\n            \"username\": \"julianj\",\n            \"password\": \"julianjpass\"\n        },\n        {\n            \"id\": 164,\n            \"username\": \"addisonf\",\n            \"password\": \"addisonfpass\"\n        },\n        {\n            \"id\": 165,\n            \"username\": \"leor\",\n            \"password\": \"leorpass\"\n        },\n        {\n            \"id\": 166,\n            \"username\": \"elenam\",\n            \"password\": \"elenampass\"\n        },\n        {\n            \"id\": 167,\n            \"username\": \"evanw\",\n            \"password\": \"evanwpass\"\n        },\n        {\n            \"id\": 168,\n            \"username\": \"lunah\",\n            \"password\": \"lunahpass\"\n        },\n        {\n            \"id\": 169,\n            \"username\": \"jaxonb\",\n            \"password\": \"jaxonbpass\"\n        },\n        {\n            \"id\": 170,\n            \"username\": \"penelopet\",\n            \"password\": \"penelopetpass\"\n        },\n        {\n            \"id\": 171,\n            \"username\": \"connorb\",\n            \"password\": \"connorbpass\"\n        },\n        {\n            \"id\": 172,\n            \"username\": \"arianaw\",\n            \"password\": \"arianawpass\"\n        },\n        {\n            \"id\": 173,\n            \"username\": \"ashers\",\n            \"password\": \"asherspass\"\n        },\n        {\n            \"id\": 174,\n            \"username\": \"sadiep\",\n            \"password\": \"sadieppass\"\n        },\n        {\n            \"id\": 175,\n            \"username\": \"gabrielm\",\n            \"password\": \"gabrielmpass\"\n        },\n        {\n            \"id\": 176,\n            \"username\": \"aaliyaha\",\n            \"password\": \"aaliyahapass\"\n        },\n        {\n            \"id\": 177,\n            \"username\": \"xavierw\",\n            \"password\": \"xavierwpass\"\n        },\n        {\n            \"id\": 178,\n            \"username\": \"savannahe\",\n            \"password\": \"savannahepass\"\n        },\n        {\n            \"id\": 179,\n            \"username\": \"tylerd\",\n            \"password\": \"tylerdpass\"\n        },\n        {\n            \"id\": 180,\n            \"username\": \"auroran\",\n            \"password\": \"auroranpass\"\n        },\n        {\n            \"id\": 181,\n            \"username\": \"brandonc\",\n            \"password\": \"brandoncpass\"\n        },\n        {\n            \"id\": 182,\n            \"username\": \"ellieh\",\n            \"password\": \"elliehpass\"\n        },\n        {\n            \"id\": 183,\n            \"username\": \"cameronp\",\n            \"password\": \"cameronppass\"\n        },\n        {\n            \"id\": 184,\n            \"username\": \"nataliehx\",\n            \"password\": \"nataliehxpass\"\n        },\n        {\n            \"id\": 185,\n            \"username\": \"henrya\",\n            \"password\": \"henryapass\"\n        },\n        {\n            \"id\": 186,\n            \"username\": \"harperbx\",\n            \"password\": \"harperbxpass\"\n        },\n        {\n            \"id\": 187,\n            \"username\": \"zacharyl\",\n            \"password\": \"zacharylpass\"\n        },\n        {\n            \"id\": 188,\n            \"username\": \"ariamx\",\n            \"password\": \"ariamxpass\"\n        },\n        {\n            \"id\": 189,\n            \"username\": \"tristans\",\n            \"password\": \"tristanspass\"\n        },\n        {\n            \"id\": 190,\n            \"username\": \"leahw\",\n            \"password\": \"leahwpass\"\n        },\n        {\n            \"id\": 191,\n            \"username\": \"laylab\",\n            \"password\": \"laylabpass\"\n        },\n        {\n            \"id\": 192,\n            \"username\": \"nolang\",\n            \"password\": \"nolangpass\"\n        },\n        {\n            \"id\": 193,\n            \"username\": \"hazelc\",\n            \"password\": \"hazelcpass\"\n        },\n        {\n            \"id\": 194,\n            \"username\": \"braydenh\",\n            \"password\": \"braydenhpass\"\n        },\n        {\n            \"id\": 195,\n            \"username\": \"violeta\",\n            \"password\": \"violetapass\"\n        },\n        {\n            \"id\": 196,\n            \"username\": \"lucasr\",\n            \"password\": \"lucasrpass\"\n        },\n        {\n            \"id\": 197,\n            \"username\": \"eleanorw\",\n            \"password\": \"eleanorwpass\"\n        },\n        {\n            \"id\": 198,\n            \"username\": \"maxp\",\n            \"password\": \"maxppass\"\n        },\n        {\n            \"id\": 199,\n            \"username\": \"viviang\",\n            \"password\": \"viviangpass\"\n        },\n        {\n            \"id\": 200,\n            \"username\": \"adrianf\",\n            \"password\": \"adrianfpass\"\n        },\n        {\n            \"id\": 201,\n            \"username\": \"mayah\",\n            \"password\": \"mayahpass\"\n        },\n        {\n            \"id\": 202,\n            \"username\": \"calebn\",\n            \"password\": \"calebnpass\"\n        },\n        {\n            \"id\": 203,\n            \"username\": \"novab\",\n            \"password\": \"novabpass\"\n        },\n        {\n            \"id\": 204,\n            \"username\": \"mateop\",\n            \"password\": \"mateoppass\"\n        },\n        {\n            \"id\": 205,\n            \"username\": \"aubreyg\",\n            \"password\": \"aubreygpass\"\n        },\n        {\n            \"id\": 206,\n            \"username\": \"elenab\",\n            \"password\": \"elenabpass\"\n        },\n        {\n            \"id\": 207,\n            \"username\": \"jaces\",\n            \"password\": \"jacespass\"\n        },\n        {\n            \"id\": 208,\n            \"username\": \"samanthal\",\n            \"password\": \"samanthalpass\"\n        }\n    ],\n    \"total\": 208,\n    \"skip\": 0,\n    \"limit\": 208\n}"
+						}
+					]
 				},
 				{
 					"name": "Login user and get tokens",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('save tokens', function() {\r",
+									"    pm.environment.set('AccessToken', pm.response.json().accessToken);\r",
+									"    pm.environment.set('RefreshToken', pm.response.json().refreshToken);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -1043,7 +1238,7 @@
 									"//. Parašyti testą '{{base_url}}comments' request'ui, kuris patikrina, kiek komentarų turi Post, kurio id=46\r",
 									"\r",
 									"pm.test(\"Komentarų turi Post su ID 46\", function () {    \r",
-									"    const postId46 = pm.response.json().comments.filter(comment => comment.postId === 46);\r",
+									"    const postId46 = pm.response.json().comments.filter(c => c.postId === 46);\r",
 									"    console.log('Iš viso komentarų su ID 46:', postId46.length);\r",
 									"    pm.expect(postId46.length).to.be.at.least(1); \r",
 									"});\r",
@@ -1069,7 +1264,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}comments"
+						"url": {
+							"raw": "{{base_url}}comments?limit=0",
+							"host": [
+								"{{base_url}}comments"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "0"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -1174,7 +1380,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}todos"
+						"url": {
+							"raw": "{{base_url}}todos?limit=0",
+							"host": [
+								"{{base_url}}todos"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "0"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -1183,7 +1400,21 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}todos/5"
+						"url": {
+							"raw": "{{base_url}}todos/5?limit=0",
+							"host": [
+								"{{base_url}}todos"
+							],
+							"path": [
+								"5"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "0"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -1284,7 +1515,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}quotes"
+						"url": {
+							"raw": "{{base_url}}quotes?limit=0",
+							"host": [
+								"{{base_url}}quotes"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "0"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -1370,9 +1612,17 @@
 					"        pm.expect.fail(\"Response is not a valid JSON\");\r",
 					"    }\r",
 					"    pm.expect(pm.response.json()).to.not.have.property('error');\r",
-					"});"
+					"});\r",
+					"\r",
+					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "script kolekcija",
+			"value": ""
 		}
 	]
 }
