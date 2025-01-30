@@ -166,13 +166,17 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
+									"// pm.test(\"Status code is 200\", function () {\r",
+									"//     pm.response.to.have.status(200);\r",
+									"// });\r",
 									"\r",
-									"pm.collectionVariables.get('kolekcijos kintamasis');\r",
-									"pm.collectionVariables.set('script kolekcija', 'test');\r",
-									""
+									"// pm.collectionVariables.get('kolekcijos kintamasis');\r",
+									"// pm.collectionVariables.set('script kolekcija', 'test');\r",
+									"\r",
+									"pm.test(\"AccessToken is not empty\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.accessToken).to.not.be.empty;\r",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -182,9 +186,59 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.variables.set('local bet laikinas', '50');\r",
-									"pm.variables.set('username', 'emilys');\r",
-									"pm.variables.set('password', 'emilyspass');"
+									"// pm.variables.set('local bet laikinas', '50');\r",
+									"// pm.variables.set('username', 'emilys');\r",
+									"// pm.variables.set('password', 'emilyspass');"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"expiresInMinins\": \"{{local bet laikinas}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Login user One",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// pm.test(\"Status code is 200\", function () {\r",
+									"//     pm.response.to.have.status(200);\r",
+									"// });\r",
+									"\r",
+									"// pm.collectionVariables.get('kolekcijos kintamasis');\r",
+									"// pm.collectionVariables.set('script kolekcija', 'test');\r",
+									"\r",
+									"pm.test(\"AccessToken is not empty\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.accessToken).to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -663,9 +717,21 @@
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{base_url}}users?limit=0&select=username,password",
 							"host": [
