@@ -1,0 +1,261 @@
+{
+	"id": "1dcbb2b1-d05c-496b-9268-36fed65d6825",
+	"name": "DummyJSON",
+	"timestamp": "2025-01-30T13:25:03.666Z",
+	"collection_id": "41184732-ba852c45-3ddc-4b87-9bd3-fdadd06a9cf5",
+	"folder_id": "41184732-765c0fc8-c9a9-4950-be1b-792f26e02819",
+	"environment_id": "41184732-1c87ff88-ab31-4abe-b935-428286bedb5e",
+	"totalPass": 120,
+	"delay": "10",
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-01-30T13:24:56.137Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "a5c42eb0-696c-4364-89cf-32b4ad524c06",
+			"name": "16 Categories List su CSV",
+			"url": "https://dummyjson.com/products/category/womens-watches",
+			"time": 157,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status codes are 2**": true,
+				"Body JSON formato?": true,
+				"Response does not contain error": true,
+				"Status code is 200": true,
+				"Produktu kiekis > 0": true
+			},
+			"testPassFailCounts": {
+				"Status codes are 2**": {
+					"pass": 24,
+					"fail": 0
+				},
+				"Body JSON formato?": {
+					"pass": 24,
+					"fail": 0
+				},
+				"Response does not contain error": {
+					"pass": 24,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 24,
+					"fail": 0
+				},
+				"Produktu kiekis > 0": {
+					"pass": 24,
+					"fail": 0
+				}
+			},
+			"times": [
+				454,
+				164,
+				164,
+				183,
+				213,
+				161,
+				154,
+				155,
+				158,
+				155,
+				152,
+				163,
+				153,
+				174,
+				196,
+				208,
+				214,
+				228,
+				216,
+				156,
+				301,
+				153,
+				157,
+				157
+			],
+			"allTests": [
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"Status code is 200": true,
+					"Produktu kiekis > 0": true
+				}
+			]
+		}
+	],
+	"count": 24,
+	"totalTime": 4589,
+	"collection": {
+		"requests": [
+			{
+				"id": "a5c42eb0-696c-4364-89cf-32b4ad524c06",
+				"method": "GET"
+			}
+		]
+	}
+}
