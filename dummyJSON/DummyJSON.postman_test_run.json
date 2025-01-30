@@ -1,0 +1,1520 @@
+{
+	"id": "2d56fd23-a9df-4f6d-bae8-fc404894e6c9",
+	"name": "DummyJSON",
+	"timestamp": "2025-01-30T06:50:54.967Z",
+	"collection_id": "41184732-ba852c45-3ddc-4b87-9bd3-fdadd06a9cf5",
+	"folder_id": "41184732-70718ec8-ab00-4254-bc73-844f4c51890b",
+	"environment_id": "41184732-1c87ff88-ab31-4abe-b935-428286bedb5e",
+	"totalPass": 832,
+	"delay": "20",
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-01-30T06:49:54.903Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "9858cf90-2d16-4f83-9862-a09fe8796ce5",
+			"name": "Login user and get tokens",
+			"url": "https://dummyjson.com/auth/login",
+			"time": 154,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status codes are 2**": true,
+				"Body JSON formato?": true,
+				"Response does not contain error": true,
+				"AccessToken is not empty": true
+			},
+			"testPassFailCounts": {
+				"Status codes are 2**": {
+					"pass": 208,
+					"fail": 0
+				},
+				"Body JSON formato?": {
+					"pass": 208,
+					"fail": 0
+				},
+				"Response does not contain error": {
+					"pass": 208,
+					"fail": 0
+				},
+				"AccessToken is not empty": {
+					"pass": 208,
+					"fail": 0
+				}
+			},
+			"times": [
+				568,
+				151,
+				159,
+				160,
+				172,
+				156,
+				162,
+				156,
+				166,
+				186,
+				171,
+				184,
+				172,
+				170,
+				146,
+				178,
+				224,
+				155,
+				161,
+				165,
+				166,
+				164,
+				158,
+				165,
+				186,
+				160,
+				163,
+				159,
+				154,
+				162,
+				169,
+				152,
+				163,
+				161,
+				155,
+				173,
+				165,
+				163,
+				174,
+				154,
+				198,
+				153,
+				155,
+				150,
+				189,
+				161,
+				149,
+				161,
+				163,
+				170,
+				156,
+				155,
+				460,
+				158,
+				170,
+				177,
+				250,
+				159,
+				230,
+				148,
+				156,
+				152,
+				153,
+				148,
+				155,
+				150,
+				160,
+				155,
+				163,
+				162,
+				154,
+				178,
+				174,
+				171,
+				176,
+				147,
+				150,
+				202,
+				151,
+				160,
+				151,
+				182,
+				167,
+				168,
+				166,
+				156,
+				152,
+				180,
+				160,
+				152,
+				160,
+				278,
+				200,
+				168,
+				171,
+				174,
+				163,
+				232,
+				157,
+				234,
+				482,
+				160,
+				169,
+				155,
+				149,
+				159,
+				163,
+				157,
+				157,
+				162,
+				154,
+				172,
+				151,
+				151,
+				150,
+				177,
+				158,
+				159,
+				149,
+				153,
+				154,
+				150,
+				159,
+				155,
+				173,
+				155,
+				158,
+				165,
+				164,
+				165,
+				148,
+				170,
+				152,
+				160,
+				149,
+				165,
+				165,
+				165,
+				168,
+				156,
+				172,
+				154,
+				148,
+				147,
+				149,
+				155,
+				192,
+				156,
+				179,
+				178,
+				162,
+				151,
+				144,
+				144,
+				149,
+				162,
+				156,
+				150,
+				149,
+				159,
+				150,
+				160,
+				146,
+				148,
+				149,
+				147,
+				152,
+				147,
+				243,
+				153,
+				158,
+				152,
+				150,
+				295,
+				159,
+				157,
+				161,
+				151,
+				221,
+				148,
+				159,
+				148,
+				167,
+				162,
+				145,
+				163,
+				148,
+				190,
+				155,
+				145,
+				156,
+				266,
+				152,
+				173,
+				159,
+				164,
+				167,
+				159,
+				147,
+				191,
+				458,
+				162,
+				149,
+				151,
+				157,
+				163,
+				159,
+				154
+			],
+			"allTests": [
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				},
+				{
+					"Status codes are 2**": true,
+					"Body JSON formato?": true,
+					"Response does not contain error": true,
+					"AccessToken is not empty": true
+				}
+			]
+		}
+	],
+	"count": 208,
+	"totalTime": 35583,
+	"collection": {
+		"requests": [
+			{
+				"id": "9858cf90-2d16-4f83-9862-a09fe8796ce5",
+				"method": "POST"
+			}
+		]
+	}
+}
