@@ -8,6 +8,7 @@ app.use(express.json());
 //-----------------------------Routes-----------------------------
 
 app.get('/products', async (req, res) => {
+    
     try {
         res.status(200).json({message: 'Sėkmingai prisijungta'});
     } catch (error) {
