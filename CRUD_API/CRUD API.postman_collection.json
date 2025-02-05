@@ -1,0 +1,374 @@
+{
+	"info": {
+		"_postman_id": "834574fd-6f3e-4514-afc0-5e7726b6dbf8",
+		"name": "CRUD API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "41184732"
+	},
+	"item": [
+		{
+			"name": "Get Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5555/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Get A Single User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5555/users/5"
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 19,\r\n    \"username\": \"naujasUseris\",\r\n    \"password\": \"naujasPasswordas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5555/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"username\": \"naujasEditinasUseris\",\r\n    \"password\": \"naujasPasswordas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5555/users/15"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:5555/users/19"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5555/products"
+			},
+			"response": [
+				{
+					"name": "Get Products",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5555/products"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "365"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"16d-KOz9yvTG1zPK7O0s1yghr20dNSs\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 05 Feb 2025 13:11:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"tinklinio_kamuolys\",\n        \"price\": 80,\n        \"description\": \"molten v5m5000\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"krepsinio_kamuolys\",\n        \"price\": 65,\n        \"description\": \"molten bg4000\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"futbolo_kamuolys\",\n        \"price\": 55,\n        \"description\": \"select v23\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"teniso_kamuoliukas\",\n        \"price\": 9,\n        \"description\": \"dunlop\"\n    },\n    {\n        \"id\": 5,\n        \"name\": \"ledo_ritulys\",\n        \"price\": 8,\n        \"description\": \"nijdam\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get A Single Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5555/products/5"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5555/products/5"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "65"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"41-7Tp0KbBetqortQnqoA1Rra7zKZw\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 05 Feb 2025 13:15:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 5,\n        \"name\": \"ledo_ritulys\",\n        \"price\": 8,\n        \"description\": \"nijdam\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"15\",\r\n    \"name\": \"naujasproduktas\",\r\n    \"price\": \"12345678\",\r\n    \"description\": \"labai brangus produktas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5555/products"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"15\",\r\n    \"name\": \"naujasproduktas\",\r\n    \"price\": \"12345678\",\r\n    \"description\": \"labai brangus produktas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5555/products"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "91"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5b-ylyvQksYdaXD2KRa4iLl3mcTHZw\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 05 Feb 2025 13:30:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 15,\n    \"name\": \"naujasproduktas\",\n    \"price\": 12345678,\n    \"description\": \"labai brangus produktas\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"15\",\r\n    \"name\": \"naujasproduktas\",\r\n    \"price\": \"123456789\",\r\n    \"description\": \"labai labai brangus produktas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5555/products"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"15\",\r\n    \"name\": \"naujasproduktas\",\r\n    \"price\": \"123456789\",\r\n    \"description\": \"labai labai brangus produktas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5555/products"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "98"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"62-1MTjxrQF4KdQOFRDTvTpdzNevH0\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 05 Feb 2025 13:28:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 15,\n    \"name\": \"naujasproduktas\",\n    \"price\": 123456790,\n    \"description\": \"labai labai brangus produktas\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:5555/products/15"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5555/products/15"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "100"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"64-CeknEY2nIhBd9ZmBzrJ0DsOx2ZU\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 05 Feb 2025 13:30:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 15,\n        \"name\": \"naujasproduktas\",\n        \"price\": 123456790,\n        \"description\": \"labai labai brangus produktas\"\n    }\n]"
+				}
+			]
+		}
+	]
+}

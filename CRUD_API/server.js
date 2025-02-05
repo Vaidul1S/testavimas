@@ -10,26 +10,16 @@ app.use(express.json());
 
 //-----------------------------Routes-----------------------------
 
-app.get('/products', async (req, res) => {
-
-    try {
-        res.status(200).json({ message: 'Sėkmingai prisijungta' });
-    } catch (error) {
-        res.status(400).json({ error: 'error' });
-    }
-
-});
-
 app.get('/users', async (req, res) => {
 
     try {
         const results = await pool.query(`SELECT * FROM users`);
         res.status(200).json(results.rows);
-        
+
     } catch (error) {
         res.status(400).json({ error: 'error' });
     }
-    
+
 });
 
 app.get('/users/:id', async (req, res) => {
@@ -38,39 +28,39 @@ app.get('/users/:id', async (req, res) => {
         const id = req.params.id
         const results = await pool.query(`SELECT * FROM users WHERE id=${id}`);
         res.status(200).json(results.rows);
-        
+
     } catch (error) {
         res.status(400).json({ error: 'error' });
     }
-    
+
 });
 
 app.post('/users', async (req, res) => {
 
     try {
-        const {id, username, password} = req.body;
-        
+        const { id, username, password } = req.body;
+
         const results = await pool.query(`INSERT INTO users (id,username, password) VALUES (${id}, '${username}', '${password}') RETURNING *`);
         res.status(201).json(results.rows[0]);
-        
+
     } catch (error) {
         res.status(400).json({ error: 'error' });
     }
-    
+
 });
 
 app.put('/users/:id', async (req, res) => {
 
-    try {        
+    try {
         const id = req.params.id;
-        const {username, password} = req.body;
+        const { username, password } = req.body;
         const results = await pool.query(`UPDATE users SET username='${username}', password='${password}' WHERE id=${id} RETURNING *`);
         res.status(200).json(results.rows[0]);
-        
+
     } catch (error) {
         res.status(400).json({ error: 'error' });
     }
-    
+
 });
 
 app.delete('/users/:id', async (req, res) => {
@@ -79,14 +69,77 @@ app.delete('/users/:id', async (req, res) => {
         const id = req.params.id
         const results = await pool.query(`DELETE FROM users WHERE id=${id} RETURNING *`);
         res.status(200).json(results.rows);
-        
+
     } catch (error) {
         res.status(400).json({ error: 'error' });
     }
-    
+
 });
 
+app.get('/products', async (req, res) => {
 
+    try {
+        const results = await pool.query(`SELECT * FROM products`);
+        res.status(200).json(results.rows);
+
+    } catch (error) {
+        res.status(400).json({ error: 'error' });
+    }
+
+});
+
+app.get('/products/:id', async (req, res) => {
+
+    try {
+        const id = req.params.id
+        const results = await pool.query(`SELECT * FROM products WHERE id=${id}`);
+        res.status(200).json(results.rows);
+
+    } catch (error) {
+        res.status(400).json({ error: 'error' });
+    }
+
+});
+
+app.post('/products', async (req, res) => {
+
+    try {
+        const { id, name, price, description } = req.body;
+
+        const results = await pool.query(`INSERT INTO products (id, name, price, description) VALUES (${id}, '${name}', '${price}', '${description}') RETURNING *`);
+        res.status(201).json(results.rows[0]);
+
+    } catch (error) {
+        res.status(400).json({ error: 'error' });
+    }
+
+});
+
+app.put('/products', async (req, res) => {
+
+    try {
+        const { id, name, price, description } = req.body;
+        const results = await pool.query(`UPDATE products SET name='${name}', price='${price}', description='${description}' WHERE id=${id} RETURNING *`);
+        res.status(200).json(results.rows[0]);
+
+    } catch (error) {
+        res.status(400).json({ error: 'error' });
+    }
+
+});
+
+app.delete('/products/:id', async (req, res) => {
+
+    try {
+        const id = req.params.id
+        const results = await pool.query(`DELETE FROM products WHERE id=${id} RETURNING *`);
+        res.status(200).json(results.rows);
+
+    } catch (error) {
+        res.status(400).json({ error: 'error' });
+    }
+
+});
 
 app.listen(port, () => {
     console.log(`CRUD API darbui pasiruošus ant ${port} porto!`)
