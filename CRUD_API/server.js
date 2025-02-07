@@ -106,7 +106,7 @@ app.post('/products', async (req, res) => {
     try {
         const { id, name, price, description } = req.body;
 
-        const results = await pool.query(`INSERT INTO products (id, name, price, description) VALUES (${id}, '${name}', '${price}', '${description}') RETURNING *`);
+        const results = await pool.query(`INSERT INTO products (id, name, price, description) VALUES (${id}, '${name}', ${price}, '${description}') RETURNING *`);
         res.status(201).json(results.rows[0]);
 
     } catch (error) {
