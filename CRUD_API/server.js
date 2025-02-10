@@ -93,7 +93,7 @@ app.get('/products/:id', async (req, res) => {
     try {
         const id = req.params.id
         const results = await pool.query(`SELECT * FROM products WHERE id=${id}`);
-        res.status(200).json(results.rows);
+        res.status(200).json(results.rows[0]);
 
     } catch (error) {
         res.status(400).json({ error: 'error' });
@@ -104,9 +104,9 @@ app.get('/products/:id', async (req, res) => {
 app.post('/products', async (req, res) => {
 
     try {
-        const { id, name, price, description } = req.body;
+        const { name, price, description } = req.body;
 
-        const results = await pool.query(`INSERT INTO products (id, name, price, description) VALUES (${id}, '${name}', ${price}, '${description}') RETURNING *`);
+        const results = await pool.query(`INSERT INTO products (name, price, description) VALUES ('${name}', ${price}, '${description}') RETURNING *`);
         res.status(201).json(results.rows[0]);
 
     } catch (error) {
@@ -115,10 +115,11 @@ app.post('/products', async (req, res) => {
 
 });
 
-app.put('/products', async (req, res) => {
+app.put('/products/:id', async (req, res) => {
 
     try {
-        const { id, name, price, description } = req.body;
+        const id = req.params.id
+        const { name, price, description } = req.body;
         const results = await pool.query(`UPDATE products SET name='${name}', price='${price}', description='${description}' WHERE id=${id} RETURNING *`);
         res.status(200).json(results.rows[0]);
 
