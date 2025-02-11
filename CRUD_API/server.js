@@ -134,8 +134,7 @@ app.delete('/products/:id', async (req, res) => {
     try {
         const id = req.params.id
         const results = await pool.query(`DELETE FROM products WHERE id=${id} RETURNING *`);
-        res.status(200).json(results.rows);
-
+        res.status(200).json({message: 'Produktas išrintas sėkmingai!'});             
     } catch (error) {
         res.status(400).json({ error: 'error' });
     }

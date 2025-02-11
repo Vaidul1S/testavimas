@@ -41,15 +41,17 @@ describe('CRUD_API', () => {
         });
 
         it('UPDATE a product', () => {
-            cy.request("PUT", "localhost:5555/products/6", {name: 'cyPreke', price: 1.99, description: 'pigi test preke'}).then((res) => {
+            cy.request("PUT", "localhost:5555/products/6", {name: 'test', price: 1.99, description: 'pigi test preke'}).then((res) => {
                 expect(res.status).to.eq(200);
+                expect(res.body).to.have.property('id', 6);
                 cy.log(res.body);
             });
         });
 
         it('DELETE a product', () => {
-            cy.request("DELETE", "localhost:5555/products/7").then((res) => {
+            cy.request("DELETE", "localhost:5555/products/27").then((res) => {
                 expect(res.status).to.eq(200);
+                expect(res.body).to.have.property('message');
                 cy.log(res.body);
             });
         });
