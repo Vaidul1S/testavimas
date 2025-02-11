@@ -49,7 +49,7 @@ describe('CRUD_API', () => {
         });
 
         it('DELETE a product', () => {
-            cy.request("DELETE", "localhost:5555/products/27").then((res) => {
+            cy.request("DELETE", "localhost:5555/products/26").then((res) => {
                 expect(res.status).to.eq(200);
                 expect(res.body).to.have.property('message');
                 cy.log(res.body);
