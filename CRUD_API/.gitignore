@@ -1,3 +1,6 @@
 node_modules
 .env
-cypress
+1-getting-started
+2-advanced-examples
+fixtures
+support
