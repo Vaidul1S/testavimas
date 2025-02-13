@@ -52,15 +52,20 @@ describe('Cypress Testų Scenarijai', () => {
                 title: 'Stubbed API Post Title',
                 body: 'Stubbed API Post Body'
             };
-
             // Interceptuojame GET užklausą į JSONPlaceholder API
-
+            cy.intercept('GET', 'https://jsonplaceholder.typicode.com/posts/1', {
+                statusCode:200,
+                body: stubbedData
+            }).as('getPost');
             // Paspaudžiame mygtuką, kuris iškviečia fetch užklausą
             cy.get('#fetch-data').click();
             // Laukiame, kol užklausa bus atlikta
-            cy.get('.data-container', { timeout: 1000 })
+            cy.wait('@getPost');            
             // Patikriname, ar .data-container elemente rodomi stubinto atsakymo duomenys
-            cy.get('.data-container').should('be.visible');
+            cy.get('.data-container').should('be.visible').within(() => {
+                cy.get('h3').should('contain', stubbedData.title);
+                cy.get('p').should('contain', stubbedData.body);
+            });
         });
     });
 
