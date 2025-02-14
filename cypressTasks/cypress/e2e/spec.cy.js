@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('Cypress Testų Scenarijai', () => {
     // Prieš kiekvieną testą atidaro pagrindinį puslapį
 

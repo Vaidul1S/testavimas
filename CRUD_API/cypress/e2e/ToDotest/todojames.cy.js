@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('ToDoTest', () => {
 
     it('visit ToDo site', () => {
