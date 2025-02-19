@@ -41,7 +41,11 @@ describe('Cypress Testų Scenarijai', () => {
             cy.get('#item-list li').each(($li) => {
                 cy.wrap($li).should('contain', 'Item');
             });
-            //bandziau su siblings() nepaejo ar imanoma?
+            //su siblings() paejo 
+            cy.get('#item-list li:first')
+                .siblings()
+                .and('contain', 'Item');
+            
         });
     });
 
@@ -56,13 +60,13 @@ describe('Cypress Testų Scenarijai', () => {
             };
             // Interceptuojame GET užklausą į JSONPlaceholder API
             cy.intercept('GET', 'https://jsonplaceholder.typicode.com/posts/1', {
-                statusCode:200,
+                statusCode: 200,
                 body: stubbedData
             }).as('getPost');
             // Paspaudžiame mygtuką, kuris iškviečia fetch užklausą
             cy.get('#fetch-data').click();
             // Laukiame, kol užklausa bus atlikta
-            cy.wait('@getPost');            
+            cy.wait('@getPost');
             // Patikriname, ar .data-container elemente rodomi stubinto atsakymo duomenys
             cy.get('.data-container').should('be.visible').within(() => {
                 cy.get('h3').should('contain', stubbedData.title);
@@ -78,7 +82,7 @@ describe('Cypress Testų Scenarijai', () => {
             // Iškart po paspaudimo turi būti rodomas pranešimas
             cy.get('#async-result').should('be.visible').and('have.text', 'Operacija prasidėjo...');
             // Laukiame, kol asinchroninė operacija baigsis (naudojame šiek tiek ilgesnį timeout)
-            cy.get('#async-result', { timeout: 3000 }).should('be.visible').and('have.text', 'Asinchroninė operacija baigta!');
+            cy.get('#async-result', { timeout: 4000 }).should('be.visible').and('have.text', 'Asinchroninė operacija baigta!');
 
         });
     });
@@ -89,7 +93,7 @@ describe('Cypress Testų Scenarijai', () => {
             cy.get('#tooltip').should('not.be.visible');
             // Simuliuojame pelės užvedimą ant elemento
             cy.get('#hover-box').trigger('mouseover');
-            cy.get('#tooltip').should('be.visible');
+            cy.get('#tooltip').should('be.visible').and('have.text', 'Papildoma informacija');
             // Simuliuojame pelės nuvedimą nuo elemento
             cy.get('#hover-box').trigger('mouseout');
             cy.get('#tooltip').should('not.be.visible');
