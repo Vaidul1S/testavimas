@@ -652,7 +652,7 @@
 						},
 						{
 							"key": "company",
-							"value": "test",
+							"value": "Damb",
 							"type": "text"
 						},
 						{
@@ -734,7 +734,7 @@
 						},
 						{
 							"key": "email",
-							"value": "bebras150@bebras.com",
+							"value": "bebras150@example.com",
 							"type": "text"
 						},
 						{
