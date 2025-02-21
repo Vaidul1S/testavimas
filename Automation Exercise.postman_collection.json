@@ -1,0 +1,993 @@
+{
+	"info": {
+		"_postman_id": "6e97a07b-a6be-4142-85c8-b1f5b7e10ee4",
+		"name": "Automation Exercise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "41184732"
+	},
+	"item": [
+		{
+			"name": "Products List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Real Responce Code 200\", function () {\r",
+							"    let data = pm.response.json();\r",
+							"    pm.expect(data.responseCode).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Product list in not empty and has all properties\", function () {\r",
+							"    let data = pm.response.json();\r",
+							"    pm.expect(data).to.have.property('products').and.not.empty;\r",
+							"    pm.expect(data.products).to.be.an('array').and.not.empty;\r",
+							"    data.products.forEach((p) => {\r",
+							"        pm.expect(p).to.have.property('id');\r",
+							"        pm.expect(p).to.have.property('name');\r",
+							"        pm.expect(p).to.have.property('price');\r",
+							"        pm.expect(p).to.have.property('brand');\r",
+							"        pm.expect(p).to.have.property('category');\r",
+							"        pm.expect(p.category).to.have.property('usertype');\r",
+							"        pm.expect(p.category.usertype).to.have.property('usertype');\r",
+							"        pm.expect(p.category).to.have.property('category');\r",
+							"\r",
+							"    })\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Product have correct types of properties\", function () {\r",
+							"    let data = pm.response.json();\r",
+							"    \r",
+							"    data.products.forEach((p) => {\r",
+							"        pm.expect(p.id).to.be.a('number');\r",
+							"        pm.expect(p.name).to.be.a('string');        \r",
+							"        pm.expect(p.price).to.be.a('string');\r",
+							"        pm.expect(p.brand).to.be.a('string');\r",
+							"        pm.expect(p.category).to.be.a('object');\r",
+							"        pm.expect(p.category.usertype).to.be.a('object');\r",
+							"        pm.expect(p.category.usertype.usertype).to.be.a('string');\r",
+							"        pm.expect(p.category.category).to.be.a('string');\r",
+							"\r",
+							"    })\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{ae_url}}productsList"
+			},
+			"response": []
+		},
+		{
+			"name": "Add a Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Real Responce Code 405\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(405);    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce Message is correct\", function () {\r",
+							"    var jsonData = pm.response.json();    \r",
+							"    pm.expect(jsonData.message).to.eql('This request method is not supported.');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"name\": \"Lime Top\", \r\n    \"price\": \"Rs. 1500\", \r\n    \"brand\": \"Tanktop\", \r\n    \"category\": {\"usertype\": {\"usertype\": \"Women\"}, \r\n    \"category\": \"Tops\"}\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{ae_url}}productsList"
+			},
+			"response": []
+		},
+		{
+			"name": "Brand List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Real Responce Code 200\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Brand list in not empty and has all properties\", function () {\r",
+							"    let data = pm.response.json();\r",
+							"    pm.expect(data).to.have.property('brands').and.not.empty;\r",
+							"    pm.expect(data.brands).to.be.an('array').and.not.empty;\r",
+							"    data.brands.forEach((b) => {\r",
+							"        pm.expect(b).to.have.property('id');\r",
+							"        pm.expect(b).to.have.property('brand');\r",
+							"    })\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Brands have correct types of properties\", function () {\r",
+							"    let data = pm.response.json();\r",
+							"    \r",
+							"    data.brands.forEach((b) => {\r",
+							"        pm.expect(b.id).to.be.a('number');\r",
+							"        pm.expect(b.brand).to.be.a('string');\r",
+							"    })\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{ae_url}}brandsList"
+			},
+			"response": []
+		},
+		{
+			"name": "Put a Brand",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Code 405\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(405);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce Message is correct\", function () {\r",
+							"    var jsonData = pm.response.json();    \r",
+							"    pm.expect(jsonData.message).to.eql('This request method is not supported.');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"brand\": \"Yolo\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{ae_url}}brandsList"
+			},
+			"response": []
+		},
+		{
+			"name": "Search Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Real Responce Code 200\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Searched product list in not empty and has all properties\", function () {\r",
+							"    let data = pm.response.json();\r",
+							"    pm.expect(data).to.have.property('products').and.not.empty;\r",
+							"    pm.expect(data.products).to.be.an('array').and.not.empty;\r",
+							"    data.products.forEach((p) => {\r",
+							"        pm.expect(p).to.have.property('id');\r",
+							"        pm.expect(p).to.have.property('name').and.contains('Jeans');\r",
+							"        pm.expect(p).to.have.property('price');\r",
+							"        pm.expect(p).to.have.property('brand');\r",
+							"        pm.expect(p).to.have.property('category');\r",
+							"        pm.expect(p.category).to.have.property('usertype');\r",
+							"        pm.expect(p.category.usertype).to.have.property('usertype');\r",
+							"        pm.expect(p.category).to.have.property('category');\r",
+							"\r",
+							"    })\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Search products have correct types of properties\", function () {\r",
+							"    let data = pm.response.json();\r",
+							"    \r",
+							"    data.products.forEach((p) => {\r",
+							"        pm.expect(p.id).to.be.a('number');\r",
+							"        pm.expect(p.name).to.be.a('string');        \r",
+							"        pm.expect(p.price).to.be.a('string');\r",
+							"        pm.expect(p.brand).to.be.a('string');\r",
+							"        pm.expect(p.category).to.be.a('object');\r",
+							"        pm.expect(p.category.usertype).to.be.a('object');\r",
+							"        pm.expect(p.category.usertype.usertype).to.be.a('string');\r",
+							"        pm.expect(p.category.category).to.be.a('string');\r",
+							"\r",
+							"    })\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "search_product",
+							"value": "Jeans",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ae_url}}searchProduct",
+					"host": [
+						"{{ae_url}}searchProduct"
+					],
+					"query": [
+						{
+							"key": "search_product",
+							"value": "Jeans",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Product W/O params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Real Responce Code 400\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce Message is correct\", function () {\r",
+							"    var jsonData = pm.response.json();    \r",
+							"    pm.expect(jsonData.message).to.eql('Bad request, search_product parameter is missing in POST request.');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "search_product",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ae_url}}searchProduct",
+					"host": [
+						"{{ae_url}}searchProduct"
+					],
+					"query": [
+						{
+							"key": "search_product",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Real Responce Code  200\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce Message is correct\", function () {\r",
+							"    var jsonData = pm.response.json();    \r",
+							"    pm.expect(jsonData.message).to.eql('User exists!');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "bebras5@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Vaidulis123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ae_url}}verifyLogin",
+					"host": [
+						"{{ae_url}}verifyLogin"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "bebras5@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "Vaidulis123",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Login W/O params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Real Responce Code 400\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce Message is correct\", function () {\r",
+							"    var jsonData = pm.response.json();    \r",
+							"    pm.expect(jsonData.message).to.eql('Bad request, email or password parameter is missing in POST request.');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "password",
+							"value": "Vaidulis123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ae_url}}verifyLogin",
+					"host": [
+						"{{ae_url}}verifyLogin"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "bebras5@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "Vaidulis123",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Verify Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Real Responce Code 405\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(405);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce Message is correct\", function () {\r",
+							"    var jsonData = pm.response.json();    \r",
+							"    pm.expect(jsonData.message).to.eql('This request method is not supported.');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "bebras5@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Vaidulis123",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{ae_url}}verifyLogin"
+			},
+			"response": []
+		},
+		{
+			"name": "Verift Login with Invalid Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Real Responce Code 404\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce Message is correct\", function () {\r",
+							"    var jsonData = pm.response.json();    \r",
+							"    pm.expect(jsonData.message).to.eql('User not found!');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "aa",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "aa",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ae_url}}verifyLogin",
+					"host": [
+						"{{ae_url}}verifyLogin"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "gg",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "gg",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Real Responce Code 201\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce Message is correct\", function () {\r",
+							"    var jsonData = pm.response.json();    \r",
+							"    pm.expect(jsonData.message).to.eql('User created!');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "bebras105",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "bebras150@bebras.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "bebras321",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Mr",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "11",
+							"type": "text"
+						},
+						{
+							"key": "birth_month",
+							"value": "May",
+							"type": "text"
+						},
+						{
+							"key": "birth_year",
+							"value": "1990",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Bebras",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Babrauskas",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "Damb",
+							"type": "text"
+						},
+						{
+							"key": "address1",
+							"value": "rastu 11",
+							"type": "text"
+						},
+						{
+							"key": "address2",
+							"value": "Bebriskes",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "Canada",
+							"type": "text"
+						},
+						{
+							"key": "zipcode",
+							"value": "1234567890",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "nice",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "sucks",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "1234567890",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{ae_url}}createAccount"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Real Responce Code 200\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce Message is correct\", function () {\r",
+							"    var jsonData = pm.response.json();    \r",
+							"    pm.expect(jsonData.message).to.eql('User updated!');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "bebras105",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "bebras150@bebras.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "bebras321",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Mr",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "birth_month",
+							"value": "June",
+							"type": "text"
+						},
+						{
+							"key": "birth_year",
+							"value": "1990",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Bebras",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Babrauskas",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "Uztvanka",
+							"type": "text"
+						},
+						{
+							"key": "address1",
+							"value": "rastu 115",
+							"type": "text"
+						},
+						{
+							"key": "address2",
+							"value": "Bebriskes",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "Canada",
+							"type": "text"
+						},
+						{
+							"key": "zipcode",
+							"value": "12345678900",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "nice",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "sucks",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "1234567890",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{ae_url}}updateAccount"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Data via email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Real Responce Code 200\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User info in not empty and has all properties\", function () {\r",
+							"    let data = pm.response.json();\r",
+							"    pm.expect(data).to.have.property('user').and.not.empty;\r",
+							"    pm.expect(data.user).to.be.an('object').and.not.empty;\r",
+							"    pm.expect(data.user).to.have.property('id');\r",
+							"    pm.expect(data.user).to.have.property('name');\r",
+							"    pm.expect(data.user).to.have.property('email');\r",
+							"    pm.expect(data.user).to.have.property('title');\r",
+							"    pm.expect(data.user).to.have.property('birth_day');\r",
+							"    pm.expect(data.user).to.have.property('birth_month');\r",
+							"    pm.expect(data.user).to.have.property('birth_year');\r",
+							"    pm.expect(data.user).to.have.property('first_name');\r",
+							"    pm.expect(data.user).to.have.property('last_name');\r",
+							"    pm.expect(data.user).to.have.property('company');\r",
+							"    pm.expect(data.user).to.have.property('address1');\r",
+							"    pm.expect(data.user).to.have.property('address2');\r",
+							"    pm.expect(data.user).to.have.property('country');\r",
+							"    pm.expect(data.user).to.have.property('state');\r",
+							"    pm.expect(data.user).to.have.property('city');\r",
+							"    pm.expect(data.user).to.have.property('zipcode');    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"User properties are correct type\", function () {\r",
+							"    let data = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(data.user.id).to.be.a('number');\r",
+							"    pm.expect(data.user.name).to.be.a('string');\r",
+							"    pm.expect(data.user.email).to.be.a('string');\r",
+							"    pm.expect(data.user.title).to.be.a('string');\r",
+							"    pm.expect(data.user.birth_day).to.be.a('string');\r",
+							"    pm.expect(data.user.birth_month).to.be.a('string');\r",
+							"    pm.expect(data.user.birth_year).to.be.a('string');\r",
+							"    pm.expect(data.user.first_name).to.be.a('string');\r",
+							"    pm.expect(data.user.last_name).to.be.a('string');\r",
+							"    pm.expect(data.user.company).to.be.a('string');\r",
+							"    pm.expect(data.user.address1).to.be.a('string');\r",
+							"    pm.expect(data.user.address2).to.be.a('string');\r",
+							"    pm.expect(data.user.country).to.be.a('string');\r",
+							"    pm.expect(data.user.state).to.be.a('string');\r",
+							"    pm.expect(data.user.city).to.be.a('string');\r",
+							"    pm.expect(data.user.zipcode).to.be.a('string');    \r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ae_url}}getUserDetailByEmail?email=bebras150@bebras.com",
+					"host": [
+						"{{ae_url}}getUserDetailByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "bebras150@bebras.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Real Responce Code 200\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.responseCode).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce Message is correct\", function () {\r",
+							"    var jsonData = pm.response.json();    \r",
+							"    pm.expect(jsonData.message).to.eql('Account deleted!');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "bebras150@bebras.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "bebras321",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{ae_url}}deleteAccount"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.test(\"Response time is less than 1000ms\", function () {\r",
+					"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ae_url",
+			"value": "https://automationexercise.com/api/",
+			"type": "string"
+		}
+	]
+}
