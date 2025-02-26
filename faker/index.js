@@ -79,19 +79,3 @@ for (let i = 0; i < users.length; i++) {
 }
 
 fs.writeFileSync('generated_files/users.csv', csvHeader + csvRows);
-
-// Primityvus generavimas
-// const users = [];
-// for(let i=0; i< 100; i++) {
-//     let user = {
-//         "name": faker.person.firstName(),
-//         "surname": faker.person.lastName(),
-//         "phone": faker.phone.number(),
-//         "email": faker.internet.email(),
-//         "username": faker.internet.username(),
-//         "password": faker.internet.password(),
-//         "birthdate": faker.date.past() //data praeityje
-//     };
-
-//     users.push(user)
-// }
