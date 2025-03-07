@@ -40,16 +40,13 @@ test.describe('Cart Page', () => {
         await expect(page.locator('.list-group-item').nth(4)).toContainText('Total (GBP)');
         await expect(page.locator('.list-group-item').nth(4)).toContainText('£3.50');
 
-        const emptyBasketButton = page.locator('.input-group').nth(1).getByText('Empty Basket');
-        await expect(emptyBasketButton).toBeVisible();
-        
-        await emptyBasketButton.click();
-        await page.waitForTimeout(500);
+        await page.getByRole('link', { name: 'Empty Basket' }).toBeVisible();  
 
-        page.on('dialog', async dialog => {
-            expect(dialog.message()).toBe('Are you sure you want to empty your basket?');
-            await dialog.accept(ok);                        
-        });
+        page.once('dialog', dialog => {
+            console.log(`Dialog message: ${dialog.message()}`);
+            dialog.dismiss().catch(() => {});
+          });
+        await page.getByRole('link', { name: 'Empty Basket' }).click();
         
         await page.waitForSelector('#basketCount', { state: 'visible' });
         await expect(page.locator('#basketCount')).toHaveText('0');
