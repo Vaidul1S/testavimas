@@ -25,7 +25,11 @@ test.describe('Todojames Tests', () => {
     });
 
     test('update item', async ({ page }) => {
-
+        await page.getByRole('textbox', { name: 'What need\'s to be done?' }).click();
+        await page.getByRole('textbox', { name: 'What need\'s to be done?' }).fill('123456');
+        await page.getByRole('textbox', { name: 'What need\'s to be done?' }).press('Enter');
+        await page.getByText('123456').dblclick();
+        await page.getByRole('textbox', { name: '123456' }).fill('1234567890');
     });
 
     test('count items', async ({ page }) => {
