@@ -17,6 +17,9 @@ test.describe('Todojames Tests', () => {
     });
 
     test('delete item', async ({ page }) => {
+        await page.getByRole('textbox', { name: 'What need\'s to be done?' }).click();
+        await page.getByRole('textbox', { name: 'What need\'s to be done?' }).fill('123456');
+        await page.getByRole('textbox', { name: 'What need\'s to be done?' }).press('Enter');
         await page.getByText('123456').click();
         await page.getByRole('button', { name: '×' }).click();
     });
