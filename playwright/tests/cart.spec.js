@@ -16,7 +16,7 @@ test.describe('Cart Page', () => {
 
         await page.getByRole('link', { name: 'Basket' }).click();
         await expect(page).toHaveURL('https://sweetshop.netlify.app/basket');
-    
+
         await expect(page.locator('#basketCount')).toHaveText('4');
 
         const items = ['Swansea Mixture', 'Sweet Whistle', 'Chocolate Cups', 'Jellies'];
@@ -40,14 +40,14 @@ test.describe('Cart Page', () => {
         await expect(page.locator('.list-group-item').nth(4)).toContainText('Total (GBP)');
         await expect(page.locator('.list-group-item').nth(4)).toContainText('£3.50');
 
-        await page.getByRole('link', { name: 'Empty Basket' }).toBeVisible();  
+        await page.getByRole('link', { name: 'Empty Basket' }).toBeVisible();
 
         page.once('dialog', dialog => {
             console.log(`Dialog message: ${dialog.message()}`);
-            dialog.accept().catch(() => {});
-          });
+            dialog.dismiss().catch(() => { });
+        });
         await page.getByRole('link', { name: 'Empty Basket' }).click();
-        
+
         await page.waitForSelector('#basketCount', { state: 'visible' });
         await expect(page.locator('#basketCount')).toHaveText('0');
         await expect(page.locator('.list-group-item').nth(0)).toContainText('Total (GBP)');
