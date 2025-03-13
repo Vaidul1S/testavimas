@@ -44,7 +44,7 @@ test.describe('Cart Page', () => {
 
         page.once('dialog', dialog => {
             console.log(`Dialog message: ${dialog.message()}`);
-            dialog.dismiss().catch(() => { });
+            dialog.accept().catch(() => { });
         });
         await page.getByRole('link', { name: 'Empty Basket' }).click();
 
