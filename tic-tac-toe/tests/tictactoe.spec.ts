@@ -35,6 +35,8 @@ test.describe('Tic Tac Toe', () => {
   });
 
   test('Reset button', async ({ page }) => {
+    await page.getByTestId('square-0').click(); // X
+
     await page.getByTestId('reset-button').click();
 
     await expect(page.getByTestId('status')).toHaveText('Next player: X');
