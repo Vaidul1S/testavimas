@@ -33,7 +33,17 @@ test.describe('Todojames Tests', () => {
     });
 
     test('count items', async ({ page }) => {
-        await page.locator('.ng-scope').count();
+        await page.fill('input.new-todo', '1 uzduotis');
+        await page.press('input.new-todo', 'Enter');
+        await page.fill('input.new-todo', '2 uzduotis');
+        await page.press('input.new-todo', 'Enter');
+        await page.fill('input.new-todo', '3 uzduotis');
+        await page.press('input.new-todo', 'Enter');
+        await page.fill('input.new-todo', '4 uzduotis');
+        await page.press('input.new-todo', 'Enter');
+        await page.fill('input.new-todo', '5 uzduotis');
+        await page.press('input.new-todo', 'Enter');
+        await expect(page.locator('ul.todo-list li')).toHaveCount(5);
     });
 
 });
