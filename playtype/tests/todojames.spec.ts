@@ -21,7 +21,7 @@ test.describe('Todojames Tests', () => {
         await page.getByRole('textbox', { name: 'What need\'s to be done?' }).fill('123456');
         await page.getByRole('textbox', { name: 'What need\'s to be done?' }).press('Enter');
         await page.getByText('123456').click();
-        await page.getByRole('button', { name: '×' }).click();
+        await page.getByRole('button', { name: '×' }).nth(0).click();
     });
 
     test('update item', async ({ page }) => {
@@ -29,11 +29,11 @@ test.describe('Todojames Tests', () => {
         await page.getByRole('textbox', { name: 'What need\'s to be done?' }).fill('123456');
         await page.getByRole('textbox', { name: 'What need\'s to be done?' }).press('Enter');
         await page.getByText('123456').dblclick();
-        await page.getByRole('textbox', { name: '123456' }).fill('1234567890');
+        await page.locator('input.edit').fill('7890')      
     });
 
     test('count items', async ({ page }) => {
-
+        await page.locator('.ng-scope').count();
     });
 
 });
