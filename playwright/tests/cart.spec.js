@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Cart Page', () => {
-    test('Add products to the basket and check their properties.', async ({ page }) => {
+    test('1. Add products to the basket and check their properties.', async ({ page }) => {
         await page.goto('https://sweetshop.netlify.app/');
         await page.getByRole('link', { name: 'Browse Sweets' }).click();
         await page.waitForTimeout(500);
@@ -55,4 +55,28 @@ test.describe('Cart Page', () => {
         await expect(page.locator('.list-group-item').nth(0)).toContainText('Total (GBP)');
         await expect(page.locator('.list-group-item').nth(0)).toContainText('£0.00');
     });
+
+    test('2. Add and remove products by one to the basket', async ({ page }) => {
+        await page.goto('https://sweetshop.netlify.app/');
+        await page.getByRole('link', { name: 'Browse Sweets' }).click();
+        await page.waitForTimeout(500);
+        await page.locator('a[data-id="2"]').click();
+        await page.waitForTimeout(500);
+        await page.locator('a[data-id="4"]').click();
+        await page.waitForTimeout(500);
+        await page.locator('a[data-id="7"]').click();
+        await page.waitForTimeout(500);
+
+        await page.getByRole('link', { name: 'Basket' }).click();
+        await expect(page.locator('#basketCount')).toHaveText('3');
+
+        page.once('dialog', dialog => {
+            console.log(`Dialog message: ${dialog.message()}`);
+            dialog.accept().catch(() => { });
+        });
+        await page.getByRole('link', { name: 'Delete Item' }).nth(1).click();
+
+        await expect(page.locator('#basketCount')).toHaveText('2');
+
+    })
 });
