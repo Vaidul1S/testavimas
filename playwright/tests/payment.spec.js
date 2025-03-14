@@ -30,8 +30,6 @@ test.describe('Checkout and Payment', () => {
 
         await page.getByRole('button', { name: 'Continue to checkout' }).click();
 
-        // await expect(page.locator('.invalid-feedback').nth(1)).toContainText('Valid first name is required.');
-
         const errorMessages = [
             'Valid first name is required.',
             'Valid last name is required.',
