@@ -16,7 +16,6 @@ test.describe('Products', () => {
         for (let i = 0; i < page.locator('.card-img-top').length; i++) {
             await expect(page.locator('.card-img-top').nth(i)).toBeVisible();            
         }
-                
     });
 
     test('3. Products have names', async ({ page }) => {
