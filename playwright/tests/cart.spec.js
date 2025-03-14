@@ -40,6 +40,8 @@ test.describe('Cart Page', () => {
         await expect(page.locator('.list-group-item').nth(4)).toContainText('Total (GBP)');
         await expect(page.locator('.list-group-item').nth(4)).toContainText('£3.50');
 
+        await expect(page.getByText('Collect (FREE)')).toBeVisible();
+
         await page.getByRole('link', { name: 'Empty Basket', state: 'visible' });
 
         page.once('dialog', dialog => {
