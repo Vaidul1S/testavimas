@@ -56,7 +56,7 @@ test.describe('Cart Page', () => {
         await expect(page.locator('.list-group-item').nth(0)).toContainText('£0.00');
     });
 
-    test('2. Add and remove products by one to the basket', async ({ page }) => {
+    test('2. Add and remove products by one from the basket', async ({ page }) => {
         await page.goto('https://sweetshop.netlify.app/');
         await page.getByRole('link', { name: 'Browse Sweets' }).click();
         await page.waitForTimeout(500);
