@@ -4,3 +4,5 @@ describe('ka', ()=> {
         cy.get('data-item-id="15515386"').contains('.like-button').click();
     })
 })
+
+//nesuveike
