@@ -1,12 +1,9 @@
 const { faker } = require('@faker-js/faker');
 const fs = require('fs');
 
-
 //Sugeneruoti netikra varda ir pavarde
 let randomName = faker.person.firstName();
 let randomSurname = faker.person.lastName();
-
-//sugeneruoti 100 netikru users/people, su siais duomenimis
 
 function generateUser() {
     return {
@@ -48,8 +45,6 @@ function generateCompany() {
         "title": faker.commerce.department()
     }
 }
-
-//Susikurti daug(100 users) duomenu objektu
 
 const users = Array.from({ length: 100 }, generateUser);
 const products = Array.from({ length: 100 }, generateProduct);
