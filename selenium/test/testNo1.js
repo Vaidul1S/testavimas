@@ -13,7 +13,8 @@ describe('Todo testing', function() {
 
         newTodoInput.sendKeys('Pirma uzduotis', Key.RETURN);
         
-        
+        const addedTodoItem = await driver.findElement(By.xpath("//li[contains(text()='Pirma uzduotis')]"))
+
         await driver.sleep(2000);
 
         await driver.quit();
