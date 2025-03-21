@@ -4,7 +4,7 @@ test.describe('Cart Page', () => {
     test('1. Add products to the basket and check their properties.', async ({ page }) => {
         await page.goto('https://sweetshop.netlify.app/');
         await page.getByRole('link', { name: 'Browse Sweets' }).click();
-        await page.waitForTimeout(500);
+        await page.waitForTimeout(600);
         await page.locator('a[data-id="1"]').click();
         await page.waitForTimeout(500);
         await page.locator('a[data-id="5"]').click();
@@ -42,8 +42,10 @@ test.describe('Cart Page', () => {
 
         await expect(page.getByText('Collect (FREE)')).toBeVisible();
 
-        await page.getByRole('link', { name: 'Empty Basket', state: 'visible' });
+        await expect(page.locator('.invalid-feedback', { hasText: 'Please input a valid promo code.'})).toBeHidden();  // del praejimo hidden, nes bugas!!!
 
+        await page.getByRole('link', { name: 'Empty Basket', state: 'visible' });
+        
         page.once('dialog', dialog => {
             console.log(`Dialog message: ${dialog.message()}`);
             dialog.accept().catch(() => { });
