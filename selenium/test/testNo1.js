@@ -13,9 +13,7 @@ import { expect } from 'chai';
                     until.elementLocated(By.className('new-todo')),
                     5000
                 );
-
                 await newTodoInput.sendKeys('Pirma uzduotis', Key.RETURN);
-
                 const addedTodoItem = await driver.wait(
                     until.elementLocated(By.xpath("//label[text()='Pirma uzduotis']")),
                     5000
