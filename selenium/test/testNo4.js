@@ -4,7 +4,7 @@ import { expect } from 'chai';
 (async () => {
     describe('Todo testing', function () {
         let driver;
-        it('Delete task from list', async function () {
+        it('Count active tasks', async function () {
             driver = await new Builder().forBrowser('chrome').build();
             try {
                 await driver.get('https://todolist.james.am/#/');
@@ -23,11 +23,11 @@ import { expect } from 'chai';
 
                 const activeList = await driver.findElement(By.className('todo-list'));
 
-                expect(activeList).length.to.equal('4');
+                expect(activeList).length.to.equal(3);
 
             } finally {
                 await driver.quit();
             }
         });
     });
-});
+})();
