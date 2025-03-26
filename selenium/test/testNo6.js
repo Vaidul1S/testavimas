@@ -25,6 +25,13 @@ describe('Todo testing', function () {
         await newTodoInput.sendKeys('5 uzduotis', Key.RETURN);
         await newTodoInput.sendKeys('6 uzduotis', Key.RETURN);
 
+        const todoCheckboxes = await driver.findElements(By.css('.todo-list .toggle'));
+        if (todoCheckboxes.length > 0) {
+            await todoCheckboxes[3].click(); 
+            await todoCheckboxes[4].click(); 
+            await todoCheckboxes[5].click(); 
+        }
 
+        
     });
 });
