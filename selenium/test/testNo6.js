@@ -12,7 +12,7 @@ describe('Todo testing', function () {
         await driver.quit();
     });
 
-    it('Delete all tasks at once', async function () {
+    it('Delete all completed tasks at once', async function () {
         await driver.get('https://todolist.james.am/#/');
 
         await driver.wait(until.elementLocated(By.className('new-todo')), 3000);
@@ -32,6 +32,17 @@ describe('Todo testing', function () {
             await todoCheckboxes[5].click(); 
         }
 
+        const clearBtn = await driver.findElement(By.xpath("//footer/button[contains(., 'Clear')]"));
+
+        await clearBtn.click();
         
+        const completedBtn = await driver.findElement(By.xpath("//ul/li[3]/a[contains(., 'Completed')]"));
+
+        await completedBtn.click();
+
+        const completedList = await driver.findElements(By.css('.todo-list li'));
+
+        expect(completedList.length).to.equal(0);
+
     });
 });
