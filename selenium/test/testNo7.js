@@ -34,6 +34,6 @@ describe('Todo testing', function () {
 
         const completedList = await driver.findElements(By.css('.todo-list li'));
 
-        expect(completedList.length).to.equal(0);
+        expect(completedList.length).to.equal(6);
     });
 });

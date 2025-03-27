@@ -66,9 +66,8 @@ describe('Editing todo', function () {
         await newTodoInput.sendKeys('4 uzduotis', Key.RETURN);
         await newTodoInput.sendKeys('5 uzduotis', Key.RETURN);
         await newTodoInput.sendKeys('6 uzduotis', Key.RETURN);
-        await driver.sleep(2000);
-
-        const editableTodo = await driver.findElement(By.xpath("//ul[@class='todo-list']/li[contains(., '3 uzduotis')]"));
+        
+        const editableTodo = await driver.wait(until.elementLocated(By.xpath("//ul[@class='todo-list']/li[contains(., '3 uzduotis')]")));
         await driver.actions().doubleClick(editableTodo).perform();
 
         const editField = await editableTodo.findElement(By.css('input.edit'));
