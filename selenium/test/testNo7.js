@@ -25,7 +25,7 @@ describe('Todo testing', function () {
         await newTodoInput.sendKeys('5 uzduotis', Key.RETURN);
         await newTodoInput.sendKeys('6 uzduotis', Key.RETURN);
 
-        
-
+        const toggleAll = await driver.wait(until.elementLocated(By.xpath("//html/body/ng-view/section/section/label")));
+        await toggleAll.click();
     });
 });
