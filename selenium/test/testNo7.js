@@ -12,7 +12,7 @@ describe('Todo testing', function () {
         await driver.quit();
     });
 
-    it('Select all tasks at once', async function () {
+    it('Mark all tasks as completed at once', async function () {
         await driver.get('https://todolist.james.am/#/');
 
         await driver.wait(until.elementLocated(By.className('new-todo')), 3000);
