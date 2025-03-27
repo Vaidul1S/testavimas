@@ -27,5 +27,13 @@ describe('Todo testing', function () {
 
         const toggleAll = await driver.wait(until.elementLocated(By.xpath("//html/body/ng-view/section/section/label")));
         await toggleAll.click();
+
+        const completedBtn = await driver.findElement(By.xpath("//ul/li[3]/a[contains(., 'Completed')]"));
+
+        await completedBtn.click();
+
+        const completedList = await driver.findElements(By.css('.todo-list li'));
+
+        expect(completedList.length).to.equal(0);
     });
 });
