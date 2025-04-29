@@ -43,9 +43,9 @@ function App() {
   const winner = calculateWinner(squares)
   const isDraw = !winner && squares.every(square => square !== null)
   const status = winner
-    ? `Winner: ${winner}`
+    ? <h2>Winner: {winner}</h2>
     : isDraw
-      ? 'Game is a draw!'
+      ? <h2>Game is a draw!</h2>
       : `Next player: ${xIsNext ? 'X' : 'O'}`
 
   return (
