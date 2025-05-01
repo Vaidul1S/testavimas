@@ -261,7 +261,7 @@ import path from 'path';
             }
         });
 
-        it.only('07 Verify Test Cases Page', async function () {
+        it('07 Verify Test Cases Page', async function () {
             driver = await new Builder().forBrowser('chrome').build();
             try {
                 await driver.get('https://automationexercise.com/');
@@ -287,6 +287,30 @@ import path from 'path';
                 await driver.quit();
             }
         });
+
+        it.only('08 Verify All Products and product detail page', async function () {
+            driver = await new Builder().forBrowser('chrome').build();
+            try {
+                await driver.get('https://automationexercise.com/');
+                await driver.wait(until.urlIs('https://automationexercise.com/'), 5000);
+                await driver.wait(until.elementLocated(By.xpath('/html/body/div/div[2]/div[2]/div[2]/div[2]/button[1]')), 5000).click(); //accept cookies
+                await driver.findElement(By.xpath('//*[@id="header"]/div/div/div/div[2]/div/ul/li[2]/a')).click();
+                
+                await driver.wait(until.urlIs('https://automationexercise.com/products'), 5000);
+                
+                await driver.wait(until.elementLocated(By.xpath('/html/body/section[2]/div/div/div[2]/div/div[3]/div/div[2]/ul/li/a')), 5000).click();
+                
+                expect(await driver.wait(until.urlIs('https://automationexercise.com/product_details/2'), 5000)).to.equal(true);
+
+                
+
+            } catch (error) {
+                console.error("❌ Test failed:", error);
+            } finally {
+                await driver.quit();
+            }
+        });
+
 
 
     });
