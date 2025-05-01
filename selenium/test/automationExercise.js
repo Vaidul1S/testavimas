@@ -329,9 +329,10 @@ import path from 'path';
                 await driver.findElement(By.css('input#search_product')).sendKeys('jeans');
                 await driver.findElement(By.css('button#submit_search')).click();
 
-                
-                expect(await driver.wait(until.urlIs('https://automationexercise.com/product_details/2'), 5000)).to.equal(true);
-                
+                for (let i = 0; i < await driver.findElements(By.css('.productinfo p')); i++) {
+                    const element = await driver.findElements(By.css('.productinfo p'))[i].getText();
+                    expect(element).to.contain('jeans')
+                }                              
                 
             } catch (error) {
                 console.error("❌ Test failed:", error);
@@ -340,5 +341,7 @@ import path from 'path';
             }
         });
 
+
+        
     });
 })();
