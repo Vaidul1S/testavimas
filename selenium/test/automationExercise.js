@@ -302,6 +302,12 @@ import path from 'path';
                 
                 expect(await driver.wait(until.urlIs('https://automationexercise.com/product_details/2'), 5000)).to.equal(true);
 
+                expect(await driver.wait(until.elementLocated(By.xpath("//h2[contains(text(), 'Men Tshirt')]")), 5000).getText()).to.equal('Men Tshirt');
+                expect(await driver.wait(until.elementLocated(By.xpath("//p[contains(text(), 'Category')]")), 5000).getText()).to.equal('Category: Men > Tshirts');
+                expect(await driver.wait(until.elementLocated(By.xpath("//span[contains(text(), 'Rs. 400')]")), 5000).getText()).to.equal('Rs. 400');
+                expect(await driver.wait(until.elementLocated(By.xpath("//section/div/div/div[2]/div[2]/div[2]/div/p[2]")), 5000).getText()).to.equal('Availability: In Stock');
+                expect(await driver.wait(until.elementLocated(By.xpath("//section/div/div/div[2]/div[2]/div[2]/div/p[3]")), 5000).getText()).to.equal('Condition: New');
+                expect(await driver.wait(until.elementLocated(By.xpath("//section/div/div/div[2]/div[2]/div[2]/div/p[4]")), 5000).getText()).to.equal('Brand: H&M');
                 
 
             } catch (error) {
