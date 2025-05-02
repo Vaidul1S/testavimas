@@ -12,6 +12,9 @@ import { expect } from 'chai';
                 await driver.wait(until.urlIs('https://automationexercise.com/'), 5000);
                 await driver.wait(until.elementLocated(By.xpath('/html/body/div/div[2]/div[2]/div[2]/div[2]/button[1]')), 5000).click(); //accept cookies
 
+                await driver.findElement(By.xpath('//*[@id="header"]/div/div/div/div[2]/div/ul/li[3]/a')).click();
+                await driver.wait(until.urlIs('https://automationexercise.com/view_cart'), 5000);
+
                 await driver.findElement(By.css('input#susbscribe_email')).sendKeys('bebras666@gmail.com');
                 await driver.findElement(By.css('#subscribe')).click();
 
