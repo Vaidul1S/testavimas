@@ -5,7 +5,7 @@ import { expect } from 'chai';
     describe('Automation exercise testing 11-20', function () {
         let driver;
 
-        it.only('11 Verify Subscription in Cart page', async function () {
+        it('11 Verify Subscription in Cart page', async function () {
             driver = await new Builder().forBrowser('chrome').build();
             try {
                 await driver.get('https://automationexercise.com/');
@@ -27,7 +27,37 @@ import { expect } from 'chai';
             }
         });
 
+        it.only('12 Add Products in Cart', async function () {
+            driver = await new Builder().forBrowser('chrome').build();
+            try {
+                await driver.get('https://automationexercise.com/');
+                await driver.wait(until.urlIs('https://automationexercise.com/'), 5000);
+                await driver.wait(until.elementLocated(By.xpath('/html/body/div/div[2]/div[2]/div[2]/div[2]/button[1]')), 5000).click(); //accept cookies
 
+                await driver.findElement(By.xpath('//*[@id="header"]/div/div/div/div[2]/div/ul/li[2]/a')).click();
+                await driver.wait(until.urlIs('https://automationexercise.com/products'), 5000);
+
+                const productInfo = await driver.findElements(By.css('div.productinfo'));
+                await driver.actions({ bridge: true }).move({ origin: productInfo[0] }).perform()
+                await driver.sleep(1000);
+                await driver.wait(until.elementLocated(By.css('[data-product-id="1"]')), 5000).click();
+                await driver.wait(until.elementLocated(By.css('[data-dismiss="modal"]')), 5000).click();
+
+                
+                
+                await driver.findElement(By.xpath('//*[@id="header"]/div/div/div/div[2]/div/ul/li[3]/a')).click();
+                await driver.wait(until.urlIs('https://automationexercise.com/view_cart'), 5000);
+                
+                expect(await driver.findElement(By.css('#product-1 .cart_description/h4/a')).getText()).to.contain('Blue Top');
+
+                
+
+            } catch (error) {
+                console.error("❌ Test failed:", error);
+            } finally {
+                await driver.quit();
+            }
+        });
 
     });
 })();
