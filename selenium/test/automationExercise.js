@@ -316,7 +316,7 @@ import path from 'path';
             }
         });
 
-        it.only('09 Search Product', async function () {
+        it('09 Search Product', async function () {
             driver = await new Builder().forBrowser('chrome').build();
             try {
                 await driver.get('https://automationexercise.com/');
@@ -341,7 +341,26 @@ import path from 'path';
             }
         });
 
+        it.only('10 Verify Subscription in home page', async function () {
+            driver = await new Builder().forBrowser('chrome').build();
+            try {
+                await driver.get('https://automationexercise.com/');
+                await driver.wait(until.urlIs('https://automationexercise.com/'), 5000);
+                await driver.wait(until.elementLocated(By.xpath('/html/body/div/div[2]/div[2]/div[2]/div[2]/button[1]')), 5000).click(); //accept cookies
+                                
+                await driver.findElement(By.css('input#susbscribe_email')).sendKeys('bebras666@gmail.com');
+                await driver.findElement(By.css('#subscribe')).click();
+
+                expect(await driver.findElement(By.css('div.alert-success')).getText()).to.equal('You have been successfully subscribed!');
+                
+            } catch (error) {
+                console.error("❌ Test failed:", error);
+            } finally {
+                await driver.quit();
+            }
+        });
 
         
+
     });
 })();
