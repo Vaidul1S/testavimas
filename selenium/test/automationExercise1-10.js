@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import path from 'path';
 
 (async () => {
-    describe('Automation exercise testing', function () {
+    describe('Automation exercise testing 1-10', function () {
         let driver;
         it('01 Register new user', async function () {
             driver = await new Builder().forBrowser('chrome').build();
