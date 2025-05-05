@@ -62,9 +62,15 @@ import { expect } from 'chai';
                 await driver.findElement(By.xpath('//*[@id="header"]/div/div/div/div[2]/div/ul/li[3]/a')).click();
                 await driver.wait(until.urlIs('https://automationexercise.com/view_cart'), 5000);
 
-                expect(await driver.findElement(By.css('#product-1 .cart_description/h4/a')).getText()).to.contain('Blue Top');
+                expect(await driver.findElement(By.css('#product-1 .cart_description')).getText()).to.contain('Blue Top');
+                expect(await driver.findElement(By.css('#product-1 .cart_price')).getText()).to.contain('Rs. 500');
+                expect(await driver.findElement(By.css('#product-1 .cart_quantity')).getText()).to.contain('1');
+                expect(await driver.findElement(By.css('#product-1 .cart_total')).getText()).to.contain('Rs. 500');
 
-
+                expect(await driver.findElement(By.css('#product-3 .cart_description')).getText()).to.contain('Sleeveless Dress');
+                expect(await driver.findElement(By.css('#product-3 .cart_price')).getText()).to.contain('Rs. 1000');
+                expect(await driver.findElement(By.css('#product-3 .cart_quantity')).getText()).to.contain('1');
+                expect(await driver.findElement(By.css('#product-3 .cart_total')).getText()).to.contain('Rs. 1000');
 
             } catch (error) {
                 console.error("❌ Test failed:", error);
@@ -72,6 +78,8 @@ import { expect } from 'chai';
                 await driver.quit();
             }
         });
+
+        
 
     });
 })();
