@@ -41,7 +41,7 @@ import { expect } from 'chai';
                 await driver.actions({ bridge: true }).move({ origin: productInfo[0] }).perform()
                 await driver.sleep(1000);
                 const addToCartBtn1 = await driver.wait(until.elementLocated(By.css('[data-product-id="1"]')), 5000);
-                
+
                 await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn1);
                 await driver.wait(until.elementIsVisible(addToCartBtn1), 5000);
                 await driver.wait(until.elementIsEnabled(addToCartBtn1), 5000);
@@ -51,7 +51,7 @@ import { expect } from 'chai';
 
                 await driver.actions({ bridge: true }).move({ origin: productInfo[2] }).perform()
                 await driver.sleep(1000);
-                const addToCartBtn3 = await driver.wait(until.elementLocated(By.css('[data-product-id="3"]')), 5000);                
+                const addToCartBtn3 = await driver.wait(until.elementLocated(By.css('[data-product-id="3"]')), 5000);
                 await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn3);
                 await driver.wait(until.elementIsVisible(addToCartBtn3), 5000);
                 await driver.wait(until.elementIsEnabled(addToCartBtn3), 5000);
@@ -94,8 +94,8 @@ import { expect } from 'chai';
                 await driver.wait(until.elementLocated(By.css('#quantity')), 5000).sendKeys(5);
                 await driver.wait(until.elementLocated(By.xpath('/html/body/section/div/div/div[2]/div[2]/div[2]/div/span/button')), 5000).click();
                 await driver.sleep(1000);
-                await driver.wait(until.elementLocated(By.xpath('//*[@id="cartModal"]/div/div/div[2]/p[2]/a')), 5000).click();                
-                
+                await driver.wait(until.elementLocated(By.xpath('//*[@id="cartModal"]/div/div/div[2]/p[2]/a')), 5000).click();
+
                 await driver.wait(until.urlIs('https://automationexercise.com/view_cart'), 5000);
 
                 expect(await driver.findElement(By.css('#product-6 .cart_description')).getText()).to.contain('Summer White Top');
@@ -116,12 +116,12 @@ import { expect } from 'chai';
                 await driver.get('https://automationexercise.com/');
                 await driver.wait(until.urlIs('https://automationexercise.com/'), 5000);
                 await driver.wait(until.elementLocated(By.xpath('/html/body/div/div[2]/div[2]/div[2]/div[2]/button[1]')), 5000).click(); //accept cookies
-                
+
                 const productInfo = await driver.findElements(By.css('div.productinfo'));
                 await driver.actions({ bridge: true }).move({ origin: productInfo[0] }).perform()
                 await driver.sleep(1000);
                 const addToCartBtn1 = await driver.wait(until.elementLocated(By.css('[data-product-id="1"]')), 5000);
-                
+
                 await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn1);
                 await driver.wait(until.elementIsVisible(addToCartBtn1), 5000);
                 await driver.wait(until.elementIsEnabled(addToCartBtn1), 5000);
@@ -139,7 +139,7 @@ import { expect } from 'chai';
 
                 await driver.actions({ bridge: true }).move({ origin: productInfo[2] }).perform()
                 await driver.sleep(1000);
-                const addToCartBtn3 = await driver.wait(until.elementLocated(By.css('[data-product-id="3"]')), 5000);                
+                const addToCartBtn3 = await driver.wait(until.elementLocated(By.css('[data-product-id="3"]')), 5000);
                 await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn3);
                 await driver.wait(until.elementIsVisible(addToCartBtn3), 5000);
                 await driver.wait(until.elementIsEnabled(addToCartBtn3), 5000);
@@ -202,13 +202,12 @@ import { expect } from 'chai';
                 await driver.findElement(By.css('[data-qa="expiry-year"]')).sendKeys('2030');
 
                 await driver.findElement(By.css('button[data-qa="pay-button"]')).click();
-                await driver.sleep(1000);
+                expect(await driver.findElement(By.css('alert-success')).getText()).to.contain('Your order has been placed successfully!');
 
                 await driver.findElement(By.linkText('Delete Account')).click();
                 const confirmTest = await driver.wait(until.elementLocated(By.xpath("//*[contains(text(),'Account Deleted!')]")), 5000).getText();
 
                 expect(confirmTest).to.equal('ACCOUNT DELETED!');
-                expect(await driver.findElement(By.css('#product-3 .cart_total')).getText()).to.contain('Rs. 1000');
 
             } catch (error) {
                 console.error("❌ Test failed:", error);
