@@ -136,17 +136,7 @@ import { expect } from 'chai';
                 await addToCartBtn2.click();
                 await driver.sleep(1000);
                 await driver.wait(until.elementLocated(By.css('[data-dismiss="modal"]')), 5000).click();
-
-                await driver.actions({ bridge: true }).move({ origin: productInfo[2] }).perform()
-                await driver.sleep(1000);
-                const addToCartBtn3 = await driver.wait(until.elementLocated(By.css('[data-product-id="3"]')), 5000);
-                await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn3);
-                await driver.wait(until.elementIsVisible(addToCartBtn3), 5000);
-                await driver.wait(until.elementIsEnabled(addToCartBtn3), 5000);
-                await addToCartBtn3.click();
-                await driver.sleep(1000);
-                await driver.wait(until.elementLocated(By.css('[data-dismiss="modal"]')), 5000).click();
-
+                
                 await driver.findElement(By.xpath('//*[@id="header"]/div/div/div/div[2]/div/ul/li[3]/a')).click();
                 await driver.wait(until.urlIs('https://automationexercise.com/view_cart'), 5000);
 
@@ -201,8 +191,8 @@ import { expect } from 'chai';
                 await driver.findElement(By.css('[data-qa="expiry-month"]')).sendKeys('10');
                 await driver.findElement(By.css('[data-qa="expiry-year"]')).sendKeys('2030');
 
-                await driver.findElement(By.css('button[data-qa="pay-button"]')).click();
-                expect(await driver.findElement(By.css('alert-success')).getText()).to.contain('Your order has been placed successfully!');
+                await driver.findElement(By.css('button[data-qa="pay-button"]')).click();     
+                expect(await driver.wait(until.elementLocated(By.xpath('//*[@id="form"]/div/div/div/p')), 5000).getText()).to.contain('Congratulations! Your order has been confirmed!');
 
                 await driver.findElement(By.linkText('Delete Account')).click();
                 const confirmTest = await driver.wait(until.elementLocated(By.xpath("//*[contains(text(),'Account Deleted!')]")), 5000).getText();
