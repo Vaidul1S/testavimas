@@ -27,7 +27,7 @@ import { expect } from 'chai';
             }
         });
 
-        it.only('12 Add Products in Cart', async function () {
+        it('12 Add Products in Cart', async function () {
             driver = await new Builder().forBrowser('chrome').build();
             try {
                 await driver.get('https://automationexercise.com/');
@@ -79,7 +79,52 @@ import { expect } from 'chai';
             }
         });
 
-        
+        it.only('13 Verify Product quantity in Cart', async function () {
+            driver = await new Builder().forBrowser('chrome').build();
+            try {
+                await driver.get('https://automationexercise.com/');
+                await driver.wait(until.urlIs('https://automationexercise.com/'), 5000);
+                await driver.wait(until.elementLocated(By.xpath('/html/body/div/div[2]/div[2]/div[2]/div[2]/button[1]')), 5000).click(); //accept cookies
+
+                const products = await driver.findElements(By.css('div.choose'));
+                products[5].click();
+                await driver.wait(until.urlIs('https://automationexercise.com/product_details/6'), 5000);
+
+                await driver.wait(until.elementLocated(By.css('#quantity')), 5000).sendKeys('5');
+                
+                await driver.wait(until.elementLocated(By.xpath('/html/body/section/div/div/div[2]/div[2]/div[2]/div/span/button')), 5000).click();
+                                
+                await driver.wait(until.elementLocated(By.xpath('//*[@id="cartModal"]/div/div/div[2]/p[2]/a')), 5000).click();
+
+                await driver.actions({ bridge: true }).move({ origin: productInfo[2] }).perform()
+                await driver.sleep(1000);
+                const addToCartBtn3 = await driver.wait(until.elementLocated(By.css('[data-product-id="3"]')), 5000);                
+                await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn3);
+                await driver.wait(until.elementIsVisible(addToCartBtn3), 5000);
+                await driver.wait(until.elementIsEnabled(addToCartBtn3), 5000);
+                await addToCartBtn3.click();
+                await driver.sleep(1000);
+                await driver.wait(until.elementLocated(By.css('[data-dismiss="modal"]')), 5000).click();
+
+                await driver.findElement(By.xpath('//*[@id="header"]/div/div/div/div[2]/div/ul/li[3]/a')).click();
+                await driver.wait(until.urlIs('https://automationexercise.com/view_cart'), 5000);
+
+                expect(await driver.findElement(By.css('#product-1 .cart_description')).getText()).to.contain('Blue Top');
+                expect(await driver.findElement(By.css('#product-1 .cart_price')).getText()).to.contain('Rs. 500');
+                expect(await driver.findElement(By.css('#product-1 .cart_quantity')).getText()).to.contain('1');
+                expect(await driver.findElement(By.css('#product-1 .cart_total')).getText()).to.contain('Rs. 500');
+
+                expect(await driver.findElement(By.css('#product-3 .cart_description')).getText()).to.contain('Sleeveless Dress');
+                expect(await driver.findElement(By.css('#product-3 .cart_price')).getText()).to.contain('Rs. 1000');
+                expect(await driver.findElement(By.css('#product-3 .cart_quantity')).getText()).to.contain('1');
+                expect(await driver.findElement(By.css('#product-3 .cart_total')).getText()).to.contain('Rs. 1000');
+
+            } catch (error) {
+                console.error("❌ Test failed:", error);
+            } finally {
+                await driver.quit();
+            }
+        });
 
     });
 })();
