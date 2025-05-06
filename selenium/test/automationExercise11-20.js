@@ -130,7 +130,7 @@ import { expect } from 'chai';
                 await driver.wait(until.elementLocated(By.css('[data-dismiss="modal"]')), 5000).click();
 
                 const addToCartBtn2 = await driver.wait(until.elementLocated(By.css('[data-product-id="2"]')), 5000);
-                await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn1);
+                await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn2);
                 await driver.wait(until.elementIsVisible(addToCartBtn2), 5000);
                 await driver.wait(until.elementIsEnabled(addToCartBtn2), 5000);
                 await addToCartBtn2.click();
@@ -190,7 +190,7 @@ import { expect } from 'chai';
                 await driver.findElement(By.css('[data-qa="expiry-month"]')).sendKeys('10');
                 await driver.findElement(By.css('[data-qa="expiry-year"]')).sendKeys('2030');
 
-                await driver.findElement(By.css('button[data-qa="pay-button"]')).click();     
+                await driver.findElement(By.css('button[data-qa="pay-button"]')).click();
                 expect(await driver.wait(until.elementLocated(By.xpath('//*[@id="form"]/div/div/div/p')), 5000).getText()).to.contain('Congratulations! Your order has been confirmed!');
 
                 await driver.findElement(By.linkText('Delete Account')).click();
@@ -212,7 +212,7 @@ import { expect } from 'chai';
                 await driver.wait(until.urlIs('https://automationexercise.com/'), 5000);
                 await driver.wait(until.elementLocated(By.xpath('/html/body/div/div[2]/div[2]/div[2]/div[2]/button[1]')), 5000).click(); //accept cookies
                 await driver.findElement(By.linkText('Signup / Login')).click();
-                
+
                 await driver.wait(until.urlIs('https://automationexercise.com/login'), 10000);
                 await driver.wait(until.elementLocated(By.css('.signup-form')), 5000);
 
@@ -265,7 +265,7 @@ import { expect } from 'chai';
                 await addToCartBtn2.click();
                 await driver.sleep(600);
                 await driver.wait(until.elementLocated(By.xpath('//*[@id="cartModal"]/div/div/div[2]/p[2]/a')), 5000).click();
-                
+
                 await driver.wait(until.urlIs('https://automationexercise.com/view_cart'), 5000);
 
                 await driver.findElement(By.xpath('//*[@id="do_action"]/div[1]/div/div/a')).click();
@@ -279,7 +279,7 @@ import { expect } from 'chai';
                 await driver.findElement(By.css('[data-qa="expiry-month"]')).sendKeys('10');
                 await driver.findElement(By.css('[data-qa="expiry-year"]')).sendKeys('2030');
 
-                await driver.findElement(By.css('button[data-qa="pay-button"]')).click();     
+                await driver.findElement(By.css('button[data-qa="pay-button"]')).click();
                 expect(await driver.wait(until.elementLocated(By.xpath('//*[@id="form"]/div/div/div/p')), 5000).getText()).to.contain('Congratulations! Your order has been confirmed!');
 
                 await driver.findElement(By.linkText('Delete Account')).click();
@@ -294,7 +294,7 @@ import { expect } from 'chai';
             }
         });
 
-        it.only('16 Place Order: Login before Checkout', async function () {
+        it('16 Place Order: Login before Checkout', async function () {
             driver = await new Builder().forBrowser('chrome').build();
             try {
                 await driver.get('https://automationexercise.com/');
@@ -347,7 +347,7 @@ import { expect } from 'chai';
 
                 const productInfo = await driver.findElements(By.css('div.productinfo'));
                 await driver.actions({ bridge: true }).move({ origin: productInfo[0] }).perform()
-                await driver.sleep(600);           
+                await driver.sleep(600);
                 const addToCartBtn2 = await driver.wait(until.elementLocated(By.css('[data-product-id="2"]')), 5000);
                 await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn2);
                 await driver.wait(until.elementIsVisible(addToCartBtn2), 5000);
@@ -355,7 +355,7 @@ import { expect } from 'chai';
                 await addToCartBtn2.click();
                 await driver.sleep(600);
                 await driver.wait(until.elementLocated(By.xpath('//*[@id="cartModal"]/div/div/div[2]/p[2]/a')), 5000).click();
-                
+
                 await driver.wait(until.urlIs('https://automationexercise.com/view_cart'), 5000);
 
                 await driver.findElement(By.xpath('//*[@id="do_action"]/div[1]/div/div/a')).click();
@@ -369,7 +369,7 @@ import { expect } from 'chai';
                 await driver.findElement(By.css('[data-qa="expiry-month"]')).sendKeys('10');
                 await driver.findElement(By.css('[data-qa="expiry-year"]')).sendKeys('2030');
 
-                await driver.findElement(By.css('button[data-qa="pay-button"]')).click();     
+                await driver.findElement(By.css('button[data-qa="pay-button"]')).click();
                 expect(await driver.wait(until.elementLocated(By.xpath('//*[@id="form"]/div/div/div/p')), 5000).getText()).to.contain('Congratulations! Your order has been confirmed!');
 
                 await driver.findElement(By.linkText('Delete Account')).click();
@@ -384,7 +384,55 @@ import { expect } from 'chai';
             }
         });
 
+        it.only('17 Remove Products From Cart', async function () {
+            driver = await new Builder().forBrowser('chrome').build();
+            try {
+                await driver.get('https://automationexercise.com/');
+                await driver.wait(until.urlIs('https://automationexercise.com/'), 5000);
+                await driver.wait(until.elementLocated(By.xpath('/html/body/div/div[2]/div[2]/div[2]/div[2]/button[1]')), 5000).click(); //accept cookies
 
-        
+                const productInfo = await driver.findElements(By.css('div.productinfo'));
+                await driver.actions({ bridge: true }).move({ origin: productInfo[0] }).perform()
+                await driver.sleep(600);
+                const addToCartBtn1 = await driver.wait(until.elementLocated(By.css('[data-product-id="1"]')), 5000);
+
+                await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn1);
+                await driver.wait(until.elementIsVisible(addToCartBtn1), 5000);
+                await driver.wait(until.elementIsEnabled(addToCartBtn1), 5000);
+                await addToCartBtn1.click();
+                await driver.sleep(600);
+                await driver.wait(until.elementLocated(By.css('[data-dismiss="modal"]')), 5000).click();
+
+                const addToCartBtn2 = await driver.wait(until.elementLocated(By.css('[data-product-id="2"]')), 5000);
+                await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn2);
+                await driver.wait(until.elementIsVisible(addToCartBtn2), 5000);
+                await driver.wait(until.elementIsEnabled(addToCartBtn2), 5000);
+                await addToCartBtn2.click();
+                await driver.sleep(600);
+                await driver.wait(until.elementLocated(By.css('[data-dismiss="modal"]')), 5000).click();
+
+                await driver.actions({ bridge: true }).move({ origin: productInfo[2] }).perform()
+                await driver.sleep(1000);
+                const addToCartBtn3 = await driver.wait(until.elementLocated(By.css('[data-product-id="3"]')), 5000);
+                await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn3);
+                await driver.wait(until.elementIsVisible(addToCartBtn3), 5000);
+                await driver.wait(until.elementIsEnabled(addToCartBtn3), 5000);
+                await addToCartBtn3.click();
+                await driver.sleep(1000);
+                await driver.wait(until.elementLocated(By.xpath('//*[@id="cartModal"]/div/div/div[2]/p[2]/a')), 5000).click();
+
+                await driver.wait(until.urlIs('https://automationexercise.com/view_cart'), 5000);
+
+                expect(confirmTest).to.equal('ACCOUNT DELETED!');
+
+            } catch (error) {
+                console.error("❌ Test failed:", error);
+            } finally {
+                await driver.quit();
+            }
+        });
+
+
+
     });
 })();
