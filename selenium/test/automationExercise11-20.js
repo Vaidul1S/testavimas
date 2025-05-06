@@ -393,14 +393,14 @@ import { expect } from 'chai';
 
                 const productInfo = await driver.findElements(By.css('div.productinfo'));
                 await driver.actions({ bridge: true }).move({ origin: productInfo[0] }).perform()
-                await driver.sleep(600);
-                const addToCartBtn1 = await driver.wait(until.elementLocated(By.css('[data-product-id="1"]')), 5000);
+                await driver.sleep(800);
 
+                const addToCartBtn1 = await driver.wait(until.elementLocated(By.css('[data-product-id="1"]')), 5000);
                 await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn1);
                 await driver.wait(until.elementIsVisible(addToCartBtn1), 5000);
                 await driver.wait(until.elementIsEnabled(addToCartBtn1), 5000);
                 await addToCartBtn1.click();
-                await driver.sleep(600);
+                await driver.sleep(800);
                 await driver.wait(until.elementLocated(By.css('[data-dismiss="modal"]')), 5000).click();
 
                 const addToCartBtn2 = await driver.wait(until.elementLocated(By.css('[data-product-id="2"]')), 5000);
@@ -408,22 +408,24 @@ import { expect } from 'chai';
                 await driver.wait(until.elementIsVisible(addToCartBtn2), 5000);
                 await driver.wait(until.elementIsEnabled(addToCartBtn2), 5000);
                 await addToCartBtn2.click();
-                await driver.sleep(600);
+                await driver.sleep(800);
                 await driver.wait(until.elementLocated(By.css('[data-dismiss="modal"]')), 5000).click();
 
-                await driver.actions({ bridge: true }).move({ origin: productInfo[2] }).perform()
-                await driver.sleep(1000);
                 const addToCartBtn3 = await driver.wait(until.elementLocated(By.css('[data-product-id="3"]')), 5000);
                 await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn3);
                 await driver.wait(until.elementIsVisible(addToCartBtn3), 5000);
                 await driver.wait(until.elementIsEnabled(addToCartBtn3), 5000);
                 await addToCartBtn3.click();
-                await driver.sleep(1000);
+                await driver.sleep(800);
                 await driver.wait(until.elementLocated(By.xpath('//*[@id="cartModal"]/div/div/div[2]/p[2]/a')), 5000).click();
 
                 await driver.wait(until.urlIs('https://automationexercise.com/view_cart'), 5000);
 
-                expect(confirmTest).to.equal('ACCOUNT DELETED!');
+                await driver.wait(until.elementLocated(By.css('[data-product-id="1"]')), 5000).click();
+                await driver.sleep(800);
+
+                const products = (await driver.findElements(By.xpath('//*[@id="cart_info_table"]/tbody/tr'))).length;
+                expect(products).to.equal(2);
 
             } catch (error) {
                 console.error("❌ Test failed:", error);
