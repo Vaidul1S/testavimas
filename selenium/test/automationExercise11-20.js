@@ -523,14 +523,46 @@ import { expect } from 'chai';
                 await driver.findElement(By.css('[data-qa="continue-button"]')).click();
                 await driver.findElement(By.linkText('Logout')).click();
 
+                //Real test begins NOW!
+                await driver.findElement(By.linkText('Signup / Login')).click();
+                await driver.wait(until.urlIs('https://automationexercise.com/login'), 10000);
+
+                await driver.findElement(By.css('input[data-qa="login-email"]')).sendKeys('bebras666@example.com');
+                await driver.findElement(By.css('input[data-qa="login-password"]')).sendKeys('password123');
+                await driver.findElement(By.css('button[data-qa="login-button"]')).click();
+                await driver.wait(until.elementLocated(By.linkText('Logged in as Bebras666')), 5000);
+
                 await driver.findElement(By.xpath('//*[@id="header"]/div/div/div/div[2]/div/ul/li[2]/a')).click();
                 await driver.wait(until.urlIs('https://automationexercise.com/products'), 5000);
 
-                await driver.wait(until.elementLocated(By.xpath('/html/body/section[2]/div/div/div[1]/div/div[2]/div/ul/li[8]/a')), 5000).click();
-                expect(await driver.wait(until.urlIs('https://automationexercise.com/brand_products/Biba'), 5000)).to.equal(true);
+                await driver.wait(until.elementLocated(By.css('#search_product')), 5000).sendKeys('jeans');
+                await driver.wait(until.elementLocated(By.css('#submit_search')), 5000).click();
 
-                await driver.wait(until.elementLocated(By.xpath('/html/body/section/div/div[2]/div[1]/div/div[2]/div/ul/li[1]/a')), 5000).click();
-                expect(await driver.wait(until.urlIs('https://automationexercise.com/brand_products/Polo'), 5000)).to.equal(true);            
+                const products = await driver.findElements(By.css('productinfo'));
+
+                for (let i = 0; i < products.length; i++) {
+                    expect(products[i]).to.contain('Jeans');                    
+                };
+
+                const addToCartBtn = await driver.wait(until.elementLocated(By.css('[data-product-id="33"]')), 5000);
+                await driver.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartBtn);
+                await driver.wait(until.elementIsVisible(addToCartBtn), 5000);
+                await driver.wait(until.elementIsEnabled(addToCartBtn), 5000);
+                await addToCartBtn.click();
+                await driver.sleep(800);
+                await driver.wait(until.elementLocated(By.xpath('//*[@id="cartModal"]/div/div/div[2]/p[2]/a')), 5000).click();
+
+                await driver.wait(until.urlIs('https://automationexercise.com/view_cart'), 5000);
+            
+                expect(await driver.findElement(By.css('#product-33 .cart_description')).getText()).to.contain('Soft Stretch Jeans');
+                expect(await driver.findElement(By.css('#product-33 .cart_price')).getText()).to.contain('Rs. 799');
+                expect(await driver.findElement(By.css('#product-33 .cart_quantity')).getText()).to.contain('1');
+                expect(await driver.findElement(By.css('#product-33 .cart_total')).getText()).to.contain('Rs. 799');
+
+                await driver.findElement(By.linkText('Delete Account')).click();
+                const confirmTest = await driver.wait(until.elementLocated(By.xpath("//*[contains(text(),'Account Deleted!')]")), 5000).getText();
+
+                expect(confirmTest).to.equal('ACCOUNT DELETED!');
                 
             } catch (error) {
                 console.error("❌ Test failed:", error);
