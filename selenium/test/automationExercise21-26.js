@@ -39,7 +39,7 @@ import { expect } from 'chai';
 
                 expect(await driver.findElement(By.xpath('/html/body/section[2]/div/div/div[2]/div[2]/h2')).getText()).to.equal('RECOMMENDED ITEMS');
                 
-                await driver.findElement(By.css('[data-product-id="5"]')).click();
+                await driver.wait(until.elementLocated(By.xpath('//*[@id="recommended-item-carousel"]/div/div[2]/div[2]/div/div/div/a')), 5000).click();
                 await driver.wait(until.elementLocated(By.xpath('//*[@id="cartModal"]/div/div/div[2]/p[2]/a/u')), 5000).click();
 
                 expect(await driver.findElement(By.css('#product-5 .cart_description')).getText()).to.contain('Winter Top');
