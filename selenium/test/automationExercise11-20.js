@@ -487,7 +487,7 @@ import { expect } from 'chai';
             }
         });
 
-        it.only('20 Search Products and Verify Cart After Login', async function () {
+        it('20 Search Products and Verify Cart After Login', async function () {
             driver = await new Builder().forBrowser('chrome').build();
             try {
                 await driver.get('https://automationexercise.com/');
