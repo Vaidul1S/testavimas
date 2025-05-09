@@ -99,13 +99,18 @@ import { expect } from 'chai';
                 await driver.findElement(By.xpath('//*[@id="do_action"]/div[1]/div/div/a')).click();
 
                 expect(await driver.findElement(By.css('#address_delivery .address_firstname ')).getText()).to.contain('Mr. Bredas Babrauskas');
-                expect(await driver.findElement(By.css('#address_delivery .address_address1')).getText()).to.contain('Uztvanka');
-                expect(await driver.findElement(By.css('#address_delivery .address_address1')).getText()).to.contain('Bebriskes');
-                expect(await driver.findElement(By.css('#address_delivery .address_address1')).getText()).to.contain('Rastu11');
+                const address = await driver.findElements(By.css('#address_delivery .address_address1'));
+                expect(await address[0].getText()).to.contain('Uztvanka');
+                expect(await address[1].getText()).to.contain('Bebriskes');
+                expect(await address[2].getText()).to.contain('Rastu 11');
                 expect(await driver.findElement(By.css('#address_delivery .address_city ')).getText()).to.contain('Small City Big State 1234567890');
                 expect(await driver.findElement(By.css('#address_delivery .address_country_name')).getText()).to.contain('Canada');
                 expect(await driver.findElement(By.css('#address_delivery .address_phone')).getText()).to.contain('1234567890');
                 
+                await driver.findElement(By.linkText('Delete Account')).click();
+                const confirmTest = await driver.wait(until.elementLocated(By.xpath("//*[contains(text(),'Account Deleted!')]")), 5000).getText();
+
+                expect(confirmTest).to.equal('ACCOUNT DELETED!');
                 
             } catch (error) {
                 console.error("❌ Test failed:", error);
