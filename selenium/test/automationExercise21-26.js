@@ -14,7 +14,7 @@ import { expect } from 'chai';
 
                 await driver.findElement(By.xpath('//*[@id="header"]/div/div/div/div[2]/div/ul/li[2]/a')).click();
                 await driver.wait(until.urlIs('https://automationexercise.com/products'), 5000);
-                
+
                 await driver.findElement(By.xpath('/html/body/section[2]/div/div/div[2]/div/div[9]/div/div[2]/ul/li/a')).click();
                 await driver.wait(until.elementLocated(By.css('#name')), 5000).sendKeys('Bebras');
                 await driver.wait(until.elementLocated(By.css('#email')), 5000).sendKeys('bebras666@example.com');
@@ -38,7 +38,7 @@ import { expect } from 'chai';
                 await driver.wait(until.elementLocated(By.xpath('/html/body/div/div[2]/div[2]/div[2]/div[2]/button[1]')), 5000).click(); //accept cookies
 
                 expect(await driver.findElement(By.xpath('/html/body/section[2]/div/div/div[2]/div[2]/h2')).getText()).to.equal('RECOMMENDED ITEMS');
-                
+
                 await driver.wait(until.elementLocated(By.xpath('//*[@id="recommended-item-carousel"]/div/div[2]/div[2]/div/div/div/a')), 5000).click();
                 await driver.sleep(800);
                 await driver.wait(until.elementLocated(By.xpath('//*[@id="cartModal"]/div/div/div[2]/p[2]/a/u')), 5000).click();
@@ -54,7 +54,7 @@ import { expect } from 'chai';
                 await driver.quit();
             }
         });
-        
+
         it('23 Verify address details in checkout page', async function () {
             driver = await new Builder().forBrowser('chrome').build();
             try {
@@ -90,11 +90,11 @@ import { expect } from 'chai';
                 await driver.wait(until.elementLocated(By.xpath("//*[contains(text(),'Account Created!')]")), 5000);
                 await driver.findElement(By.css('[data-qa="continue-button"]')).click();
                 expect(await driver.wait(until.elementLocated(By.linkText('Logged in as Bebras666')), 5000).getText()).to.equal('Logged in as Bebras666');
-                
+
                 await driver.wait(until.elementLocated(By.xpath('//*[@id="recommended-item-carousel"]/div/div[2]/div[2]/div/div/div/a')), 5000).click();
                 await driver.sleep(800);
                 await driver.wait(until.elementLocated(By.xpath('//*[@id="cartModal"]/div/div/div[2]/p[2]/a/u')), 5000).click();
-                
+
                 await driver.wait(until.urlIs('https://automationexercise.com/view_cart'), 5000);
                 await driver.findElement(By.xpath('//*[@id="do_action"]/div[1]/div/div/a')).click();
                 await driver.sleep(800);
@@ -116,12 +116,12 @@ import { expect } from 'chai';
                 expect(await driver.findElement(By.css('#address_invoice .address_city ')).getText()).to.contain('Small City Big State 1234567890');
                 expect(await driver.findElement(By.css('#address_invoice .address_country_name')).getText()).to.contain('Canada');
                 expect(await driver.findElement(By.css('#address_invoice .address_phone')).getText()).to.contain('1234567890');
-                
+
                 await driver.findElement(By.linkText('Delete Account')).click();
                 const confirmTest = await driver.wait(until.elementLocated(By.xpath("//*[contains(text(),'Account Deleted!')]")), 5000).getText();
 
                 expect(confirmTest).to.equal('ACCOUNT DELETED!');
-                
+
             } catch (error) {
                 console.error("❌ Test failed:", error);
             } finally {
@@ -164,11 +164,11 @@ import { expect } from 'chai';
                 await driver.wait(until.elementLocated(By.xpath("//*[contains(text(),'Account Created!')]")), 5000);
                 await driver.findElement(By.css('[data-qa="continue-button"]')).click();
                 expect(await driver.wait(until.elementLocated(By.linkText('Logged in as Bebras666')), 5000).getText()).to.equal('Logged in as Bebras666');
-                
+
                 await driver.wait(until.elementLocated(By.xpath('//*[@id="recommended-item-carousel"]/div/div[2]/div[2]/div/div/div/a')), 5000).click();
                 await driver.sleep(800);
                 await driver.wait(until.elementLocated(By.xpath('//*[@id="cartModal"]/div/div/div[2]/p[2]/a/u')), 5000).click();
-                
+
                 await driver.wait(until.urlIs('https://automationexercise.com/view_cart'), 5000);
                 await driver.findElement(By.xpath('//*[@id="do_action"]/div[1]/div/div/a')).click();
                 await driver.sleep(800);
@@ -181,7 +181,7 @@ import { expect } from 'chai';
                 expect(await driver.findElement(By.css('#address_delivery .address_city ')).getText()).to.contain('Small City Big State 1234567890');
                 expect(await driver.findElement(By.css('#address_delivery .address_country_name')).getText()).to.contain('Canada');
                 expect(await driver.findElement(By.css('#address_delivery .address_phone')).getText()).to.contain('1234567890');
-                
+
                 await driver.findElement(By.css('textarea.form-control')).sendKeys('Description coment in comment text area.');
                 await driver.findElement(By.css('a[href="/payment"]')).click();
                 await driver.sleep(600);
@@ -201,7 +201,7 @@ import { expect } from 'chai';
                 const confirmTest = await driver.wait(until.elementLocated(By.xpath("//*[contains(text(),'Account Deleted!')]")), 5000).getText();
 
                 expect(confirmTest).to.equal('ACCOUNT DELETED!');
-                
+
             } catch (error) {
                 console.error("❌ Test failed:", error);
             } finally {
@@ -216,9 +216,9 @@ import { expect } from 'chai';
                 await driver.wait(until.urlIs('https://automationexercise.com/'), 5000);
                 await driver.wait(until.elementLocated(By.xpath('/html/body/div/div[2]/div[2]/div[2]/div[2]/button[1]')), 5000).click(); //accept cookies
 
-                await driver.executeScript('window.scrollTo(0, document.body.scrollHeight);');                               
+                await driver.executeScript('window.scrollTo(0, document.body.scrollHeight);');
                 await driver.sleep(800);
-                
+
                 expect(await driver.wait(until.elementLocated(By.xpath('//*[@id="footer"]/div[1]/div/div/div[2]/div/h2')), 5000).getText()).to.contains('SUBSCRIPTION');
 
                 await driver.wait(until.elementLocated(By.xpath('//*[@id="scrollUp"]')), 5000).click();
@@ -240,12 +240,12 @@ import { expect } from 'chai';
                 await driver.wait(until.urlIs('https://automationexercise.com/'), 5000);
                 await driver.wait(until.elementLocated(By.xpath('/html/body/div/div[2]/div[2]/div[2]/div[2]/button[1]')), 5000).click(); //accept cookies
 
-                await driver.executeScript('window.scrollTo(0, document.body.scrollHeight);');                               
+                await driver.executeScript('window.scrollTo(0, document.body.scrollHeight);');
                 await driver.sleep(800);
-                
+
                 expect(await driver.wait(until.elementLocated(By.xpath('//*[@id="footer"]/div[1]/div/div/div[2]/div/h2')), 5000).getText()).to.contains('SUBSCRIPTION');
 
-                await driver.wait(until.elementLocated(By.xpath('//*[@id="scrollUp"]')), 5000).click();
+                await driver.executeScript('window.scrollTo(0, 0);');
                 await driver.sleep(800);
 
                 expect(await driver.wait(until.elementLocated(By.xpath('//*[@id="slider-carousel"]/div/div[1]/div[1]/h2')), 5000).getText()).to.equal('Full-Fledged practice website for Automation Engineers');
