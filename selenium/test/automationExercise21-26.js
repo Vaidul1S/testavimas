@@ -233,7 +233,7 @@ import { expect } from 'chai';
             }
         });
 
-        it.only('26 Verify Scroll Up without Arrow button and Scroll Down functionality', async function () {
+        it('26 Verify Scroll Up without Arrow button and Scroll Down functionality', async function () {
             driver = await new Builder().forBrowser('chrome').build();
             try {
                 await driver.get('https://automationexercise.com/');
