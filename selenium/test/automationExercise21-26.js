@@ -209,7 +209,31 @@ import { expect } from 'chai';
             }
         });
 
-        it.only('25 Verify Scroll Up using Arrow button and Scroll Down functionality', async function () {
+        it('25 Verify Scroll Up using Arrow button and Scroll Down functionality', async function () {
+            driver = await new Builder().forBrowser('chrome').build();
+            try {
+                await driver.get('https://automationexercise.com/');
+                await driver.wait(until.urlIs('https://automationexercise.com/'), 5000);
+                await driver.wait(until.elementLocated(By.xpath('/html/body/div/div[2]/div[2]/div[2]/div[2]/button[1]')), 5000).click(); //accept cookies
+
+                await driver.executeScript('window.scrollTo(0, document.body.scrollHeight);');                               
+                await driver.sleep(800);
+                
+                expect(await driver.wait(until.elementLocated(By.xpath('//*[@id="footer"]/div[1]/div/div/div[2]/div/h2')), 5000).getText()).to.contains('SUBSCRIPTION');
+
+                await driver.wait(until.elementLocated(By.xpath('//*[@id="scrollUp"]')), 5000).click();
+                await driver.sleep(800);
+
+                expect(await driver.wait(until.elementLocated(By.xpath('//*[@id="slider-carousel"]/div/div[1]/div[1]/h2')), 5000).getText()).to.equal('Full-Fledged practice website for Automation Engineers');
+
+            } catch (error) {
+                console.error("❌ Test failed:", error);
+            } finally {
+                await driver.quit();
+            }
+        });
+
+        it.only('26 Verify Scroll Up without Arrow button and Scroll Down functionality', async function () {
             driver = await new Builder().forBrowser('chrome').build();
             try {
                 await driver.get('https://automationexercise.com/');
