@@ -358,9 +358,7 @@ import path from 'path';
             } finally {
                 await driver.quit();
             }
-        });
-
-        
+        });      
 
     });
 })();
