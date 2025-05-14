@@ -570,7 +570,6 @@ import { expect } from 'chai';
                 await driver.quit();
             }
         });
-
         
     });
 })();
