@@ -341,7 +341,7 @@ import path from 'path';
             }
         });
 
-        it.only('10 Verify Subscription in home page', async function () {
+        it('10 Verify Subscription in home page', async function () {
             driver = await new Builder().forBrowser('chrome').build();
             try {
                 await driver.get('https://automationexercise.com/');
