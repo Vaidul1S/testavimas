@@ -37,13 +37,15 @@ test.describe('Automation Exercise Tests', () => {
 
         await page.locator('button[data-qa="create-account"]').click();
 
-        await expect(page).toHaveTitle(/Account Created!/);
+        // await expect(page).toHaveTitle(/Account Created!/);
+        await expect(page.locator('h2[data-qa="account-created"]')).toHaveText(/Account Created!/);        
         await page.locator('[data-qa="continue-button"]').click();
 
-        await expect(page).toHaveTitle(/Logged in as Bebras666/);
-        await page.locator('ul.navbar-nav li').nth(3).click();
+        // await expect(page).toHaveTitle(/Logged in as Bebras666/);
+        await expect(page.locator('ul.navbar-nav li').nth(9)).toHaveText(/Logged in as Bebras666/);
+        await page.locator('ul.navbar-nav li').nth(4).click();
 
-        await expect(page).toHaveTitle(/Account Deleted!/);
+        await expect(page.locator('h2[data-qa="account-deleted"]')).toHaveText(/Account Deleted!/);
 
     });
 
