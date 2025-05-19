@@ -41,13 +41,13 @@ test.describe('Automation Exercise Tests', () => {
         await page.locator('[data-qa="continue-button"]').click();
 
         await expect(page.locator('ul.navbar-nav li').nth(9)).toHaveText(/Logged in as Bebras666/);
-        await page.locator('ul.navbar-nav li').nth(4).click();
 
+        await page.locator('ul.navbar-nav li').nth(4).click();
         await expect(page.locator('h2[data-qa="account-deleted"]')).toHaveText(/Account Deleted!/);
 
     });
 
-    test.only('Test Case 3: Login User with incorrect email and password', async ({ page }) => {
+    test('Test Case 3: Login User with incorrect email and password', async ({ page }) => {
         await expect(page).toHaveTitle(/Automation Exercise/);
         await page.locator('ul.navbar-nav li').nth(3).click();
 
@@ -56,6 +56,51 @@ test.describe('Automation Exercise Tests', () => {
         await page.locator('button[data-qa="login-button"]').click();
 
         await expect(page.locator('//*[@id="form"]/div/div/div[1]/div/form/p')).toHaveText(/Your email or password is incorrect!/);
+
+    });
+
+    test('Test Case 4: Logout User', async ({ page }) => {
+        await page.locator('ul.navbar-nav li').nth(3).click();
+
+        await page.fill('input[data-qa="signup-name"]', 'Bebras666');
+        await page.fill('input[data-qa="signup-email"]', 'bebras666@example.com');
+        await page.locator('button[data-qa="signup-button"]').click();
+        await page.locator('#id_gender1').check();
+        await page.fill('input[data-qa="password"]', 'password123');
+        await page.selectOption('select#days', '13');
+        await page.selectOption('select#months', 'February');
+        await page.selectOption('select#years', '1999');
+        await page.locator('input#newsletter').check();
+        await page.locator('input#optin').check();
+        await page.fill('input[data-qa="first_name"]', 'Bredas');
+        await page.fill('input[data-qa="last_name"]', 'Babrauskas');
+        await page.fill('input[data-qa="company"]', 'Uzvanka');
+        await page.fill('input[data-qa="address"]', 'Rastu 11');
+        await page.fill('input[data-qa="address2"]', 'Bebriskes');
+        await page.selectOption('select[data-qa="country"]', 'Canada');
+        await page.fill('input[data-qa="state"]', 'Big State');
+        await page.fill('input[data-qa="city"]', 'Small City');
+        await page.fill('input[data-qa="zipcode"]', '1234567890');
+        await page.fill('input[data-qa="mobile_number"]', '1234567890');
+
+        await page.locator('button[data-qa="create-account"]').click();
+        await page.locator('[data-qa="continue-button"]').click();
+        await page.locator('ul.navbar-nav li').nth(3).click();
+
+        //Real test begins NOW!
+
+        await page.locator('ul.navbar-nav li').nth(3).click();
+
+        await page.fill('input[data-qa="login-email"]', 'bebras666@example.com');
+        await page.fill('input[data-qa="login-password"]', 'password123');
+        await page.locator('button[data-qa="login-button"]').click();
+
+        await expect(page.locator('ul.navbar-nav li').nth(9)).toHaveText(/Logged in as Bebras666/);
+
+        await page.locator('ul.navbar-nav li').nth(3).click();
+
+        await expect(page.url()).toBe('https://automationexercise.com/login')
+
 
     });
 
