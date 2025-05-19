@@ -35,7 +35,15 @@ test.describe('Automation Exercise Tests', () => {
         await page.fill('input[data-qa="zipcode"]', '1234567890');
         await page.fill('input[data-qa="mobile_number"]', '1234567890');
 
-        await page.locator('').click();
+        await page.locator('button[data-qa="create-account"]').click();
+
+        await expect(page).toHaveTitle(/Account Created!/);
+        await page.locator('[data-qa="continue-button"]').click();
+
+        await expect(page).toHaveTitle(/Logged in as Bebras666/);
+        await page.locator('ul.navbar-nav li').nth(3).click();
+
+        await expect(page).toHaveTitle(/Account Deleted!/);
 
     });
 
