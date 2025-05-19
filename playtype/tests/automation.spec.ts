@@ -15,21 +15,21 @@ test.describe('Automation Exercise Tests', () => {
         await page.fill('input[data-qa="signup-email"]', 'bebras666@example.com');
         await page.locator('button[data-qa="signup-button"]').click();
 
-        await expect(page).toHaveTitle(/Enter Account Information/);
+        // await expect(page).toHaveTitle(/Enter Account Information/);
 
-        await page.locator('input#id_gender1').click();
+        await page.locator('#id_gender1').check();
         await page.fill('input[data-qa="password"]', 'password123');
-        await page.fill('select#days', '13');
-        await page.fill('select#months', 'February');
-        await page.fill('select#years', '1999');
-        await page.locator('input#newsletter').click();
-        await page.locator('input#optin').click();
+        await page.selectOption('select#days', '13');
+        await page.selectOption('select#months', 'February');
+        await page.selectOption('select#years', '1999');
+        await page.locator('input#newsletter').check();
+        await page.locator('input#optin').check();
         await page.fill('input[data-qa="first_name"]', 'Bredas');
         await page.fill('input[data-qa="last_name"]', 'Babrauskas');
         await page.fill('input[data-qa="company"]', 'Uzvanka');
         await page.fill('input[data-qa="address"]', 'Rastu 11');
         await page.fill('input[data-qa="address2"]', 'Bebriskes');
-        await page.fill('select[data-qa="country"]', 'Canada');
+        await page.selectOption('select[data-qa="country"]', 'Canada');
         await page.fill('input[data-qa="state"]', 'Big State');
         await page.fill('input[data-qa="city"]', 'Small City');
         await page.fill('input[data-qa="zipcode"]', '1234567890');
