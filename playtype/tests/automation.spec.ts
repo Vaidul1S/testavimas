@@ -15,7 +15,7 @@ test.describe('Automation Exercise Tests', () => {
         await page.fill('input[data-qa="signup-email"]', 'bebras666@example.com');
         await page.locator('button[data-qa="signup-button"]').click();
 
-        // await expect(page).toHaveTitle(/Enter Account Information/);
+        await expect(page.locator('//*[@id="form"]/div/div/div/div[1]/h2/b')).toHaveText(/Enter Account Information/);
 
         await page.locator('#id_gender1').check();
         await page.fill('input[data-qa="password"]', 'password123');
@@ -37,11 +37,9 @@ test.describe('Automation Exercise Tests', () => {
 
         await page.locator('button[data-qa="create-account"]').click();
 
-        // await expect(page).toHaveTitle(/Account Created!/);
         await expect(page.locator('h2[data-qa="account-created"]')).toHaveText(/Account Created!/);        
         await page.locator('[data-qa="continue-button"]').click();
 
-        // await expect(page).toHaveTitle(/Logged in as Bebras666/);
         await expect(page.locator('ul.navbar-nav li').nth(9)).toHaveText(/Logged in as Bebras666/);
         await page.locator('ul.navbar-nav li').nth(4).click();
 
