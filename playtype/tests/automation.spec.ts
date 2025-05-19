@@ -37,7 +37,7 @@ test.describe('Automation Exercise Tests', () => {
 
         await page.locator('button[data-qa="create-account"]').click();
 
-        await expect(page.locator('h2[data-qa="account-created"]')).toHaveText(/Account Created!/);        
+        await expect(page.locator('h2[data-qa="account-created"]')).toHaveText(/Account Created!/);
         await page.locator('[data-qa="continue-button"]').click();
 
         await expect(page.locator('ul.navbar-nav li').nth(9)).toHaveText(/Logged in as Bebras666/);
@@ -47,6 +47,17 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
+    test.only('Test Case 3: Login User with incorrect email and password', async ({ page }) => {
+        await expect(page).toHaveTitle(/Automation Exercise/);
+        await page.locator('ul.navbar-nav li').nth(3).click();
+
+        await page.fill('input[data-qa="login-email"]', 'blogas@example.com');
+        await page.fill('input[data-qa="login-password"]', 'blogaspsw');
+        await page.locator('button[data-qa="login-button"]').click();
+
+        await expect(page.locator('//*[@id="form"]/div/div/div[1]/div/form/p')).toHaveText(/Your email or password is incorrect!/);
+
+    });
 
     // test('update item', async ({ page }) => {
     //     await page.getByRole('textbox', { name: 'What need\'s to be done?' }).click();
