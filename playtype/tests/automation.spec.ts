@@ -128,6 +128,23 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
+    test.only('Test Case 6: Contact Us Form', async ({ page }) => {
+        await page.locator('ul.navbar-nav li').nth(7).click();
+
+        await expect(page.locator('//*[@id="contact-page"]/div[1]/div/div/h2/text()')).toHaveText(/Contact us/);
+
+        await page.fill('input[data-qa="name"]', 'Vaidulis');
+        await page.fill('input[data-qa="email"]', 'vaidulistester@gmail.com');
+        await page.fill('input[data-qa="subject"]', 'Tema');
+        await page.fill('textarea[data-qa="message"]', 'Labai labai labai labai ilgas tekstas.');
+        await page.setInputFiles('input[name="upload_file"]', 'ane.png');
+        await page.locator('input[data-qa="submit-button"]').click();
+
+        await expect(page.locator('h2[data-qa="account-deleted"]')).toHaveText(/Account Deleted!/);
+
+    });
+
+
     // test('update item', async ({ page }) => {
     //     await page.getByRole('textbox', { name: 'What need\'s to be done?' }).click();
     //     await page.getByRole('textbox', { name: 'What need\'s to be done?' }).fill('123456');
