@@ -103,7 +103,7 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
-    test.only('Test Case 5: Register User with existing email', async ({ page }) => {
+    test('Test Case 5: Register User with existing email', async ({ page }) => {
         await page.locator('ul.navbar-nav li').nth(3).click();
 
         await page.fill('input[data-qa="signup-name"]', 'Bebras666');
@@ -114,7 +114,19 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
+    test('Test Case 2: Login User with correct email and password', async ({ page }) => {
+        await page.locator('ul.navbar-nav li').nth(3).click();
 
+        await page.fill('input[data-qa="login-email"]', 'bebras666@example.com');
+        await page.fill('input[data-qa="login-password"]', 'password123');
+        await page.locator('button[data-qa="login-button"]').click();
+
+        await expect(page.locator('ul.navbar-nav li').nth(9)).toHaveText(/Logged in as Bebras666/);
+
+        await page.locator('ul.navbar-nav li').nth(4).click();
+        await expect(page.locator('h2[data-qa="account-deleted"]')).toHaveText(/Account Deleted!/);
+
+    });
 
     // test('update item', async ({ page }) => {
     //     await page.getByRole('textbox', { name: 'What need\'s to be done?' }).click();
