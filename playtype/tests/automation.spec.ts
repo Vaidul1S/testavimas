@@ -131,16 +131,24 @@ test.describe('Automation Exercise Tests', () => {
     test.only('Test Case 6: Contact Us Form', async ({ page }) => {
         await page.locator('ul.navbar-nav li').nth(7).click();
 
-        await expect(page.locator('//*[@id="contact-page"]/div[1]/div/div/h2/text()')).toHaveText(/Contact us/);
+        await expect(page.locator('//*[@id="contact-page"]/div[1]/div/div/h2')).toHaveText(/Contact Us/);
 
-        await page.fill('input[data-qa="name"]', 'Vaidulis');
-        await page.fill('input[data-qa="email"]', 'vaidulistester@gmail.com');
+        await page.fill('input[data-qa="name"]', 'Bredas');
+        await page.fill('input[data-qa="email"]', 'bebras666@example.com');
         await page.fill('input[data-qa="subject"]', 'Tema');
         await page.fill('textarea[data-qa="message"]', 'Labai labai labai labai ilgas tekstas.');
         await page.setInputFiles('input[name="upload_file"]', 'ane.png');
+
+
+
+        page.on('dialog', dialog => {
+            expect(dialog.message()).toBe('Press OK to proceed!');
+            dialog.accept();
+        });
+
         await page.locator('input[data-qa="submit-button"]').click();
 
-        await expect(page.locator('h2[data-qa="account-deleted"]')).toHaveText(/Account Deleted!/);
+        await expect(page.getByText('Success! Your details have been submitted successfully.')).toBeVisible();
 
     });
 
