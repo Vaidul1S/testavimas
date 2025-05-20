@@ -99,10 +99,22 @@ test.describe('Automation Exercise Tests', () => {
 
         await page.locator('ul.navbar-nav li').nth(3).click();
 
-        await expect(page.url()).toBe('https://automationexercise.com/login')
-
+        expect(page.url()).toBe('https://automationexercise.com/login');
 
     });
+
+    test.only('Test Case 5: Register User with existing email', async ({ page }) => {
+        await page.locator('ul.navbar-nav li').nth(3).click();
+
+        await page.fill('input[data-qa="signup-name"]', 'Bebras666');
+        await page.fill('input[data-qa="signup-email"]', 'bebras666@example.com');
+        await page.locator('button[data-qa="signup-button"]').click();
+
+        await expect(page.locator('//*[@id="form"]/div/div/div[3]/div/form/p')).toHaveText(/Email Address already exist!/);
+
+    });
+
+
 
     // test('update item', async ({ page }) => {
     //     await page.getByRole('textbox', { name: 'What need\'s to be done?' }).click();
