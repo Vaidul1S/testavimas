@@ -139,16 +139,16 @@ test.describe('Automation Exercise Tests', () => {
         await page.fill('textarea[data-qa="message"]', 'Labai labai labai labai ilgas tekstas.');
         await page.setInputFiles('input[name="upload_file"]', 'ane.png');
 
-
-
         page.on('dialog', dialog => {
             expect(dialog.message()).toBe('Press OK to proceed!');
             dialog.accept();
+            return true;
         });
 
         await page.locator('input[data-qa="submit-button"]').click();
 
         await expect(page.getByText('Success! Your details have been submitted successfully.')).toBeVisible();
+        await page.locator('a.btn-success').click();
 
     });
 
