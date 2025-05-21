@@ -155,10 +155,28 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
-    test.only('Test Case 7: Verify Test Cases Page', async ({ page }) => {
+    test('Test Case 7: Verify Test Cases Page', async ({ page }) => {
         await page.locator('ul.navbar-nav li').nth(4).click();
 
         await expect(page.locator('//*[@id="form"]/div/div[1]/div/h2/b')).toHaveText(/Test Cases/);
+
+    });
+
+    test.only('Test Case 8: Verify All Products and product detail page', async ({ page }) => {
+        await page.locator('ul.navbar-nav li').nth(1).click();
+        await page.waitForTimeout(500);
+
+        await expect(page.locator('//html/body/section[2]/div/div/div[2]/div/h2')).toHaveText(/All Products/);
+
+        await page.locator('a[href="/product_details/7"]').click();
+        await page.waitForTimeout(500);
+
+        await expect(page.locator('.product-information h2')).toHaveText(/Madame Top For Women/);
+        await expect(page.locator('.product-information p').nth(0)).toHaveText(/Category: Women > Tops/);
+        await expect(page.locator('.product-information span span')).toHaveText(/Rs. 1000/);
+        await expect(page.locator('.product-information p').nth(1)).toHaveText(/Availability: In Stock/);
+        await expect(page.locator('.product-information p').nth(2)).toHaveText(/Condition: New/);
+        await expect(page.locator('.product-information p').nth(3)).toHaveText(/Brand: Madame/);
 
     });
 
