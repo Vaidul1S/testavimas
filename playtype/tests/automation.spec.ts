@@ -201,7 +201,20 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
-     test.only('Test Case 10: Verify Subscription in home page', async ({ page }) => {     
+    test('Test Case 10: Verify Subscription in home page', async ({ page }) => {
+        await expect(page.locator('//*[@id="footer"]/div[1]/div/div/div[2]/div/h2')).toHaveText(/Subscription/);
+
+        await page.fill('input#susbscribe_email', 'bebras666@example.com');
+        await page.locator('button#subscribe').click();
+
+        await expect(page.locator('text=You have been successfully subscribed!')).toBeVisible();
+
+    });
+
+    test.only('Test Case 11: Verify Subscription in Cart page', async ({ page }) => {
+        await page.locator('ul.navbar-nav li').nth(2).click();
+        await page.waitForTimeout(500);
+
         await expect(page.locator('//*[@id="footer"]/div[1]/div/div/div[2]/div/h2')).toHaveText(/Subscription/);
 
         await page.fill('input#susbscribe_email', 'bebras666@example.com');
