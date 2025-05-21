@@ -138,18 +138,20 @@ test.describe('Automation Exercise Tests', () => {
         await page.fill('input[data-qa="subject"]', 'Tema');
         await page.fill('textarea[data-qa="message"]', 'Labai labai labai labai ilgas tekstas.');
         await page.setInputFiles('input[name="upload_file"]', 'ane.png');
+        await page.waitForTimeout(500);
 
         page.once('dialog', dialog => {
-            console.log(`Dialog message: ${dialog.message()}`);
+            console.log(`Dialog message:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: ${dialog.message()}`);
             dialog.accept().catch(() => { });
         });
 
         await page.locator('input[data-qa="submit-button"]').click();
 
-        await expect(page.getByText('Success! Your details have been submitted successfully.')).toBeVisible();
-        await page.locator('a.btn-success').click();
+        await expect(page.locator('//*[@id="contact-page"]/div[2]/div[1]/div/div[2]')).toHaveText(/Success! Your details have been submitted successfully./);
 
-        expect(page.url()).toBe('https://automationexercise.com');
+        await page.locator('//*[@id="form-section"]/a').click();
+
+        expect(page.url()).toBe('https://automationexercise.com/');
 
     });
 

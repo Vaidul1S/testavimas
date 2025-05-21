@@ -80,5 +80,6 @@ test.describe('Cart Page', () => {
 
         await expect(page.locator('#basketCount')).toHaveText('2');
 
-    })
+    });
+
 });
