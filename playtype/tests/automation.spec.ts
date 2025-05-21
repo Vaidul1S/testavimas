@@ -162,7 +162,7 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
-    test.only('Test Case 8: Verify All Products and product detail page', async ({ page }) => {
+    test('Test Case 8: Verify All Products and product detail page', async ({ page }) => {
         await page.locator('ul.navbar-nav li').nth(1).click();
         await page.waitForTimeout(500);
 
@@ -180,6 +180,26 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
+    test.only('Test Case 9: Search Product', async ({ page }) => {
+        await page.locator('ul.navbar-nav li').nth(1).click();
+        await page.waitForTimeout(500);
+
+        await expect(page.locator('//html/body/section[2]/div/div/div[2]/div/h2')).toHaveText(/All Products/);
+
+        await page.fill('input#search_product', 'Jeans');
+        await page.locator('button#submit_search').click();
+
+        await expect(page.locator('//html/body/section[2]/div/div/div[2]/div/h2')).toHaveText(/Searched Products/);
+        await page.waitForTimeout(500);
+
+        const products = await page.locator('.productinfo p').count();
+        console.log('Searched products count', products);
+
+        for (let i = 0; i < products; i++) {
+            await expect(page.locator('.productinfo p').nth(i)).toContainText('Jeans');
+        };
+
+    });
 
     // test('update item', async ({ page }) => {
     //     await page.getByRole('textbox', { name: 'What need\'s to be done?' }).click();
