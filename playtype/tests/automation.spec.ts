@@ -128,7 +128,7 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
-    test.only('Test Case 6: Contact Us Form', async ({ page }) => {
+    test('Test Case 6: Contact Us Form', async ({ page }) => {
         await page.locator('ul.navbar-nav li').nth(7).click();
 
         await expect(page.locator('//*[@id="contact-page"]/div[1]/div/div/h2')).toHaveText(/Contact Us/);
@@ -152,6 +152,13 @@ test.describe('Automation Exercise Tests', () => {
         await page.locator('//*[@id="form-section"]/a').click();
 
         expect(page.url()).toBe('https://automationexercise.com/');
+
+    });
+
+    test.only('Test Case 7: Verify Test Cases Page', async ({ page }) => {
+        await page.locator('ul.navbar-nav li').nth(4).click();
+
+        await expect(page.locator('//*[@id="form"]/div/div[1]/div/h2/b')).toHaveText(/Test Cases/);
 
     });
 
