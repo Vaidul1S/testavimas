@@ -207,7 +207,7 @@ test.describe('Automation Exercise Tests', () => {
         await page.fill('input#susbscribe_email', 'bebras666@example.com');
         await page.locator('button#subscribe').click();
 
-        await expect(page.locator('div.alert-success')).toHaveText('You have been successfully subscribed!');
+        await expect(page.locator('text=You have been successfully subscribed!')).toBeVisible();
 
     });
 
