@@ -229,9 +229,32 @@ test.describe('Automation Exercise Tests', () => {
         await page.waitForTimeout(500);
 
         await expect(page.locator('//html/body/section[2]/div/div/div[2]/div/h2')).toHaveText(/All Products/);
+        await page.waitForTimeout(1000);
 
+        await page.locator('.productinfo').nth(4).getByText('Add to cart').hover();
+        await page.waitForTimeout(1000);
+        await page.locator('div.product-overlay').nth(4).getByText('Add to cart').click();
+        await page.waitForTimeout(1000);
+        await page.locator('[data-dismiss="modal"]').click();
+
+        await page.locator('.productinfo').nth(9).getByText('Add to cart').hover();
+        await page.waitForTimeout(1000);
+        await page.locator('div.product-overlay').nth(9).getByText('Add to cart').click();
+        await page.waitForTimeout(1000);
+
+        await page.locator('//*[@id="cartModal"]/div/div/div[2]/p[2]/a/u').click();
+        await page.waitForTimeout(500);
+
+        await expect(page.locator('//*[@id="product-5"]/td[2]/h4/a')).toContainText('Winter Top');
+        await expect(page.locator('//*[@id="product-12"]/td[2]/h4/a')).toContainText('Half Sleeves Top Schiffli Detailing - Pink');
+       
+        await expect(page.locator('#product-5 .cart_price')).toHaveText(/Rs. 600/);
+        await expect(page.locator('#product-5 .cart_quantity')).toHaveText(/1/);
+        await expect(page.locator('#product-5 .cart_total')).toHaveText(/Rs. 600/);
         
-
+        await expect(page.locator('#product-12 .cart_price')).toHaveText(/Rs. 359/);
+        await expect(page.locator('#product-12 .cart_quantity')).toHaveText(/1/);
+        await expect(page.locator('#product-12 .cart_total')).toHaveText(/Rs. 359/);
     });
 
 
