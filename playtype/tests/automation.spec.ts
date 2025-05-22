@@ -224,7 +224,7 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
-    test.only('Test Case 12: Add Products in Cart', async ({ page }) => {
+    test('Test Case 12: Add Products in Cart', async ({ page }) => {
         await page.locator('ul.navbar-nav li').nth(1).click();
         await page.waitForTimeout(500);
 
@@ -247,15 +247,39 @@ test.describe('Automation Exercise Tests', () => {
 
         await expect(page.locator('//*[@id="product-5"]/td[2]/h4/a')).toContainText('Winter Top');
         await expect(page.locator('//*[@id="product-12"]/td[2]/h4/a')).toContainText('Half Sleeves Top Schiffli Detailing - Pink');
-       
+
         await expect(page.locator('#product-5 .cart_price')).toHaveText(/Rs. 600/);
         await expect(page.locator('#product-5 .cart_quantity')).toHaveText(/1/);
         await expect(page.locator('#product-5 .cart_total')).toHaveText(/Rs. 600/);
-        
+
         await expect(page.locator('#product-12 .cart_price')).toHaveText(/Rs. 359/);
         await expect(page.locator('#product-12 .cart_quantity')).toHaveText(/1/);
         await expect(page.locator('#product-12 .cart_total')).toHaveText(/Rs. 359/);
     });
+
+    test.only('Test Case 13: Verify Product quantity in Cart', async ({ page }) => {
+        await page.locator('div.choose').nth(7).click();
+        await page.waitForTimeout(500);
+
+        await expect(page).toHaveURL('https://automationexercise.com/product_details/8');     
+
+        await page.locator('input#quantity').clear();
+        await page.locator('input#quantity').fill('5');
+        await page.waitForTimeout(1000);
+        await page.locator('//html/body/section/div/div/div[2]/div[2]/div[2]/div/span/button').click();
+        await page.waitForTimeout(1000);
+
+        await page.locator('//*[@id="cartModal"]/div/div/div[2]/p[2]/a/u').click();
+        await page.waitForTimeout(500);
+
+        await expect(page.locator('//*[@id="product-8"]/td[2]/h4/a')).toContainText('Fancy Green Top');
+        
+        await expect(page.locator('#product-8 .cart_price')).toHaveText(/Rs. 700/);
+        await expect(page.locator('#product-8 .cart_quantity')).toHaveText(/5/);
+        await expect(page.locator('#product-8 .cart_total')).toHaveText(/Rs. 3500/);
+        
+    });
+
 
 
     // test('update item', async ({ page }) => {
