@@ -335,14 +335,14 @@ test.describe('Automation Exercise Tests', () => {
         await page.fill('textarea.form-control', 'Description coment in comment text area.');
         await page.locator('a[href="/payment"]').click();
 
-        await page.fill('[data-qa="name-on-card"]','BREDAS BEBRAS');
+        await page.fill('[data-qa="name-on-card"]', 'BREDAS BEBRAS');
         await page.fill('[data-qa="card-number"]', '1234567890123456');
         await page.fill('[data-qa="cvc"]', '123');
         await page.fill('[data-qa="expiry-month"]', '10');
         await page.fill('[data-qa="expiry-year"]', '2030');
 
         await page.locator('button[data-qa="pay-button"]').click();
-
+        expect(page.locator('text=Your order has been placed successfully!')).toBeVisible();
 
         await page.locator('ul.navbar-nav li').nth(4).click();
         await expect(page.locator('h2[data-qa="account-deleted"]')).toHaveText(/Account Deleted!/);
