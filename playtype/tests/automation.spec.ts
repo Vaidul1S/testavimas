@@ -211,7 +211,7 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
-    test.only('Test Case 11: Verify Subscription in Cart page', async ({ page }) => {
+    test('Test Case 11: Verify Subscription in Cart page', async ({ page }) => {
         await page.locator('ul.navbar-nav li').nth(2).click();
         await page.waitForTimeout(500);
 
@@ -221,6 +221,16 @@ test.describe('Automation Exercise Tests', () => {
         await page.locator('button#subscribe').click();
 
         await expect(page.locator('text=You have been successfully subscribed!')).toBeVisible();
+
+    });
+
+    test.only('Test Case 12: Add Products in Cart', async ({ page }) => {
+        await page.locator('ul.navbar-nav li').nth(1).click();
+        await page.waitForTimeout(500);
+
+        await expect(page.locator('//html/body/section[2]/div/div/div[2]/div/h2')).toHaveText(/All Products/);
+
+        
 
     });
 
