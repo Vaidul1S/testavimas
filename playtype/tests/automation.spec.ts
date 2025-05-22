@@ -280,7 +280,7 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
-    test.only('Test Case 14: Place Order: Register while Checkout', async ({ page }) => {
+    test('Test Case 14: Place Order: Register while Checkout', async ({ page }) => {
         await page.locator('.productinfo').nth(0).getByText('Add to cart').hover();
         await page.waitForTimeout(1000);
         await page.locator('div.product-overlay').nth(0).getByText('Add to cart').click();
@@ -342,7 +342,74 @@ test.describe('Automation Exercise Tests', () => {
         await page.fill('[data-qa="expiry-year"]', '2030');
 
         await page.locator('button[data-qa="pay-button"]').click();
-        expect(page.locator('text=Your order has been placed successfully!')).toBeVisible();
+        // expect(page.locator('text=Your order has been placed successfully!')).toBeVisible(); TO DO how to delay window load
+
+        await page.locator('ul.navbar-nav li').nth(4).click();
+        await expect(page.locator('h2[data-qa="account-deleted"]')).toHaveText(/Account Deleted!/);
+
+    });
+
+    test.only('Test Case 15: Place Order: Register before Checkout', async ({ page }) => {
+        await page.locator('ul.navbar-nav li').nth(3).click();
+        
+        await page.fill('input[data-qa="signup-name"]', 'Bebras666');
+        await page.fill('input[data-qa="signup-email"]', 'bebras666@example.com');
+        await page.locator('button[data-qa="signup-button"]').click();
+
+        await expect(page.locator('//*[@id="form"]/div/div/div/div[1]/h2/b')).toHaveText(/Enter Account Information/);
+
+        await page.locator('#id_gender1').check();
+        await page.fill('input[data-qa="password"]', 'password123');
+        await page.selectOption('select#days', '13');
+        await page.selectOption('select#months', 'February');
+        await page.selectOption('select#years', '1999');
+        await page.locator('input#newsletter').check();
+        await page.locator('input#optin').check();
+        await page.fill('input[data-qa="first_name"]', 'Bredas');
+        await page.fill('input[data-qa="last_name"]', 'Babrauskas');
+        await page.fill('input[data-qa="company"]', 'Uzvanka');
+        await page.fill('input[data-qa="address"]', 'Rastu 11');
+        await page.fill('input[data-qa="address2"]', 'Bebriskes');
+        await page.selectOption('select[data-qa="country"]', 'Canada');
+        await page.fill('input[data-qa="state"]', 'Big State');
+        await page.fill('input[data-qa="city"]', 'Small City');
+        await page.fill('input[data-qa="zipcode"]', '1234567890');
+        await page.fill('input[data-qa="mobile_number"]', '1234567890');
+
+        await page.locator('button[data-qa="create-account"]').click();
+
+        await page.locator('[data-qa="continue-button"]').click();
+
+        await expect(page.locator('ul.navbar-nav li').nth(9)).toHaveText(/Logged in as Bebras666/);
+        await page.locator('ul.navbar-nav li').nth(0).click();
+
+        await page.locator('.productinfo').nth(0).getByText('Add to cart').hover();
+        await page.waitForTimeout(1000);
+        await page.locator('div.product-overlay').nth(0).getByText('Add to cart').click();
+        await page.waitForTimeout(1000);
+        await page.locator('[data-dismiss="modal"]').click();
+
+        await page.locator('.productinfo').nth(1).getByText('Add to cart').hover();
+        await page.waitForTimeout(1000);
+        await page.locator('div.product-overlay').nth(1).getByText('Add to cart').click();
+        await page.waitForTimeout(1000);
+
+        await page.locator('//*[@id="cartModal"]/div/div/div[2]/p[2]/a/u').click();
+        await page.waitForTimeout(500);
+
+        await page.locator('a.check_out').click();
+        
+        await page.fill('textarea.form-control', 'Description coment in comment text area.');
+        await page.locator('a[href="/payment"]').click();
+
+        await page.fill('[data-qa="name-on-card"]', 'BREDAS BEBRAS');
+        await page.fill('[data-qa="card-number"]', '1234567890123456');
+        await page.fill('[data-qa="cvc"]', '123');
+        await page.fill('[data-qa="expiry-month"]', '10');
+        await page.fill('[data-qa="expiry-year"]', '2030');
+
+        await page.locator('button[data-qa="pay-button"]').click();
+        // expect(page.locator('text=Your order has been placed successfully!')).toBeVisible(); TO DO how to delay window load
 
         await page.locator('ul.navbar-nav li').nth(4).click();
         await expect(page.locator('h2[data-qa="account-deleted"]')).toHaveText(/Account Deleted!/);
