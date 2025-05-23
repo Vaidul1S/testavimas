@@ -545,7 +545,10 @@ test.describe('Automation Exercise Tests', () => {
         await expect(page).toHaveURL('https://automationexercise.com/brand_products/Polo');
         await expect(page.locator('//html/body/section/div/div[2]/div[2]/div/h2')).toHaveText('Brand - Polo Products');
 
-        
+        await page.locator('//html/body/section/div/div[2]/div[1]/div/div[2]/div/ul/li[8]/a').click();
+        await page.waitForTimeout(500);        
+        await expect(page).toHaveURL('https://automationexercise.com/brand_products/Biba');
+        await expect(page.locator('//html/body/section/div/div[2]/div[2]/div/h2')).toHaveText('Brand - Biba Products');
     });
 
 
