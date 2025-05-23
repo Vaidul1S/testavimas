@@ -589,7 +589,52 @@ test.describe('Automation Exercise Tests', () => {
 
         await page.fill('input#search_product', 'jeans');
         await page.locator('button#submit_search').click();
+        const products = await page.locator('.productinfo p').count();
+        console.log('Searched products count', products);
 
+        for (let i = 0; i < products; i++) {
+            await expect(page.locator('.productinfo p').nth(i)).toContainText('Jeans');
+        };
+
+        await page.locator('.productinfo').nth(0).getByText('Add to cart').hover();
+        await page.waitForTimeout(1000);
+        await page.locator('div.product-overlay').nth(0).getByText('Add to cart').click();
+        await page.waitForTimeout(1000);
+        await page.locator('[data-dismiss="modal"]').click();
+
+        await page.locator('.productinfo').nth(1).getByText('Add to cart').hover();
+        await page.waitForTimeout(1000);
+        await page.locator('div.product-overlay').nth(1).getByText('Add to cart').click();
+        await page.waitForTimeout(1000);
+        await page.locator('[data-dismiss="modal"]').click();
+
+        await page.locator('.productinfo').nth(2).getByText('Add to cart').hover();
+        await page.waitForTimeout(1000);
+        await page.locator('div.product-overlay').nth(2).getByText('Add to cart').click();
+        await page.waitForTimeout(1000);
+        await page.locator('//*[@id="cartModal"]/div/div/div[2]/p[2]/a').click();
+        await page.waitForTimeout(500);
+
+        await expect(page.locator('#product-33')).toHaveCount(1);
+        await expect(page.locator('#product-35')).toHaveCount(1);
+        await expect(page.locator('#product-37')).toHaveCount(1);
+
+        await page.locator('ul.navbar-nav li').nth(3).click();
+
+        await page.fill('input[data-qa="login-email"]', 'bebras666@example.com');
+        await page.fill('input[data-qa="login-password"]', 'password123');
+        await page.locator('button[data-qa="login-button"]').click();
+
+        await expect(page.locator('ul.navbar-nav li').nth(9)).toHaveText(/Logged in as Bebras666/);
+        await page.locator('ul.navbar-nav li').nth(2).click();
+        await page.waitForTimeout(500);
+
+        await expect(page.locator('#product-33')).toHaveCount(1);
+        await expect(page.locator('#product-35')).toHaveCount(1);
+        await expect(page.locator('#product-37')).toHaveCount(1);
+
+        await page.locator('ul.navbar-nav li').nth(4).click();
+        await expect(page.locator('h2[data-qa="account-deleted"]')).toHaveText(/Account Deleted!/);
 
     });
 
