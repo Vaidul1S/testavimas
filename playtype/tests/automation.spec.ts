@@ -491,7 +491,7 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
-    test.only('Test Case 17: Remove Products From Cart', async ({ page }) => {
+    test('Test Case 17: Remove Products From Cart', async ({ page }) => {
         await page.locator('.productinfo').nth(0).getByText('Add to cart').hover();
         await page.waitForTimeout(1000);
         await page.locator('div.product-overlay').nth(0).getByText('Add to cart').click();
@@ -519,6 +519,22 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
+    test.only('Test Case 18: View Category Products', async ({ page }) => {
+        await page.locator('[data-parent="#accordian"]').nth(0).getByText('Women').click();
+        await page.waitForTimeout(500);
+        await page.locator('#Women li').getByText('Dress').click();
+        await page.waitForTimeout(500);
+        await expect(page).toHaveURL('https://automationexercise.com/category_products/1');
+        await expect(page.locator('//html/body/section/div/div[2]/div[2]/div/h2')).toHaveText('Women - Dress Products');
+
+        await page.locator('[data-parent="#accordian"]').nth(1).getByText('Men ').click();
+        await page.waitForTimeout(500);
+        await page.locator('#Men li').getByText('Tshirts ').click();
+        await page.waitForTimeout(500);
+        await expect(page).toHaveURL('https://automationexercise.com/category_products/3');
+        await expect(page.locator('//html/body/section/div/div[2]/div[2]/div/h2')).toHaveText('Men - Tshirts Products');
+
+    });
 
 
 });
