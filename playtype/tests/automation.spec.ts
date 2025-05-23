@@ -551,7 +551,7 @@ test.describe('Automation Exercise Tests', () => {
         await expect(page.locator('//html/body/section/div/div[2]/div[2]/div/h2')).toHaveText('Brand - Biba Products');
     });
 
-    test.only('Test Case 20: Search Products and Verify Cart After Login', async ({ page }) => {
+    test('Test Case 20: Search Products and Verify Cart After Login', async ({ page }) => {
         await page.locator('ul.navbar-nav li').nth(3).click();
 
         await page.fill('input[data-qa="signup-name"]', 'Bebras666');
