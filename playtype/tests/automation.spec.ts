@@ -416,7 +416,7 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
-    test.only('Test Case 16: Place Order: Login before Checkout', async ({ page }) => {
+    test('Test Case 16: Place Order: Login before Checkout', async ({ page }) => {
         await page.locator('ul.navbar-nav li').nth(3).click();
 
         await page.fill('input[data-qa="signup-name"]', 'Bebras666');
@@ -491,6 +491,31 @@ test.describe('Automation Exercise Tests', () => {
 
     });
     
-    
+    test.only('Test Case 17: Remove Products From Cart', async ({ page }) => {
+        await page.locator('.productinfo').nth(0).getByText('Add to cart').hover();
+        await page.waitForTimeout(1000);
+        await page.locator('div.product-overlay').nth(0).getByText('Add to cart').click();
+        await page.waitForTimeout(1000);
+        await page.locator('[data-dismiss="modal"]').click();
+
+        await page.locator('.productinfo').nth(6).getByText('Add to cart').hover();
+        await page.waitForTimeout(1000);
+        await page.locator('div.product-overlay').nth(6).getByText('Add to cart').click();
+        await page.waitForTimeout(1000);
+        await page.locator('[data-dismiss="modal"]').click();
+
+        await page.locator('.productinfo').nth(11).getByText('Add to cart').hover();
+        await page.waitForTimeout(1000);
+        await page.locator('div.product-overlay').nth(11).getByText('Add to cart').click();
+        await page.waitForTimeout(1000);
+
+        await page.locator('//*[@id="cartModal"]/div/div/div[2]/p[2]/a/u').click();
+        await expect(page).toHaveURL('https://automationexercise.com/view_cart');
+
+        
+
+    });
+
+
 
 });
