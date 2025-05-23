@@ -519,7 +519,7 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
-    test.only('Test Case 18: View Category Products', async ({ page }) => {
+    test('Test Case 18: View Category Products', async ({ page }) => {
         await page.locator('[data-parent="#accordian"]').nth(0).getByText('Women').click();
         await page.waitForTimeout(500);
         await page.locator('#Women li').getByText('Dress').click();
@@ -534,6 +534,18 @@ test.describe('Automation Exercise Tests', () => {
         await expect(page).toHaveURL('https://automationexercise.com/category_products/3');
         await expect(page.locator('//html/body/section/div/div[2]/div[2]/div/h2')).toHaveText('Men - Tshirts Products');
 
+    });
+
+    test.only('Test Case 19: View & Cart Brand Products', async ({ page }) => {
+        await page.locator('ul.navbar-nav li').nth(1).click();
+        await expect(page.locator('//html/body/section[2]/div/div/div[1]/div[1]/div[2]/h2')).toHaveText('Brands');
+
+        await page.locator('//html/body/section[2]/div/div/div[1]/div[1]/div[2]/div/ul/li[1]/a').click();
+        await page.waitForTimeout(500);        
+        await expect(page).toHaveURL('https://automationexercise.com/brand_products/Polo');
+        await expect(page.locator('//html/body/section/div/div[2]/div[2]/div/h2')).toHaveText('Brand - Polo Products');
+
+        
     });
 
 
