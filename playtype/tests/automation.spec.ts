@@ -536,20 +536,61 @@ test.describe('Automation Exercise Tests', () => {
 
     });
 
-    test.only('Test Case 19: View & Cart Brand Products', async ({ page }) => {
+    test('Test Case 19: View & Cart Brand Products', async ({ page }) => {
         await page.locator('ul.navbar-nav li').nth(1).click();
         await expect(page.locator('//html/body/section[2]/div/div/div[1]/div[1]/div[2]/h2')).toHaveText('Brands');
 
         await page.locator('//html/body/section[2]/div/div/div[1]/div[1]/div[2]/div/ul/li[1]/a').click();
-        await page.waitForTimeout(500);        
+        await page.waitForTimeout(500);
         await expect(page).toHaveURL('https://automationexercise.com/brand_products/Polo');
         await expect(page.locator('//html/body/section/div/div[2]/div[2]/div/h2')).toHaveText('Brand - Polo Products');
 
         await page.locator('//html/body/section/div/div[2]/div[1]/div/div[2]/div/ul/li[8]/a').click();
-        await page.waitForTimeout(500);        
+        await page.waitForTimeout(500);
         await expect(page).toHaveURL('https://automationexercise.com/brand_products/Biba');
         await expect(page.locator('//html/body/section/div/div[2]/div[2]/div/h2')).toHaveText('Brand - Biba Products');
     });
 
+    test.only('Test Case 20: Search Products and Verify Cart After Login', async ({ page }) => {
+        await page.locator('ul.navbar-nav li').nth(3).click();
+
+        await page.fill('input[data-qa="signup-name"]', 'Bebras666');
+        await page.fill('input[data-qa="signup-email"]', 'bebras666@example.com');
+        await page.locator('button[data-qa="signup-button"]').click();
+
+        await expect(page.locator('//*[@id="form"]/div/div/div/div[1]/h2/b')).toHaveText(/Enter Account Information/);
+
+        await page.locator('#id_gender1').check();
+        await page.fill('input[data-qa="password"]', 'password123');
+        await page.selectOption('select#days', '13');
+        await page.selectOption('select#months', 'February');
+        await page.selectOption('select#years', '1999');
+        await page.locator('input#newsletter').check();
+        await page.locator('input#optin').check();
+        await page.fill('input[data-qa="first_name"]', 'Bredas');
+        await page.fill('input[data-qa="last_name"]', 'Babrauskas');
+        await page.fill('input[data-qa="company"]', 'Uzvanka');
+        await page.fill('input[data-qa="address"]', 'Rastu 11');
+        await page.fill('input[data-qa="address2"]', 'Bebriskes');
+        await page.selectOption('select[data-qa="country"]', 'Canada');
+        await page.fill('input[data-qa="state"]', 'Big State');
+        await page.fill('input[data-qa="city"]', 'Small City');
+        await page.fill('input[data-qa="zipcode"]', '1234567890');
+        await page.fill('input[data-qa="mobile_number"]', '1234567890');
+
+        await page.locator('button[data-qa="create-account"]').click();
+        await page.locator('[data-qa="continue-button"]').click();
+        await page.locator('ul.navbar-nav li').nth(3).click();
+
+        // Real test begins NOW!
+
+        await page.locator('ul.navbar-nav li').nth(1).click();
+        await expect(page.locator('//html/body/section[2]/div/div/div[2]/div/h2')).toHaveText(/All Products/);
+
+        await page.fill('input#search_product', 'jeans');
+        await page.locator('button#submit_search').click();
+
+
+    });
 
 });
