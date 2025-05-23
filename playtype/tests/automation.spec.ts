@@ -490,7 +490,7 @@ test.describe('Automation Exercise Tests', () => {
         await expect(page.locator('h2[data-qa="account-deleted"]')).toHaveText(/Account Deleted!/);
 
     });
-    
+
     test.only('Test Case 17: Remove Products From Cart', async ({ page }) => {
         await page.locator('.productinfo').nth(0).getByText('Add to cart').hover();
         await page.waitForTimeout(1000);
@@ -512,7 +512,10 @@ test.describe('Automation Exercise Tests', () => {
         await page.locator('//*[@id="cartModal"]/div/div/div[2]/p[2]/a/u').click();
         await expect(page).toHaveURL('https://automationexercise.com/view_cart');
 
-        
+        await page.locator('[data-product-id="7"]').click();
+        await page.waitForTimeout(1000);
+
+        await expect(page.locator('#product-7')).toHaveCount(0);
 
     });
 
