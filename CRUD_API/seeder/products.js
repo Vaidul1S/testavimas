@@ -1,0 +1,17 @@
+export const products = [
+    {id: 1, name: 'Sofa', price: '249.99', description: 'Klasikinė sofa'},
+    { id: 2, name: 'Armchair', price: '129.99', description: 'Patogus fotelis' },
+    { id: 3, name: 'Dining Table', price: '399.99', description: 'Valgomojo stalas' },
+    { id: 4, name: 'Bed', price: '349.99', description: 'Dvigulė lova' },
+    { id: 5, name: 'Coffee Table', price: '89.99', description: 'Kavos staliukas' },
+    { id: 6, name: 'Bookshelf', price: '159.99', description: 'Knygų lentyna' },
+    { id: 7, name: 'TV Stand', price: '119.99', description: 'Modernus TV staliukas' },
+    { id: 8, name: 'Desk', price: '199.99', description: 'Rašomasis stalas su stalčiais' },
+    { id: 9, name: 'Office Chair', price: '149.99', description: 'Ergonomiška biuro kėdė' },
+    { id: 10, name: 'Wardrobe', price: '499.99', description: 'Trijų durų rūbų spinta' },
+    { id: 11, name: 'Nightstand', price: '59.99', description: 'Maža naktinė spintelė' },
+    { id: 12, name: 'Dresser', price: '299.99', description: 'Komoda su stalčiais' },
+    { id: 13, name: 'Recliner', price: '219.99', description: 'Atlošiama kėdė' },
+    { id: 14, name: 'Bar Stool', price: '74.99', description: 'Baro kėdė' },
+    { id: 15, name: 'Bench', price: '134.99', description: 'Medinis suoliukas' },
+]
