@@ -35,3 +35,8 @@ con.query(sql, (err) => {
     if (err) throw err;
     console.log('Table Clients created!');
 });
+
+con.end(err => {
+    if (err) throw err;
+    console.log('Atsijungta nuo duomenų bazės!');
+});
