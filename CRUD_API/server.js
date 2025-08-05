@@ -1,19 +1,31 @@
 const express = require('express');
 const app = express();
-const pool = require('./database');
+const mysql = require('mysql');
 
 const port = 5555;
 
 app.use(express.json());
 
+const con = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'users'
+});
 
+con.connect((err) => {
+    if (err) {
+        throw err;
+    }
+    console.log('Prisijungta prie duomenų bazės!');
+});
 
 //-----------------------------Routes-----------------------------
 
 app.get('/users', async (req, res) => {
 
     try {
-        const results = await pool.query(`SELECT * FROM users`);
+        const results = await con.query(`SELECT * FROM users`);
         res.status(200).json(results.rows);
 
     } catch (error) {
@@ -26,7 +38,7 @@ app.get('/users/:id', async (req, res) => {
 
     try {
         const id = req.params.id
-        const results = await pool.query(`SELECT * FROM users WHERE id=${id}`);
+        const results = await con.query(`SELECT * FROM users WHERE id=${id}`);
         res.status(200).json(results.rows);
 
     } catch (error) {
@@ -40,7 +52,7 @@ app.post('/users', async (req, res) => {
     try {
         const { id, username, password } = req.body;
 
-        const results = await pool.query(`INSERT INTO users (id,username, password) VALUES (${id}, '${username}', '${password}') RETURNING *`);
+        const results = await con.query(`INSERT INTO users (id,username, password) VALUES (${id}, '${username}', '${password}') RETURNING *`);
         res.status(201).json(results.rows[0]);
 
     } catch (error) {
@@ -54,7 +66,7 @@ app.put('/users/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const { username, password } = req.body;
-        const results = await pool.query(`UPDATE users SET username='${username}', password='${password}' WHERE id=${id} RETURNING *`);
+        const results = await con.query(`UPDATE users SET username='${username}', password='${password}' WHERE id=${id} RETURNING *`);
         res.status(200).json(results.rows[0]);
 
     } catch (error) {
@@ -67,7 +79,7 @@ app.delete('/users/:id', async (req, res) => {
 
     try {
         const id = req.params.id
-        const results = await pool.query(`DELETE FROM users WHERE id=${id} RETURNING *`);
+        const results = await con.query(`DELETE FROM users WHERE id=${id} RETURNING *`);
         res.status(200).json(results.rows);
 
     } catch (error) {
@@ -79,7 +91,7 @@ app.delete('/users/:id', async (req, res) => {
 app.get('/products', async (req, res) => {
 
     try {
-        const results = await pool.query(`SELECT * FROM products`);
+        const results = await con.query(`SELECT * FROM products`);
         res.status(200).json(results.rows);
 
     } catch (error) {
@@ -92,7 +104,7 @@ app.get('/products/:id', async (req, res) => {
 
     try {
         const id = req.params.id
-        const results = await pool.query(`SELECT * FROM products WHERE id=${id}`);
+        const results = await con.query(`SELECT * FROM products WHERE id=${id}`);
         res.status(200).json(results.rows[0]);
 
     } catch (error) {
@@ -106,7 +118,7 @@ app.post('/products', async (req, res) => {
     try {
         const { name, price, description } = req.body;
 
-        const results = await pool.query(`INSERT INTO products (name, price, description) VALUES ('${name}', ${price}, '${description}') RETURNING *`);
+        const results = await con.query(`INSERT INTO products (name, price, description) VALUES ('${name}', ${price}, '${description}') RETURNING *`);
         res.status(201).json(results.rows[0]);
 
     } catch (error) {
@@ -120,7 +132,7 @@ app.put('/products/:id', async (req, res) => {
     try {
         const id = req.params.id
         const { name, price, description } = req.body;
-        const results = await pool.query(`UPDATE products SET name='${name}', price='${price}', description='${description}' WHERE id=${id} RETURNING *`);
+        const results = await con.query(`UPDATE products SET name='${name}', price='${price}', description='${description}' WHERE id=${id} RETURNING *`);
         res.status(200).json(results.rows[0]);
 
     } catch (error) {
@@ -133,7 +145,7 @@ app.delete('/products/:id', async (req, res) => {
 
     try {
         const id = req.params.id
-        const results = await pool.query(`DELETE FROM products WHERE id=${id} RETURNING *`);
+        const results = await con.query(`DELETE FROM products WHERE id=${id} RETURNING *`);
         res.status(200).json({message: 'Produktas ištrintas sėkmingai!'});             
     } catch (error) {
         res.status(400).json({ error: 'error' });

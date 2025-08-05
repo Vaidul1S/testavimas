@@ -1,4 +1,5 @@
 import { users } from './users.js';
+import { products } from './products.js';
 import mysql from 'mysql';
 import md5 from 'md5';
 
